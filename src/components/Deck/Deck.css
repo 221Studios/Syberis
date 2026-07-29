@@ -1,0 +1,342 @@
+.deck-page {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  background-color: var(--base-500);
+  color: var(--base-300);
+}
+
+.deck-slides {
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: 100%;
+  place-items: center;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.deck-slide {
+  position: relative;
+  display: grid;
+  place-items: center;
+  grid-area: 1 / 1 / -1 / -1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.deck-slide-current {
+  pointer-events: auto;
+}
+
+.deck-slide-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: 50% 40%;
+  background-repeat: no-repeat;
+}
+
+.deck-slide-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background: linear-gradient(
+    to top,
+    rgba(16, 47, 79, 0.85) 0%,
+    rgba(16, 47, 79, 0.3) 30%,
+    rgba(16, 47, 79, 0.3) 70%,
+    rgba(16, 47, 79, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
+.deck-slide-current .deck-slide-content {
+  pointer-events: auto;
+}
+
+.deck-slide-content h1 {
+  font-size: clamp(4rem, 8vw, 8rem);
+}
+
+.deck-slide-content .subheader {
+  width: 100%;
+  font-size: clamp(1.5rem, 3vw, 5rem);
+  line-height: 1;
+}
+
+.deck-line {
+  position: relative;
+  will-change: transform;
+}
+
+.deck-slide-year {
+  color: var(--base-300);
+}
+
+.deck-slide-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 2000px;
+}
+
+.deck-slide-title-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: var(--base-300);
+  perspective: 700px;
+  transform-style: preserve-3d;
+}
+
+.deck-slide-description {
+  max-width: 44ch;
+  margin-top: 1.25rem;
+  color: var(--base-100);
+  text-align: center;
+}
+
+.deck-word {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  padding: 0.1em 0.15em;
+  margin: -0.1em -0.15em;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+.deck-flicker-char {
+  display: inline-block;
+  will-change: opacity;
+}
+
+.deck-slide-footer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 2000px;
+  padding: 0.375rem;
+  color: var(--base-300);
+}
+
+.deck-slide-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.deck-slide-tag {
+  padding: 0.25rem 0.65rem;
+  border: 1px solid var(--base-300);
+  border-radius: 0.2rem;
+  text-align: center;
+  height: max-content;
+}
+
+.deck-slide-counter {
+  margin-left: auto;
+}
+
+.deck-deco {
+  position: relative;
+  grid-area: 1 / 1 / -1 / -1;
+  width: 100%;
+  height: 100%;
+  background: var(--base-300);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.deck-title-link {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+  text-decoration: none;
+  color: inherit;
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.deck-title-underline {
+  position: absolute;
+  bottom: 5%;
+  left: 0;
+  right: 0;
+  height: 0.165rem;
+  background: var(--base-300);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.deck-title-link-hovered .deck-title-underline {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* Visible switch: the wheel/swipe gesture alone is not discoverable enough
+   for buyers browsing puppies on a phone. */
+.deck-switch {
+  position: absolute;
+  bottom: 4.5rem;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 0.55rem;
+  border: 1px solid var(--base-300);
+  border-radius: 2rem;
+  background: rgba(16, 47, 79, 0.55);
+  backdrop-filter: blur(6px);
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.deck-switch-arrow {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--base-300);
+  cursor: pointer;
+  transition:
+    background 250ms ease,
+    color 250ms ease;
+}
+
+.deck-switch-arrow:hover {
+  background: var(--base-300);
+  color: var(--base-500);
+}
+
+.deck-switch-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.deck-switch-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  padding: 0;
+  border: 1px solid var(--base-300);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background 250ms ease,
+    transform 250ms ease;
+}
+
+.deck-switch-dot:hover {
+  background: rgba(233, 194, 106, 0.5);
+}
+
+.deck-switch-dot-active {
+  background: var(--base-300);
+  transform: scale(1.25);
+}
+
+/* Clears the fixed music toggle sitting in the top-right corner. */
+.deck-action {
+  position: absolute;
+  top: 2.25rem;
+  right: 7rem;
+  padding: 0.65rem 1.15rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  color: var(--base-500);
+  background-color: var(--base-300);
+  transition: background-color 300ms ease;
+  z-index: 6;
+}
+
+.deck-action:hover {
+  background-color: var(--base-100);
+}
+
+.deck-hint {
+  position: absolute;
+  bottom: 1.75rem;
+  left: 50%;
+  color: var(--base-300);
+  opacity: 0.7;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  z-index: 5;
+}
+
+@media screen and (max-width: 1000px) {
+  .deck-slide-content {
+    justify-content: flex-end;
+    gap: 6rem;
+    padding: 1.5rem 1.5rem 8rem 1.5rem;
+  }
+
+  .deck-slide-content .subheader {
+    font-size: clamp(1.5rem, 3vw, 5rem);
+    line-height: 1.25;
+    transform: translateX(0rem);
+  }
+
+  .deck-slide-description {
+    margin-top: 0.75rem;
+    font-size: 1.15rem;
+  }
+
+  .deck-slide-footer {
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .deck-slide-counter {
+    width: 100%;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .deck-title-underline {
+    display: none !important;
+  }
+
+  .deck-switch {
+    bottom: 3.25rem;
+  }
+
+  /* Drops below the music toggle so it clears the menu rail on the left. */
+  .deck-action {
+    top: 7rem;
+    right: 1.5rem;
+  }
+
+  .deck-hint {
+    bottom: 0.9rem;
+    max-width: 80vw;
+    white-space: normal;
+    text-align: center;
+  }
+}

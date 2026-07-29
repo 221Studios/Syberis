@@ -1,0 +1,144 @@
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.preloader-blocks {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  display: grid;
+  width: max-content;
+  height: max-content;
+  grid-template-columns: repeat(
+    var(--preloader-columns, 12),
+    var(--preloader-block-size, 80px)
+  );
+  grid-auto-rows: var(--preloader-block-size, 80px);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.preloader-cell {
+  aspect-ratio: 1;
+  background-color: var(--base-500);
+}
+
+.preloader-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Anchored left, oversized — face sits on the left half of the curtain.
+   Pulled past the left edge so the drawing reads flush-left, not centered
+   in its own box. */
+.preloader-svg {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: min(88vw, 1280px);
+  height: auto;
+  max-height: 96vh;
+  transform: translate(-12%, -50%);
+  overflow: visible;
+  visibility: hidden;
+}
+
+.preloader-strokes-base path,
+.preloader-strokes-fill path {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.preloader-strokes-base path {
+  stroke: var(--base-400);
+  stroke-width: 1.5;
+}
+
+.preloader-strokes-fill path {
+  stroke: var(--base-300);
+  stroke-width: 2;
+  opacity: 0;
+}
+
+/* Brand sits over the husky drawing, centred in the viewport. */
+.preloader-brand {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+  color: var(--base-100);
+}
+
+.preloader-logo {
+  width: clamp(5rem, 12vw, 9rem);
+  height: auto;
+  object-fit: contain;
+}
+
+/* Salle Blanche text fill: two stacked titles, the top one clipped by width. */
+.preloader-title-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.preloader-title {
+  margin: 0;
+  font-size: clamp(2.75rem, 6.5vw, 5.5rem);
+  line-height: 0.9;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.preloader-title-base {
+  color: rgba(244, 249, 255, 0.18);
+}
+
+.preloader-title-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  overflow: hidden;
+  color: var(--base-100);
+  will-change: width;
+}
+
+.preloader-tagline {
+  color: var(--base-100);
+  opacity: 1;
+}
+
+.preloader-tagline-blue {
+  color: #7dafe1;
+}
+
+@media (max-width: 1000px) {
+  .preloader-svg {
+    width: min(110vw, 820px);
+    max-height: 75vh;
+    transform: translate(-18%, -50%);
+  }
+
+  .preloader-strokes-base path {
+    stroke-width: 1.25;
+  }
+
+  .preloader-strokes-fill path {
+    stroke-width: 1.75;
+  }
+}

@@ -1,0 +1,222 @@
+.litter-puppies {
+  --avatar-size: 200px;
+  --avatar-hover: 280px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  min-height: 78svh;
+  padding: 3.5rem 1.25rem 3rem;
+  overflow: hidden;
+  background-color: var(--base-500);
+}
+
+.litter-puppies-avatars {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+  max-width: 100%;
+  height: var(--avatar-hover);
+}
+
+.litter-puppies-avatar {
+  position: relative;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  padding: 5px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  filter: saturate(0);
+  will-change: width, height;
+  transition: filter 0.35s ease;
+}
+
+.litter-puppies-avatar.is-active,
+.litter-puppies-avatar:hover {
+  filter: saturate(1);
+}
+
+.litter-puppies-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.45rem;
+}
+
+.litter-puppies-names {
+  position: relative;
+  width: 100%;
+  /* One tight line box — must match h1 size so hidden letters at 120% fully clear. */
+  height: calc(clamp(4.5rem, 9vw, 9rem) * 0.9);
+  overflow: hidden;
+}
+
+.litter-puppies-name {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.litter-puppies-name h1 {
+  white-space: nowrap;
+  text-align: center;
+  font-size: clamp(4.5rem, 9vw, 9rem);
+  line-height: 0.9;
+  color: var(--base-100);
+}
+
+.litter-puppies-name h1 .letter {
+  display: inline-block;
+  transform: translateY(120%);
+  will-change: transform;
+}
+
+.litter-puppies-name--default h1 .letter {
+  transform: translateY(0%);
+}
+
+.litter-puppies-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: min(40rem, 92%);
+  min-height: 0;
+  text-align: center;
+  color: var(--base-100);
+  opacity: 0.55;
+  transition: opacity 0.35s ease;
+}
+
+.litter-puppies-detail.is-visible {
+  opacity: 1;
+}
+
+.litter-puppies-detail-name {
+  display: none;
+  margin: 0;
+  font-size: clamp(3rem, 12vw, 4.5rem);
+  line-height: 0.9;
+  color: var(--base-100);
+}
+
+.litter-puppies-detail-meta {
+  font-size: 0.95rem;
+  color: var(--base-300);
+}
+
+.litter-puppies-detail-copy {
+  max-width: 36rem;
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  line-height: 1.35;
+}
+
+.litter-puppies-detail-hint {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  opacity: 0.7;
+}
+
+.litter-puppies-traits {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem 1.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.litter-puppies-traits li {
+  font-family: "DMMono", monospace;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: var(--base-200);
+}
+
+@media (max-width: 999px) {
+  .litter-puppies {
+    --avatar-size: 120px;
+    --avatar-hover: 120px;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    gap: 1.5rem;
+    min-height: 72svh;
+    padding: 3.5rem 1rem 2.75rem;
+  }
+
+  .litter-puppies-avatars {
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .litter-puppies-avatar {
+    filter: saturate(1);
+  }
+
+  .litter-puppies-names {
+    height: calc(3.25rem * 0.9);
+  }
+
+  .litter-puppies-name {
+    display: none;
+  }
+
+  .litter-puppies-name--default {
+    display: flex;
+  }
+
+  .litter-puppies.has-active .litter-puppies-name--default {
+    display: none;
+  }
+
+  .litter-puppies-name--default h1 {
+    font-size: 3.25rem;
+  }
+
+  .litter-puppies-name--default h1 .letter {
+    transform: translateY(0%) !important;
+  }
+
+  .litter-puppies-detail {
+    min-height: 0;
+    gap: 0.75rem;
+    opacity: 1;
+  }
+
+  .litter-puppies-detail-name {
+    display: block;
+  }
+
+  .litter-puppies-detail-copy {
+    font-size: 1.25rem;
+  }
+
+  .litter-puppies-detail-hint {
+    display: none;
+  }
+
+  .litter-puppies-traits li {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .litter-puppies {
+    --avatar-size: 92px;
+    --avatar-hover: 92px;
+  }
+}

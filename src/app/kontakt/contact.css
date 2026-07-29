@@ -1,0 +1,227 @@
+.transmit-hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  background-color: var(--base-300);
+  color: var(--base-500);
+}
+
+.transmit-hero .container {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+}
+
+.transmit-hero-header {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  transform: translate(-50%, -50%);
+}
+
+.transmit-hero-header h1 {
+  text-align: center;
+}
+
+.transmit-hero-header .subheader {
+  transform: translateX(-6rem);
+}
+
+.transmit-hero-footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0.75rem;
+}
+
+.transmit-sticky {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  padding: 0.75rem;
+  background-color: var(--base-200);
+}
+
+.transmit-sticky .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.75rem;
+  background-color: var(--base-400);
+}
+
+div.pin-spacer:has(> .transmit-sticky) {
+  background-color: var(--base-400);
+}
+
+.transmit-sticky-header {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  white-space: nowrap;
+  color: var(--base-100);
+  will-change: transform, opacity;
+}
+
+.transmit-card-container {
+  position: relative;
+  display: flex;
+  width: 80%;
+  transform: translateY(30px);
+  perspective: 1000px;
+  will-change: width;
+}
+
+.transmit-card {
+  position: relative;
+  flex: 1;
+  aspect-ratio: 5 / 7;
+  transform-style: preserve-3d;
+  transform-origin: top;
+}
+
+#transmit-card-1 {
+  border-radius: 12px 0 0 12px;
+}
+
+#transmit-card-3 {
+  border-radius: 0 12px 12px 0;
+}
+
+.transmit-card-front,
+.transmit-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+  backface-visibility: hidden;
+}
+
+.transmit-card-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+  transform: rotateY(180deg);
+}
+
+#transmit-card-1 .transmit-card-back {
+  background-color: var(--base-500);
+  color: var(--base-100);
+}
+
+#transmit-card-2 .transmit-card-back {
+  background-color: var(--base-300);
+  color: var(--base-500);
+}
+
+#transmit-card-3 .transmit-card-back {
+  background-color: var(--base-200);
+  color: var(--base-500);
+}
+
+.transmit-card-index {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  font-family: "DMMono", monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.4;
+}
+
+.transmit-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.transmit-card-info .mono {
+  opacity: 0.35;
+}
+
+.transmit-card-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.transmit-card-value {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.15rem;
+}
+
+@media (max-width: 1000px) {
+  .transmit-hero-header .subheader {
+    transform: translateX(0);
+  }
+
+  .transmit-sticky {
+    height: auto;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .transmit-sticky .container {
+    gap: 2rem;
+    height: auto;
+    padding: 8rem 0.75rem;
+    border-radius: 0;
+  }
+
+  .transmit-sticky-header {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    will-change: auto;
+  }
+
+  .transmit-card-container {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    transform: none;
+    perspective: none;
+    will-change: auto;
+  }
+
+  .transmit-card {
+    flex: none;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    transform-style: flat;
+    transform-origin: center;
+  }
+
+  #transmit-card-1,
+  #transmit-card-2,
+  #transmit-card-3 {
+    border-radius: 12px;
+  }
+
+  .transmit-card-front {
+    display: none;
+  }
+
+  .transmit-card-back {
+    padding: 1.5rem;
+    transform: none;
+  }
+
+  .transmit-card-info {
+    gap: 2rem;
+  }
+}

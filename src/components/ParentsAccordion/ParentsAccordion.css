@@ -1,0 +1,232 @@
+.parents-accordion {
+  min-height: 100svh;
+  padding: 7rem 0 4rem;
+  background-color: var(--base-500);
+  color: var(--base-100);
+}
+
+.parents-accordion-header {
+  padding: 0 2rem 2.5rem;
+  text-align: center;
+}
+
+.parents-accordion-header .mono {
+  margin-bottom: 0;
+  color: var(--base-300);
+}
+
+.parents-accordion-panels {
+  width: 100%;
+}
+
+.parents-accordion-panels .container {
+  display: flex;
+  gap: 0.5rem;
+  height: 72vh;
+  min-height: 560px;
+}
+
+.parents-accordion-panel {
+  position: relative;
+  height: 100%;
+  flex: 14 0 0;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 0.35rem;
+  color: inherit;
+  cursor: default;
+  will-change: flex-grow;
+}
+
+.parents-accordion-img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  /* Keep a wide cover frame so expanding only reveals sides — no zoom-in. */
+  width: max(100%, 42vw);
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+  transform: translateX(-50%);
+}
+
+.parents-accordion-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(16, 47, 79, 0.15) 0%,
+    rgba(16, 47, 79, 0.45) 40%,
+    rgba(16, 47, 79, 0.88) 100%
+  );
+  pointer-events: none;
+}
+
+.parents-accordion-content {
+  position: absolute;
+  z-index: 1;
+  top: 38%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.parents-accordion-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 1.5rem;
+  margin-bottom: 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--base-300) 40%, transparent);
+  border-radius: 0.25rem;
+  background-color: color-mix(in srgb, var(--base-500) 35%, transparent);
+  backdrop-filter: blur(12px);
+  font-size: 0.75rem;
+  color: var(--base-300);
+}
+
+.parents-accordion-title {
+  font-family: "Palace", serif;
+  font-size: clamp(1.35rem, 2vw, 1.85rem);
+  font-weight: 400;
+  line-height: 1.1;
+  white-space: nowrap;
+  color: var(--base-100);
+}
+
+.parents-accordion-role {
+  margin-top: 0.45rem;
+  color: var(--base-300);
+  opacity: 0.85;
+  white-space: nowrap;
+}
+
+.parents-accordion-details {
+  position: absolute;
+  z-index: 1;
+  bottom: 1.5rem;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  width: min(28rem, 88%);
+  text-align: center;
+  pointer-events: none;
+  transform: translateX(-50%);
+  will-change: opacity, transform;
+}
+
+.parents-accordion-meta {
+  color: var(--base-300);
+  opacity: 0.9;
+}
+
+.parents-accordion-bio {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  color: var(--base-100);
+}
+
+.parents-accordion-traits {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem 0.85rem;
+  margin: 0.35rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.parents-accordion-traits li {
+  font-family: "DMMono", monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--base-200);
+}
+
+.parents-accordion--stacked {
+  padding: 6rem 0 4rem;
+}
+
+.parents-accordion--stacked .parents-accordion-header {
+  padding-bottom: 2rem;
+}
+
+.parents-accordion--stacked .parents-accordion-panels .container {
+  flex-direction: column;
+  height: auto;
+  min-height: 0;
+  gap: 1rem;
+}
+
+.parents-accordion--stacked .parents-accordion-panel {
+  display: flex;
+  flex: none !important;
+  flex-direction: column;
+  height: auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.parents-accordion--stacked .parents-accordion-img {
+  position: relative;
+  inset: unset;
+  top: auto;
+  left: auto;
+  display: block;
+  flex-shrink: 0;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  transform: none;
+  border-radius: 0.35rem;
+}
+
+.parents-accordion--stacked .parents-accordion-overlay {
+  inset: unset;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  border-radius: 0.35rem;
+}
+
+.parents-accordion--stacked .parents-accordion-content {
+  position: relative;
+  top: auto;
+  left: auto;
+  align-items: flex-start;
+  padding: 1.5rem 1.25rem 0.5rem;
+  text-align: left;
+  transform: none;
+}
+
+.parents-accordion--stacked .parents-accordion-details {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0 1.25rem 1.75rem;
+  text-align: left;
+  transform: none;
+  opacity: 1 !important;
+}
+
+.parents-accordion--stacked .parents-accordion-title,
+.parents-accordion--stacked .parents-accordion-role {
+  white-space: normal;
+}
+
+.parents-accordion--stacked .parents-accordion-traits {
+  justify-content: flex-start;
+}

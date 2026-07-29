@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "Bellefair";
+  src: url("/fonts/bellefair/bellefair-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DMMono";
+  src: url("/fonts/dm-mono/dm-mono-light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DMMono";
+  src: url("/fonts/dm-mono/dm-mono-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DMMono";
+  src: url("/fonts/dm-mono/dm-mono-medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Palace";
+  src: url("/fonts/palace/palace-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Palace";
+  src: url("/fonts/palace/palace-italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}

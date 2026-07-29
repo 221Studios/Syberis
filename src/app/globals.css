@@ -1,0 +1,173 @@
+@import url(./fonts.css);
+
+/* Niebieski próbkowany z tęczówek na zdjęciach psów (#6ea6e0); --base-400 to ta
+   sama barwa przyciemniona tyle, by biały tekst na niej był czytelny. */
+:root {
+  --base-100: #f4f9ff;
+  --base-200: #d8e8fb;
+  --base-300: #e9c26a;
+  --base-400: #2a6ea8;
+  --base-500: #102f4f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Phone numbers and e-mail have to be copyable despite the global reset. */
+.selectable,
+.selectable * {
+  user-select: text;
+}
+
+body {
+  background-color: var(--base-100);
+  color: var(--base-500);
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Palace";
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: -3%;
+  text-transform: uppercase;
+}
+
+h1.v2,
+h2.v2,
+h3.v2,
+h4.v2,
+h5.v2,
+h6.v2 {
+  font-family: "Bellefair";
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -6%;
+  text-transform: none;
+}
+
+h1 {
+  font-size: clamp(5rem, 10vw, 10rem);
+}
+
+h2 {
+  font-size: clamp(4.5rem, 9vw, 9rem);
+}
+
+h3 {
+  font-size: clamp(4rem, 8vw, 8rem);
+}
+
+h4 {
+  font-size: clamp(3.5rem, 7vw, 7rem);
+}
+
+h5 {
+  font-size: clamp(3rem, 6vw, 6rem);
+}
+
+h6 {
+  font-size: clamp(2.5rem, 5vw, 5rem);
+}
+
+.subheader {
+  font-size: clamp(2rem, 4vw, 6rem);
+  font-style: italic;
+  line-height: 0.75;
+  text-transform: none;
+  transform: translateX(-3rem);
+}
+
+p {
+  font-family: "Bellefair";
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: -2%;
+}
+
+p.sm {
+  font-size: 1.2rem;
+}
+
+p.md {
+  font-size: 1.4rem;
+}
+
+p.lg {
+  font-size: 1.5rem;
+}
+
+p.mono {
+  font-family: "DMMono";
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+p.mono.sm {
+  font-size: 0.8rem;
+}
+
+p.mono.md {
+  font-size: 0.9rem;
+}
+
+p.mono.lg {
+  font-size: 0.95rem;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 2000px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0.75rem;
+}
+
+.transition-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  grid-template-columns: repeat(
+    var(--transition-columns),
+    var(--transition-block-size)
+  );
+  grid-auto-rows: var(--transition-block-size);
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1000000;
+}
+
+.transition-cell {
+  aspect-ratio: 1;
+  background-color: var(--base-300);
+}
+
+@media (max-width: 1200px) {
+  .subheader {
+    font-style: normal;
+  }
+}

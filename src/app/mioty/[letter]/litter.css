@@ -1,0 +1,246 @@
+.litter-page {
+  background-color: var(--base-100);
+}
+
+/* HoE report split — right panel carries title + intro + parents. */
+.litter-hero .litter-hero-right {
+  position: relative;
+  justify-content: space-between;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+.litter-hero-main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.75rem;
+  padding: 1.5rem 1.5rem 0;
+  text-align: center;
+  color: var(--base-300);
+}
+
+.litter-hero-main h1 {
+  font-size: clamp(4rem, 8vw, 8rem);
+  line-height: 0.85;
+  color: var(--base-300);
+}
+
+.litter-hero-main .subheader {
+  width: 100%;
+  font-size: clamp(1.5rem, 3vw, 4rem);
+  line-height: 1.15;
+  color: var(--base-300);
+}
+
+.litter-hero-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.litter-hero-intro {
+  max-width: 28rem;
+  margin: 0 auto;
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  line-height: 1.35;
+  color: var(--base-100);
+  opacity: 0.85;
+}
+
+.litter-hero-availability {
+  color: var(--base-300);
+  opacity: 0.85;
+}
+
+.litter-parents {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  width: min(22rem, 100%);
+  margin-top: 0.25rem;
+}
+
+.litter-parent-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.55rem;
+  color: var(--base-100);
+  text-align: left;
+  text-decoration: none;
+  border: 1px solid color-mix(in srgb, var(--base-300) 35%, transparent);
+  border-radius: 0.25rem;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.litter-parent-card:hover {
+  border-color: var(--base-300);
+  background-color: color-mix(in srgb, var(--base-500) 35%, transparent);
+}
+
+.litter-parent-card img {
+  width: 3.75rem;
+  height: 3.75rem;
+  object-fit: cover;
+  border-radius: 0.2rem;
+}
+
+.litter-parent-card .mono {
+  color: var(--base-300);
+}
+
+.litter-parent-card h6 {
+  margin-top: 0.15rem;
+  font-size: 1.35rem;
+  color: var(--base-100);
+}
+
+/* Puppies (wide) + CTA (narrow) */
+.litter-split {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(12rem, 1fr);
+  width: 100%;
+  min-height: 78svh;
+  background-color: var(--base-500);
+}
+
+.litter-split-puppies {
+  min-width: 0;
+  min-height: 78svh;
+  border-right: 1px solid color-mix(in srgb, var(--base-300) 18%, transparent);
+}
+
+.litter-split-puppies .litter-puppies {
+  min-height: 78svh;
+  height: 100%;
+}
+
+.litter-split-cta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2.5rem 1.75rem;
+  color: var(--base-100);
+}
+
+.litter-split-cta h5 {
+  max-width: 14ch;
+  font-size: clamp(2rem, 3.5vw, 3.25rem);
+  line-height: 1.05;
+}
+
+.litter-split-cta-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.litter-grown {
+  padding: 6rem 0;
+  background-color: var(--base-200);
+  color: var(--base-500);
+}
+
+.litter-grown-label {
+  margin-bottom: 1.25rem;
+  color: var(--base-400);
+}
+
+.litter-grown h5 {
+  margin: 0 0 2.5rem;
+  max-width: 28rem;
+}
+
+.litter-grown-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.litter-grown-item {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.litter-grown-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 999px) {
+  .litter-hero {
+    height: auto;
+    min-height: 100svh;
+  }
+
+  .litter-hero .report-hero-grid {
+    grid-template-rows: 45svh auto;
+  }
+
+  .litter-hero-main {
+    padding: 1.25rem 0.75rem 0;
+    gap: 1.25rem;
+  }
+
+  .litter-hero-main h1 {
+    font-size: clamp(3.25rem, 14vw, 5rem);
+  }
+
+  .litter-hero-main .subheader {
+    font-size: clamp(1.25rem, 5vw, 2rem);
+  }
+
+  .litter-hero-intro {
+    font-size: 1.05rem;
+  }
+
+  .litter-parent-card img {
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+
+  .litter-split {
+    grid-template-columns: 1fr;
+  }
+
+  .litter-split-puppies {
+    min-height: 0;
+    border-right: none;
+    border-bottom: 1px solid
+      color-mix(in srgb, var(--base-300) 18%, transparent);
+  }
+
+  .litter-split-puppies .litter-puppies {
+    min-height: 72svh;
+  }
+
+  .litter-split-cta {
+    padding: 3rem 1.5rem;
+    gap: 1.75rem;
+  }
+
+  .litter-split-cta h5 {
+    max-width: none;
+  }
+
+  .litter-split-cta-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .litter-grown-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .litter-grown-item {
+    aspect-ratio: 5 / 4;
+  }
+}

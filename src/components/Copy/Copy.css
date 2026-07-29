@@ -1,0 +1,26 @@
+.copy-word {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  padding: 0.1em 0.15em;
+  margin: -0.1em -0.15em;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+.copy-char {
+  display: inline-block;
+  position: relative;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+  overflow: visible;
+}
+
+.copy-line {
+  display: block;
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}

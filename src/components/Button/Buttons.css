@@ -1,0 +1,107 @@
+.button {
+  --button-bg: var(--base-100);
+  --button-fg: var(--base-500);
+  --button-hover-bg: var(--base-400);
+  --button-hover-fg: var(--base-100);
+  --button-ease-power: cubic-bezier(0.22, 1, 0.36, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  width: max-content;
+  text-decoration: none;
+}
+
+.button--light {
+  --button-bg: var(--base-100);
+  --button-fg: var(--base-500);
+}
+
+.button--dark {
+  --button-bg: var(--base-100);
+  --button-fg: var(--base-500);
+  --button-hover-bg: var(--base-300);
+  --button-hover-fg: var(--base-500);
+}
+
+.button__label,
+.button__icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  overflow: hidden;
+  border-radius: 0.4rem;
+  color: var(--button-fg);
+  isolation: isolate;
+  transition: color 300ms var(--button-ease-power);
+}
+
+.button__label {
+  padding: 0 1.5rem;
+}
+
+.button__label::before,
+.button__icon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 0.4rem;
+  background-color: var(--button-hover-bg);
+  transform: translateY(100%);
+  transition: transform 350ms var(--button-ease-power);
+  z-index: 1;
+}
+
+.button__label::after,
+.button__icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 0.4rem;
+  background-color: var(--button-bg);
+  transform: scale(1);
+  transition: transform 350ms var(--button-ease-power);
+  z-index: 0;
+}
+
+.button--default .button__icon {
+  width: 3rem;
+  font-size: 1.25rem;
+  aspect-ratio: 1;
+}
+
+.button--no-icon .button__label {
+  padding: 0 2rem;
+}
+
+.button p.mono {
+  position: relative;
+  margin: 0;
+  z-index: 2;
+}
+
+.button__icon > * {
+  position: relative;
+  z-index: 2;
+}
+
+.button:hover .button__label,
+.button:hover .button__icon {
+  color: var(--button-hover-fg);
+}
+
+.button:hover .button__label::before,
+.button:hover .button__icon::before {
+  transform: translateY(0);
+}
+
+.button:hover .button__label::after,
+.button:hover .button__icon::after {
+  transform: scale(0.9);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--button-hover-bg);
+  outline-offset: 3px;
+}

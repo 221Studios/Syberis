@@ -91,14 +91,15 @@ export default function Showreel() {
           let singleSetWidth = 0;
 
           for (let i = 0; i < singleSetCount; i++) {
-            singleSetWidth += items[i].offsetWidth + trackGap;
+            singleSetWidth += items[i].offsetWidth;
+            if (i < singleSetCount - 1) singleSetWidth += trackGap;
           }
 
-          gsap.set(marqueeTrack, { x: 0 });
+          gsap.set(marqueeTrack, { x: 0, force3D: true });
 
           showreelMarqueeTween = gsap.to(marqueeTrack, {
             x: -singleSetWidth,
-            duration: 12,
+            duration: 16,
             ease: "none",
             repeat: -1,
           });
@@ -171,14 +172,14 @@ export default function Showreel() {
           <div className="showreel-marquee-container">
             <div className="showreel-marquee">
               <div className="showreel-marquee-track">
-                <p className="sm">Białe husky o niebieskich oczach</p>
-                <p className="sm">Białe husky o niebieskich oczach</p>
-                <p className="sm">Białe husky o niebieskich oczach</p>
-                <p className="sm">Białe husky o niebieskich oczach</p>
-                <p className="sm">Białe husky o niebieskich oczach</p>
-                <p className="sm">Białe husky o niebieskich oczach</p>
-                <p className="sm">Białe husky o niebieskich oczach</p>
-                <p className="sm">Białe husky o niebieskich oczach</p>
+                <p className="mono sm">Białe husky o niebieskich oczach</p>
+                <p className="mono sm">Białe husky o niebieskich oczach</p>
+                <p className="mono sm">Białe husky o niebieskich oczach</p>
+                <p className="mono sm">Białe husky o niebieskich oczach</p>
+                <p className="mono sm">Białe husky o niebieskich oczach</p>
+                <p className="mono sm">Białe husky o niebieskich oczach</p>
+                <p className="mono sm">Białe husky o niebieskich oczach</p>
+                <p className="mono sm">Białe husky o niebieskich oczach</p>
               </div>
             </div>
           </div>

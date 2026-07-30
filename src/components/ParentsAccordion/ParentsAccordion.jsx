@@ -4,6 +4,8 @@ import { useCallback, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { SEX_LABEL, formatDate } from "@/data/kennel";
 
+import Copy from "@/components/Copy/Copy";
+
 import "./ParentsAccordion.css";
 
 const EXPANDED = 52;
@@ -38,6 +40,7 @@ export default function ParentsAccordion({ parents }) {
       if (stacked) {
         gsap.killTweensOf(panel);
         gsap.killTweensOf(details);
+        panel.classList.remove("is-expanded");
         panel.style.flexGrow = "";
         panel.style.flexShrink = "";
         panel.style.flexBasis = "";
@@ -46,6 +49,7 @@ export default function ParentsAccordion({ parents }) {
       }
 
       const isActive = i === activeRef.current;
+      panel.classList.toggle("is-expanded", isActive);
       panel.style.flexGrow = isActive ? EXPANDED : COLLAPSED;
       panel.style.flexShrink = "0";
       panel.style.flexBasis = "0";
@@ -71,6 +75,7 @@ export default function ParentsAccordion({ parents }) {
         duration: DURATION,
         ease: EASE,
       });
+      panel.classList.toggle("is-expanded", i === index);
     });
 
     const prevDetails = detailsRef.current[prevIndex];
@@ -101,6 +106,7 @@ export default function ParentsAccordion({ parents }) {
     panelsRef.current.forEach((panel, i) => {
       if (!panel) return;
       const isActive = i === DEFAULT_ACTIVE;
+      panel.classList.toggle("is-expanded", isActive);
       panel.style.flexGrow = isActive ? EXPANDED : COLLAPSED;
       panel.style.flexShrink = "0";
       panel.style.flexBasis = "0";
@@ -129,7 +135,10 @@ export default function ParentsAccordion({ parents }) {
   return (
     <section className="parents-accordion" ref={sectionRef}>
       <div className="parents-accordion-header">
-        <p className="mono">Rodzice</p>
+        <Copy animateOnScroll={false} delay={0.65}>
+          <h1 className="subheader">Nasi</h1>
+          <h1>Rodzice</h1>
+        </Copy>
       </div>
 
       <div className="parents-accordion-panels">
@@ -154,43 +163,45 @@ export default function ParentsAccordion({ parents }) {
 
                 <div className="parents-accordion-overlay" />
 
-                <div className="parents-accordion-content">
-                  <span className="parents-accordion-number mono">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <p className="parents-accordion-title">{parent.name}</p>
-                  <p className="parents-accordion-role mono sm">
-                    {parent.role}
-                  </p>
-                </div>
-
-                <div
-                  className="parents-accordion-details"
-                  ref={(el) => {
-                    detailsRef.current[index] = el;
-                  }}
-                >
-                  <p className="mono sm parents-accordion-meta">
-                    {SEX_LABEL[parent.sex]} · ur. {formatDate(parent.born)}
-                    {weight ? ` · ${weight}` : ""}
-                  </p>
-                  <p className="mono sm parents-accordion-meta">
-                    {parent.coat} · oczy {parent.eyes.toLowerCase()}
-                  </p>
-
-                  {parent.bio?.map((paragraph) => (
-                    <p className="parents-accordion-bio" key={paragraph}>
-                      {paragraph}
+                <div className="parents-accordion-inner">
+                  <div className="parents-accordion-content">
+                    <span className="parents-accordion-number mono">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <p className="parents-accordion-title">{parent.name}</p>
+                    <p className="parents-accordion-role mono">
+                      {parent.role}
                     </p>
-                  ))}
+                  </div>
 
-                  {parent.traits?.length ? (
-                    <ul className="parents-accordion-traits">
-                      {parent.traits.map((trait) => (
-                        <li key={trait}>{trait}</li>
-                      ))}
-                    </ul>
-                  ) : null}
+                  <div
+                    className="parents-accordion-details"
+                    ref={(el) => {
+                      detailsRef.current[index] = el;
+                    }}
+                  >
+                    <p className="mono parents-accordion-meta">
+                      {SEX_LABEL[parent.sex]} · ur. {formatDate(parent.born)}
+                      {weight ? ` · ${weight}` : ""}
+                    </p>
+                    <p className="mono parents-accordion-meta">
+                      {parent.coat} · oczy {parent.eyes.toLowerCase()}
+                    </p>
+
+                    {parent.bio?.map((paragraph) => (
+                      <p className="parents-accordion-bio" key={paragraph}>
+                        {paragraph}
+                      </p>
+                    ))}
+
+                    {parent.traits?.length ? (
+                      <ul className="parents-accordion-traits">
+                        {parent.traits.map((trait) => (
+                          <li key={trait}>{trait}</li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </div>
                 </div>
               </div>
             );

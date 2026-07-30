@@ -175,9 +175,9 @@ div.pin-spacer:has(> .transmit-sticky) {
   }
 
   .transmit-sticky .container {
-    gap: 2rem;
+    gap: 1.5rem;
     height: auto;
-    padding: 8rem 0.75rem;
+    padding: 2.5rem 0.75rem 3rem;
     border-radius: 0;
   }
 
@@ -186,7 +186,16 @@ div.pin-spacer:has(> .transmit-sticky) {
     top: auto;
     left: auto;
     transform: none;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 1rem;
+    white-space: normal;
     will-change: auto;
+  }
+
+  .transmit-sticky-header h6 {
+    font-size: clamp(1.65rem, 6.5vw, 2.5rem);
+    line-height: 1.05;
   }
 
   .transmit-card-container {

@@ -8,7 +8,7 @@ import { useGSAP } from "@gsap/react";
 import { useLenis } from "lenis/react";
 import { FiChevronUp, FiChevronDown } from "react-icons/fi";
 import { CONTACT } from "@/data/kennel";
-import { telHref } from "@/lib/contact";
+import { mailHref, telHref } from "@/lib/contact";
 
 import "./Menu.css";
 
@@ -24,11 +24,10 @@ const MENU_PRIMARY_LINKS = [
 
 const MENU_FOOTER_LINKS_LEFT = [
   { href: telHref(CONTACT.phonePrimary), label: CONTACT.phonePrimary },
-  { href: telHref(CONTACT.phoneBackup), label: CONTACT.phoneBackup },
 ];
 
 const MENU_FOOTER_LINKS_RIGHT = [
-  { href: `mailto:${CONTACT.email}`, label: "E-mail" },
+  { href: mailHref(CONTACT.email), label: "E-mail" },
   { href: CONTACT.olx, label: "Ogłoszenie OLX" },
 ];
 

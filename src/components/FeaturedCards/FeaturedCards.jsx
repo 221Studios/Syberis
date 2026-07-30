@@ -47,7 +47,7 @@ const FEATURED_CARDS_DATA = [
 
 export default function FeaturedCards({
   kicker = "[ Hodowla Syberis ]",
-  title = "Wszystko o naszych białych husky",
+  title = "Poznaj mioty, rodziców i zdjęcia z hodowli",
   ctaHref = "/mioty",
   ctaLabel = "Zobacz mioty",
   cards = FEATURED_CARDS_DATA,

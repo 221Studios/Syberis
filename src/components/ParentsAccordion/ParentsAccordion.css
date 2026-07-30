@@ -1,18 +1,36 @@
 .parents-accordion {
   min-height: 100svh;
   padding: 7rem 0 4rem;
-  background-color: var(--base-500);
-  color: var(--base-100);
+  background-color: var(--base-200);
+  color: var(--base-500);
 }
 
 .parents-accordion-header {
   padding: 0 2rem 2.5rem;
   text-align: center;
+  color: var(--base-500);
 }
 
-.parents-accordion-header .mono {
-  margin-bottom: 0;
-  color: var(--base-300);
+.parents-accordion-header h1 {
+  color: var(--base-500);
+  font-size: clamp(3.25rem, 7vw, 4.5rem);
+}
+
+.parents-accordion-header .subheader {
+  color: var(--base-400);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  transform: translateX(-1.5rem);
+}
+
+@media (min-width: 1000px) {
+  .parents-accordion-header h1 {
+    font-size: clamp(4rem, 4.5vw, 5.25rem);
+  }
+
+  .parents-accordion-header .subheader {
+    font-size: clamp(2rem, 2.8vw, 2.85rem);
+    transform: translateX(-2rem) translateY(0.2rem);
+  }
 }
 
 .parents-accordion-panels {
@@ -42,7 +60,6 @@
   position: absolute;
   top: 0;
   left: 50%;
-  /* Keep a wide cover frame so expanding only reveals sides — no zoom-in. */
   width: max(100%, 42vw);
   height: 100%;
   object-fit: cover;
@@ -55,82 +72,94 @@
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(16, 47, 79, 0.15) 0%,
-    rgba(16, 47, 79, 0.45) 40%,
-    rgba(16, 47, 79, 0.88) 100%
+    rgba(16, 47, 79, 0.35) 0%,
+    rgba(16, 47, 79, 0.5) 45%,
+    rgba(16, 47, 79, 0.82) 100%
   );
   pointer-events: none;
 }
 
-.parents-accordion-content {
+.parents-accordion-inner {
   position: absolute;
+  inset: 0;
   z-index: 1;
-  top: 38%;
-  left: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2.5rem 2rem;
   text-align: center;
   pointer-events: none;
-  transform: translate(-50%, -50%);
+}
+
+.parents-accordion-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .parents-accordion-number {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 1.5rem;
-  margin-bottom: 0.85rem;
-  border: 1px solid color-mix(in srgb, var(--base-300) 40%, transparent);
+  width: 3rem;
+  height: 1.85rem;
+  margin-bottom: 1rem;
+  border: 1px solid color-mix(in srgb, var(--base-300) 55%, transparent);
   border-radius: 0.25rem;
-  background-color: color-mix(in srgb, var(--base-500) 35%, transparent);
+  background-color: color-mix(in srgb, var(--base-500) 45%, transparent);
   backdrop-filter: blur(12px);
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   color: var(--base-300);
 }
 
 .parents-accordion-title {
   font-family: "Palace", serif;
-  font-size: clamp(1.35rem, 2vw, 1.85rem);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
   font-weight: 400;
-  line-height: 1.1;
-  white-space: nowrap;
+  line-height: 1.05;
   color: var(--base-100);
 }
 
 .parents-accordion-role {
-  margin-top: 0.45rem;
-  color: var(--base-300);
-  opacity: 0.85;
-  white-space: nowrap;
-}
-
-.parents-accordion-details {
-  position: absolute;
-  z-index: 1;
-  bottom: 1.5rem;
-  left: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.65rem;
-  width: min(28rem, 88%);
-  text-align: center;
-  pointer-events: none;
-  transform: translateX(-50%);
-  will-change: opacity, transform;
-}
-
-.parents-accordion-meta {
+  margin-top: 0.55rem;
+  font-family: "DMMono", monospace;
+  font-size: 0.9rem;
+  text-transform: uppercase;
   color: var(--base-300);
   opacity: 0.9;
 }
 
+.parents-accordion-details {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: min(40rem, 92%);
+  max-height: min(62vh, 34rem);
+  overflow-y: auto;
+  will-change: opacity, transform;
+}
+
+.parents-accordion-panel.is-expanded .parents-accordion-details {
+  display: flex;
+}
+
+.parents-accordion-meta {
+  font-family: "DMMono", monospace;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  color: var(--base-200);
+  opacity: 0.95;
+  line-height: 1.45;
+}
+
 .parents-accordion-bio {
   margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.35;
+  font-size: 1.2rem;
+  line-height: 1.55;
   color: var(--base-100);
 }
 
@@ -138,17 +167,48 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.4rem 0.85rem;
-  margin: 0.35rem 0 0;
+  gap: 0.5rem 1rem;
+  margin: 0.25rem 0 0;
   padding: 0;
   list-style: none;
 }
 
 .parents-accordion-traits li {
   font-family: "DMMono", monospace;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
-  color: var(--base-200);
+  color: var(--base-300);
+}
+
+.parents-accordion-panel.is-expanded .parents-accordion-inner {
+  gap: 1.75rem;
+  padding: 3rem 2.5rem;
+}
+
+.parents-accordion-panel.is-expanded .parents-accordion-title {
+  font-size: clamp(2.75rem, 5vw, 4.5rem);
+}
+
+.parents-accordion-panel.is-expanded .parents-accordion-role {
+  font-size: 1rem;
+}
+
+.parents-accordion-panel.is-expanded .parents-accordion-details {
+  width: min(44rem, 94%);
+  gap: 1.15rem;
+}
+
+.parents-accordion-panel.is-expanded .parents-accordion-meta {
+  font-size: 1.05rem;
+}
+
+.parents-accordion-panel.is-expanded .parents-accordion-bio {
+  font-size: 1.35rem;
+  line-height: 1.6;
+}
+
+.parents-accordion-panel.is-expanded .parents-accordion-traits li {
+  font-size: 0.95rem;
 }
 
 .parents-accordion--stacked {
@@ -200,33 +260,58 @@
   border-radius: 0.35rem;
 }
 
-.parents-accordion--stacked .parents-accordion-content {
+.parents-accordion--stacked .parents-accordion-inner {
   position: relative;
-  top: auto;
-  left: auto;
+  inset: auto;
   align-items: flex-start;
-  padding: 1.5rem 1.25rem 0.5rem;
+  justify-content: flex-start;
+  gap: 1.25rem;
+  padding: 1.75rem 1.5rem 2rem;
   text-align: left;
-  transform: none;
+}
+
+.parents-accordion--stacked .parents-accordion-title {
+  font-size: clamp(2.25rem, 9vw, 3.25rem);
+}
+
+.parents-accordion--stacked .parents-accordion-role {
+  font-size: 0.95rem;
+}
+
+.parents-accordion--stacked .parents-accordion-meta {
+  font-size: 0.95rem;
+}
+
+.parents-accordion--stacked .parents-accordion-bio {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.parents-accordion--stacked .parents-accordion-traits li {
+  font-size: 0.9rem;
+}
+
+.parents-accordion--stacked .parents-accordion-content {
+  align-items: flex-start;
 }
 
 .parents-accordion--stacked .parents-accordion-details {
-  position: relative;
-  bottom: auto;
-  left: auto;
+  display: flex;
   align-items: flex-start;
   width: 100%;
-  padding: 0 1.25rem 1.75rem;
-  text-align: left;
-  transform: none;
+  max-height: none;
+  overflow: visible;
   opacity: 1 !important;
-}
-
-.parents-accordion--stacked .parents-accordion-title,
-.parents-accordion--stacked .parents-accordion-role {
-  white-space: normal;
+  transform: none !important;
 }
 
 .parents-accordion--stacked .parents-accordion-traits {
   justify-content: flex-start;
+}
+
+@media (max-width: 1000px) {
+  .parents-accordion-title,
+  .parents-accordion-role {
+    white-space: normal;
+  }
 }

@@ -16,10 +16,11 @@ export const KENNEL = {
 
 export const CONTACT = {
   phonePrimary: "512 974 084",
-  phoneBackup: "780 642 582",
   email: "hodowlasyberis@gmail.com",
   // TODO: point at the real listing once it is published.
   olx: "https://www.olx.pl/",
+  instagram: "https://www.instagram.com/",
+  tiktok: "https://www.tiktok.com/",
 };
 
 const WHITE_COAT = "Białe";

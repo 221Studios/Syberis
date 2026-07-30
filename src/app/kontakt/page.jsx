@@ -20,16 +20,15 @@ const transmitCards = [
     label: "Telefon",
     value: CONTACT.phonePrimary,
     href: telHref(CONTACT.phonePrimary),
-    label2: "Telefon zapasowy",
-    value2: CONTACT.phoneBackup,
-    href2: telHref(CONTACT.phoneBackup),
+    label2: "SMS",
+    value2: "Też odpowiadamy",
   },
   {
     id: "transmit-card-2",
     image: "/contact/card-2.jpg",
     index: "02",
     label: "E-mail",
-    value: CONTACT.email,
+    value: "Wyślij wiadomość",
     href: mailHref(CONTACT.email),
     label2: "Odpowiadamy",
     value2: "Zwykle tego samego dnia",
@@ -42,7 +41,7 @@ const transmitCards = [
     value: "OLX",
     href: CONTACT.olx,
     label2: "Odbiór szczeniaka",
-    value2: "Po 3. miesiącu życia",
+    value2: "Po 2,5 miesiącu życia",
   },
 ];
 

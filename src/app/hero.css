@@ -52,6 +52,14 @@
   z-index: 2;
 }
 
+@media (max-width: 999px) {
+  .hero-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
 @media (min-width: 1000px) {
   .hero-header h1 {
     font-size: clamp(7.5rem, 15vw, 15rem);

@@ -88,24 +88,33 @@
   width: clamp(5rem, 12vw, 9rem);
   height: auto;
   object-fit: contain;
+  opacity: 0;
+  transform: translateY(40%);
 }
 
 /* Salle Blanche text fill: two stacked titles, the top one clipped by width. */
 .preloader-title-wrap {
   position: relative;
   display: inline-block;
+  opacity: 0;
+  transform: translateY(40%);
 }
 
 .preloader-title {
   margin: 0;
   font-size: clamp(2.75rem, 6.5vw, 5.5rem);
   line-height: 0.9;
+  /* Less tight than global h2 (-3%): Palace serifs collide (Y/B, R/I)
+     and semi-transparent glyphs then flash as bright dots. */
+  letter-spacing: -0.01em;
   white-space: nowrap;
   text-align: center;
 }
 
+/* Solid dim tone (matches former rgba(244,249,255,.18) on --base-500)
+   so any residual glyph contact cannot additively brighten. */
 .preloader-title-base {
-  color: rgba(244, 249, 255, 0.18);
+  color: #39536f;
 }
 
 .preloader-title-fill {
@@ -119,8 +128,16 @@
 }
 
 .preloader-tagline {
+  opacity: 0;
+  transform: translateY(40%);
+}
+
+.preloader-tagline-white {
   color: var(--base-100);
-  opacity: 1;
+}
+
+.preloader-tagline-gold {
+  color: var(--base-300);
 }
 
 .preloader-tagline-blue {

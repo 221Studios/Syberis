@@ -12,6 +12,10 @@ gsap.registerPlugin(useGSAP);
 
 export let isInitialLoad = true;
 
+function clearIntroGuard() {
+  document.documentElement.classList.remove("is-intro");
+}
+
 const BLOCK_SIZE_DESKTOP = 120;
 const BLOCK_SIZE_MOBILE = 80;
 const MOBILE_BREAKPOINT = 1000;
@@ -77,6 +81,7 @@ export default function Preloader() {
   useEffect(() => {
     return () => {
       isInitialLoad = false;
+      clearIntroGuard();
     };
   }, []);
 
@@ -156,6 +161,7 @@ export default function Preloader() {
       // GSAP timeline; without this the curtain could stay up indefinitely.
       const failsafe = setTimeout(
         () => {
+          clearIntroGuard();
           setLoaderAnimating(false);
           setShowPreloader(false);
         },
@@ -189,7 +195,7 @@ export default function Preloader() {
             ease: "power3.out",
             stagger: 0.12,
           },
-          0.2,
+          0,
         )
         // Gold husky stroke + Salle Blanche title fill run together.
         .to(
@@ -249,6 +255,7 @@ export default function Preloader() {
             scale: 0,
             duration: BLOCKS_OUT,
             ease: "power2.inOut",
+            onStart: clearIntroGuard,
             stagger: {
               grid: [rows, cols],
               from: "center",
@@ -308,8 +315,10 @@ export default function Preloader() {
           </div>
 
           <p className="preloader-tagline mono sm">
-            Białe husky o <span className="preloader-tagline-blue">niebieskich</span>{" "}
-            oczach
+            <span className="preloader-tagline-white">Białe </span>
+            <span className="preloader-tagline-gold">husky o </span>
+            <span className="preloader-tagline-blue">niebieskich </span>
+            <span className="preloader-tagline-gold">oczach</span>
           </p>
         </div>
       </div>

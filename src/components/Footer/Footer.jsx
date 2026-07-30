@@ -8,6 +8,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CONTACT, KENNEL } from "@/data/kennel";
 import { mailHref, telHref } from "@/lib/contact";
 
+import { FaInstagram, FaTiktok } from "react-icons/fa6";
+
+import FooterExplosion from "./FooterExplosion";
 import "./Footer.css";
 
 const FOOTER_ARC_TEXT = "Białe husky o niebieskich oczach  · ";
@@ -25,9 +28,22 @@ const FOOTER_NAV_RIGHT = [
   { label: "Kontakt", href: "/kontakt" },
 ];
 
+const FOOTER_SOCIAL_LINKS = [
+  {
+    label: "Instagram",
+    href: CONTACT.instagram,
+    Icon: FaInstagram,
+  },
+  {
+    label: "TikTok",
+    href: CONTACT.tiktok,
+    Icon: FaTiktok,
+  },
+];
+
 const FOOTER_CONTACT_LINKS = [
   { label: CONTACT.phonePrimary, href: telHref(CONTACT.phonePrimary) },
-  { label: CONTACT.phoneBackup, href: telHref(CONTACT.phoneBackup) },
+  { label: CONTACT.email, href: mailHref(CONTACT.email) },
   { label: "OLX", href: CONTACT.olx },
 ];
 
@@ -118,8 +134,8 @@ export default function Footer() {
 
             <a
               className="footer-newsletter"
-              href={mailHref(CONTACT.email)}
-              aria-label={`Napisz na ${CONTACT.email}`}
+              href="/kontakt"
+              aria-label="Zapytaj o szczeniaka — strona kontaktu"
             >
               <span className="footer-newsletter-input">
                 <p>Zapytaj o szczeniaka</p>
@@ -131,7 +147,7 @@ export default function Footer() {
           </div>
 
           <div className="footer-nav-row">
-            <div className="footer-nav footer-nav-left">
+            <div className="footer-nav footer-nav-col footer-nav-col--left">
               {FOOTER_NAV_LEFT.map(({ label, href }) => (
                 <Link href={href} key={label} className="footer-nav-link">
                   <p className="mono sm">{label}</p>
@@ -139,7 +155,22 @@ export default function Footer() {
               ))}
             </div>
 
-            <div className="footer-nav footer-nav-right">
+            <div className="footer-social-icons footer-nav-col footer-nav-col--center">
+              {FOOTER_SOCIAL_LINKS.map(({ label, href, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  className="footer-social-icon"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                >
+                  <Icon aria-hidden="true" />
+                </a>
+              ))}
+            </div>
+
+            <div className="footer-nav footer-nav-col footer-nav-col--right">
               {FOOTER_NAV_RIGHT.map(({ label, href }) => (
                 <Link href={href} key={label} className="footer-nav-link">
                   <p className="mono sm">{label}</p>
@@ -156,21 +187,20 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-            <a
-              className="sm selectable"
-              id="footer-contact-email"
-              href={mailHref(CONTACT.email)}
-            >
-              <p className="sm">{CONTACT.email}</p>
-            </a>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <p className="sm">&copy; Hodowla {KENNEL.name}</p>
-          <p className="sm">{KENNEL.claim}</p>
+          <a className="footer-bottom-site" href="/">
+            <p className="mono sm">syberis.pl</p>
+          </a>
+          <p className="mono sm footer-bottom-credit">
+            &copy; 2026 · by 221Studios
+          </p>
         </div>
       </div>
+
+      <FooterExplosion footerRef={footerRef} lenis={lenis} />
     </footer>
   );
 }

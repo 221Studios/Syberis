@@ -85,6 +85,8 @@
 }
 
 .preloader-logo {
+  position: relative;
+  z-index: 1;
   width: clamp(5rem, 12vw, 9rem);
   height: auto;
   object-fit: contain;
@@ -95,6 +97,7 @@
 /* Salle Blanche text fill: two stacked titles, the top one clipped by width. */
 .preloader-title-wrap {
   position: relative;
+  z-index: 2;
   display: inline-block;
   opacity: 0;
   transform: translateY(40%);
@@ -103,7 +106,7 @@
 .preloader-title {
   margin: 0;
   font-size: clamp(2.75rem, 6.5vw, 5.5rem);
-  line-height: 0.9;
+  line-height: 1.08;
   /* Less tight than global h2 (-3%): Palace serifs collide (Y/B, R/I)
      and semi-transparent glyphs then flash as bright dots. */
   letter-spacing: -0.01em;
@@ -144,6 +147,20 @@
   color: #7dafe1;
 }
 
+@media (min-width: 1000px) and (max-height: 760px) {
+  .preloader-brand {
+    gap: 2rem;
+  }
+
+  .preloader-logo {
+    width: clamp(4.25rem, 14vh, 7rem);
+  }
+
+  .preloader-title {
+    font-size: clamp(2.75rem, min(6.5vw, 13vh), 5rem);
+  }
+}
+
 @media (max-width: 999px) {
   .preloader-svg {
     width: min(110vw, 820px);
@@ -157,6 +174,30 @@
 
   .preloader-strokes-fill path {
     stroke-width: 1.75;
+  }
+}
+
+@media (max-width: 999px) and (max-height: 760px) {
+  .preloader-brand {
+    gap: 2.25rem;
+  }
+
+  .preloader-logo {
+    width: clamp(4rem, 13vh, 6rem);
+  }
+
+  .preloader-title {
+    font-size: clamp(2.5rem, min(6.5vw, 12vh), 4.5rem);
+  }
+}
+
+@media (min-width: 600px) and (max-width: 999px) and (max-height: 760px) {
+  .preloader-brand {
+    gap: 2.5rem;
+  }
+
+  .preloader-logo {
+    width: clamp(4rem, 12vh, 5.75rem);
   }
 }
 

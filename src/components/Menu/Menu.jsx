@@ -58,13 +58,13 @@ export default function Menu() {
         visibility: "hidden",
       });
       gsap.set(".menu-toggle-word", { yPercent: 0 });
-      gsap.set(".menu-close-word", { yPercent: 100 });
+      gsap.set(".menu-close-word", { yPercent: 140 });
       gsap.set(".menu-line", { yPercent: 100 });
 
       menuOpenTlRef.current = gsap
         .timeline({ paused: true, defaults: { ease: "power3.out" } })
         .set(".menu-panel", { visibility: "visible", pointerEvents: "all" }, 0)
-        .to(".menu-toggle-word", { yPercent: -100, duration: 0.5 }, 0)
+        .to(".menu-toggle-word", { yPercent: -140, duration: 0.5 }, 0)
         .to(".menu-close-word", { yPercent: 0, duration: 0.5 }, 0)
         .to(
           ".menu-panel",
@@ -80,7 +80,7 @@ export default function Menu() {
         .timeline({ paused: true, defaults: { ease: "power3.out" } })
         .set(".menu-panel", { pointerEvents: "none" }, 0)
         .to(".menu-toggle-word", { yPercent: 0, duration: 0.6 }, 0)
-        .to(".menu-close-word", { yPercent: 100, duration: 0.6 }, 0)
+        .to(".menu-close-word", { yPercent: 140, duration: 0.6 }, 0)
         .to(
           ".menu-panel",
           {
@@ -107,7 +107,7 @@ export default function Menu() {
       visibility: "hidden",
     });
     gsap.set(".menu-toggle-word", { yPercent: 0 });
-    gsap.set(".menu-close-word", { yPercent: 100 });
+    gsap.set(".menu-close-word", { yPercent: 140 });
     gsap.set(".menu-line", { yPercent: 100 });
 
     lenis?.start();

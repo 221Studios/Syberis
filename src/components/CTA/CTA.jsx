@@ -22,6 +22,9 @@ const CTA_CARDINALS = [
   { label: "W", angle: 180 },
 ];
 
+const MAPS_HREF =
+  "https://www.google.com/maps/search/?api=1&query=Mazowieckie%2C%20Gmina%20Ciepiel%C3%B3w";
+
 const SERVICES = [
   "Odrobaczanie i szczepienia",
   "Książeczka zdrowia",
@@ -205,6 +208,13 @@ export default function CTA() {
       <div className="container">
         <div className="cta-layout">
           <div className="cta-left">
+            <a
+              className="cta-map-link"
+              href={MAPS_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Znajdź nas w Google Maps"
+            >
             <Copy splitType="words">
               <h6>Znajdź nas</h6>
             </Copy>
@@ -219,6 +229,8 @@ export default function CTA() {
                 xmlns="http://www.w3.org/2000/svg"
               />
             </div>
+
+            </a>
 
             <Button href="/kontakt" theme="dark">
               Zapytaj o szczeniaka

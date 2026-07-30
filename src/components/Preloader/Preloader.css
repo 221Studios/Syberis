@@ -122,8 +122,8 @@
   top: 0;
   left: 0;
   width: 0%;
-  overflow: hidden;
   color: var(--base-100);
+  clip-path: inset(-0.25em 0 -0.25em 0);
   will-change: width;
 }
 

@@ -63,16 +63,39 @@
 }
 
 .footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
   text-align: center;
 }
 
 .footer-brand .subheader {
-  transform: translateX(-2rem);
+  margin: 0;
+  font-size: clamp(1.5rem, 3vw, 2.75rem);
+  line-height: 1.05;
+  transform: translateX(-5%);
+}
+
+.footer-brand h1:not(.subheader) {
+  margin: 0;
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  line-height: 1;
+  transform: translateY(10%);
 }
 
 @media (max-width: 999px) {
+  .footer-brand {
+    gap: 0.55rem;
+  }
+
   .footer-brand .subheader {
-    transform: none;
+    transform: translateX(-5%);
+    font-size: clamp(1.25rem, 4.5vw, 2rem);
+  }
+
+  .footer-brand h1:not(.subheader) {
+    font-size: clamp(2.75rem, 14vw, 4.5rem);
   }
 }
 

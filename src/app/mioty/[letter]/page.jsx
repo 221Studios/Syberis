@@ -63,10 +63,14 @@ export default async function LitterPage({ params }) {
 
             <div className="report-hero-right litter-hero-right">
               <div className="litter-hero-main">
-                <Copy animateOnScroll={false} delay={0.5}>
-                  <h1 className="subheader">{LITTER_STATUS[litter.status]}</h1>
-                  <h1>{litterTitle(litter.letter)}</h1>
-                </Copy>
+                <div className="title-stack litter-hero-titles">
+                  <Copy animateOnScroll={false} delay={0.5}>
+                    <h1 className="subheader">{LITTER_STATUS[litter.status]}</h1>
+                  </Copy>
+                  <Copy animateOnScroll={false} delay={0.5}>
+                    <h1>{litterTitle(litter.letter)}</h1>
+                  </Copy>
+                </div>
 
                 <div className="litter-hero-body">
                   <Copy splitType="words" delay={0.65} animateOnScroll={false}>

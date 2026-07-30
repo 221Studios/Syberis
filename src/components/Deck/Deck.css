@@ -64,13 +64,17 @@
 }
 
 .deck-slide-content h1 {
-  font-size: clamp(4rem, 8vw, 8rem);
+  margin: 0;
+  font-size: clamp(3.25rem, 7vw, 7rem);
+  line-height: 1;
 }
 
 .deck-slide-content .subheader {
   width: 100%;
-  font-size: clamp(1.5rem, 3vw, 5rem);
-  line-height: 1;
+  margin: 0;
+  font-size: clamp(1.35rem, 2.8vw, 2.75rem);
+  line-height: 1.05;
+  transform: none;
 }
 
 .deck-line {
@@ -95,6 +99,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0.7rem;
   text-align: center;
   color: var(--base-300);
   perspective: 700px;
@@ -295,8 +300,8 @@
   }
 
   .deck-slide-content .subheader {
-    font-size: clamp(1.5rem, 2.5vw, 3rem);
-    transform: translateX(-1.5rem);
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    transform: none;
   }
 
   .deck-slide-description {

@@ -101,6 +101,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 0.45rem;
   width: 100%;
   height: 100%;
   padding: 1.5rem;
@@ -109,12 +110,16 @@
 }
 
 .featured-card-content h6.subheader {
-  font-size: clamp(1rem, 2vw, 3rem);
-  margin-bottom: 0.1875rem;
+  margin: 0;
+  font-size: clamp(1rem, 1.8vw, 1.65rem);
+  line-height: 1.05;
+  transform: none;
 }
 
 .featured-card-content h5 {
-  font-size: clamp(1.5rem, 5vw, 4rem);
+  margin: 0;
+  font-size: clamp(1.5rem, 4.2vw, 3.25rem);
+  line-height: 1;
 }
 
 @media (min-width: 1000px) and (max-width: 1399px) {
@@ -130,14 +135,16 @@
 
   .featured-card-content {
     padding: 1.15rem;
+    gap: 0.4rem;
   }
 
   .featured-card-content h6.subheader {
-    font-size: clamp(1rem, 1.6vw, 1.75rem);
+    font-size: clamp(1rem, 1.5vw, 1.45rem);
+    transform: none;
   }
 
   .featured-card-content h5 {
-    font-size: clamp(1.5rem, 3.5vw, 2.75rem);
+    font-size: clamp(1.5rem, 3.2vw, 2.5rem);
   }
 }
 
@@ -182,18 +189,19 @@
 
   .featured-card-content {
     padding: 1.25rem;
-    gap: 0.25rem;
+    gap: 0.4rem;
   }
 
   .featured-card-content h6.subheader {
-    font-size: clamp(1.1rem, 3.5vw, 1.75rem);
-    line-height: 1;
-    margin-bottom: 0.15rem;
+    font-size: clamp(1.05rem, 3.2vw, 1.55rem);
+    line-height: 1.05;
+    margin: 0;
     transform: none;
   }
 
   .featured-card-content h5 {
-    font-size: clamp(2rem, 7vw, 3.25rem);
-    line-height: 0.95;
+    font-size: clamp(1.85rem, 7vw, 3rem);
+    line-height: 1;
+    margin: 0;
   }
 }

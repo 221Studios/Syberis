@@ -74,7 +74,7 @@ export default function Menu() {
           },
           0,
         )
-        .to(".menu-line", { yPercent: 0, duration: 0.65, stagger: 0.04 }, 0.1);
+        .to(".menu-line", { yPercent: 5, duration: 0.65, stagger: 0.04 }, 0.1);
 
       menuCloseTlRef.current = gsap
         .timeline({ paused: true, defaults: { ease: "power3.out" } })

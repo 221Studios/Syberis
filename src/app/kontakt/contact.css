@@ -17,6 +17,10 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
   width: min(92%, 48rem);
   transform: translate(-50%, -50%);
 }
@@ -24,13 +28,13 @@
 .transmit-hero-header h1 {
   text-align: center;
   font-size: clamp(3rem, 12vw, 5.5rem);
-  line-height: 0.9;
+  line-height: 1;
 }
 
 .transmit-hero-header .subheader {
   font-size: clamp(1.35rem, 4.5vw, 2.5rem);
-  line-height: 0.95;
-  transform: none;
+  line-height: 1.05;
+  transform: translateX(-5%);
 }
 
 .transmit-hero-footer {
@@ -174,7 +178,7 @@ div.pin-spacer:has(> .transmit-sticky) {
 
   .transmit-hero-header .subheader {
     font-size: clamp(2rem, 3.5vw, 3.25rem);
-    transform: translateX(-2.5rem);
+    transform: translateX(-5%);
   }
 
   .transmit-card-container {
@@ -196,14 +200,14 @@ div.pin-spacer:has(> .transmit-sticky) {
   }
 
   .transmit-hero-header .subheader {
-    font-size: clamp(2.5rem, 4vw, 5rem);
-    transform: translateX(-6rem);
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    transform: translateX(-5%);
   }
 }
 
 @media (max-width: 999px) {
   .transmit-hero-header .subheader {
-    transform: none;
+    transform: translateX(-5%);
   }
 
   .transmit-hero-footer {

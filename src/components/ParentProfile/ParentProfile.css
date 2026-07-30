@@ -52,6 +52,10 @@
 .report-header {
   position: absolute;
   top: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
   transform: translateY(-50%);
   padding: 0 2rem;
   text-align: center;
@@ -59,17 +63,19 @@
 }
 
 .report-header h1 {
+  margin: 0;
   font-size: clamp(2.85rem, 10vw, 5.5rem);
-  line-height: 0.85;
+  line-height: 1;
   color: var(--base-300);
 }
 
 .report-header .subheader {
   width: 100%;
+  margin: 0;
   font-size: clamp(1.25rem, 4vw, 2.5rem);
-  line-height: 1.15;
+  line-height: 1.05;
   color: var(--base-300);
-  transform: none;
+  transform: translateX(-5%);
 }
 
 .report-hero-meta {

@@ -233,6 +233,8 @@ export default function TransmitPage() {
           <div className="transmit-hero-header">
             <Copy animateOnScroll={false} delay={0.65}>
               <h1 className="subheader">Zapytaj o</h1>
+            </Copy>
+            <Copy animateOnScroll={false} delay={0.65}>
               <h1>Szczeniaka</h1>
             </Copy>
           </div>

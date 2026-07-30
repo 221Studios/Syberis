@@ -137,6 +137,8 @@ export default function ParentsAccordion({ parents }) {
       <div className="parents-accordion-header">
         <Copy animateOnScroll={false} delay={0.65}>
           <h1 className="subheader">Nasi</h1>
+        </Copy>
+        <Copy animateOnScroll={false} delay={0.65}>
           <h1>Rodzice</h1>
         </Copy>
       </div>

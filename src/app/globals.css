@@ -92,11 +92,34 @@ h6 {
 }
 
 .subheader {
-  font-size: clamp(1.5rem, 3.5vw, 6rem);
+  font-size: clamp(1.35rem, 3.2vw, 3.5rem);
   font-style: italic;
-  line-height: 0.85;
+  line-height: 1.05;
   text-transform: none;
-  transform: translateX(-3rem);
+  transform: none;
+}
+
+/* Shared stack for kicker + title (same idea as hero-header). */
+.title-stack,
+[data-copy-wrapper]:has(> .subheader) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.title-stack > .subheader,
+[data-copy-wrapper]:has(> .subheader) > .subheader {
+  margin: 0;
+  line-height: 1.05;
+}
+
+.title-stack > :is(h1, h2, h3, h4, h5, h6):not(.subheader),
+[data-copy-wrapper]:has(> .subheader)
+  > :is(h1, h2, h3, h4, h5, h6):not(.subheader) {
+  margin: 0;
+  line-height: 1;
 }
 
 p {
@@ -226,9 +249,14 @@ p.mono.lg {
   }
 
   .subheader {
-    font-size: clamp(1.25rem, 5vw, 2.5rem);
-    line-height: 0.95;
+    font-size: clamp(1.2rem, 4.5vw, 2.25rem);
+    line-height: 1.05;
     transform: none;
+  }
+
+  .title-stack,
+  [data-copy-wrapper]:has(> .subheader) {
+    gap: 0.55rem;
   }
 
   p {

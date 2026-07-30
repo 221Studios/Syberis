@@ -21,17 +21,24 @@
   color: var(--base-300);
 }
 
+.litter-hero-titles {
+  gap: 0.7rem;
+}
+
 .litter-hero-main h1 {
-  font-size: clamp(4rem, 8vw, 8rem);
-  line-height: 0.85;
+  margin: 0;
+  font-size: clamp(3.25rem, 8vw, 7rem);
+  line-height: 1;
   color: var(--base-300);
 }
 
 .litter-hero-main .subheader {
   width: 100%;
-  font-size: clamp(1.5rem, 3vw, 4rem);
-  line-height: 1.15;
+  margin: 0;
+  font-size: clamp(1.35rem, 3vw, 2.5rem);
+  line-height: 1.05;
   color: var(--base-300);
+  transform: translateX(-5%);
 }
 
 .litter-hero-body {
@@ -228,7 +235,7 @@
 
   .litter-hero-main .subheader {
     font-size: clamp(1.15rem, 5vw, 1.85rem);
-    transform: none;
+    transform: translateX(-5%);
   }
 
   .litter-hero-intro {

@@ -388,6 +388,8 @@ export default function CatalogPage() {
       <div ref={catalogHeaderRef} className="catalog-header">
         <Copy animateOnScroll={false} delay={0.65}>
           <h1 className="subheader">Nasze</h1>
+        </Copy>
+        <Copy animateOnScroll={false} delay={0.65}>
           <h1>Husky</h1>
         </Copy>
       </div>

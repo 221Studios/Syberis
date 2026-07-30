@@ -24,3 +24,10 @@
   will-change: transform, opacity;
   backface-visibility: hidden;
 }
+
+@media (max-width: 999px) {
+  .copy-word {
+    padding: 0.05em 0.08em;
+    margin: -0.05em -0.08em;
+  }
+}

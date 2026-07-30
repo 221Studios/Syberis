@@ -201,8 +201,87 @@ p.mono.menu-close-word {
   gap: 0.4rem;
 }
 
-@media (max-width: 1000px) {
+@media (min-width: 1000px) and (max-width: 1399px) {
+  .menu-panel {
+    width: min(30rem, calc(100vw - 7.85rem));
+    padding: 1.25rem;
+  }
+
+  .menu-panel-top {
+    margin-bottom: 3.5rem;
+  }
+
+  .menu-link-main .menu-line {
+    font-size: clamp(2.15rem, 3.8vw, 3.75rem);
+  }
+}
+
+@media (max-width: 999px) {
+  .menu {
+    top: 1rem;
+    left: 1rem;
+  }
+
+  .menu-logo {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+
+  .menu-logo img {
+    width: 2.1rem;
+  }
+
+  .menu-toggle,
+  .menu-rail-arrow {
+    width: 3.75rem;
+  }
+
+  .menu-toggle {
+    height: 2.5rem;
+  }
+
+  .menu--rail-expanded .menu-toggle {
+    height: 10rem;
+  }
+
+  .menu-panel {
+    left: calc(3.75rem + 0.375rem);
+    width: min(28rem, calc(100vw - 5.85rem));
+    height: min(100rem, calc(100svh - 2rem));
+    max-height: calc(100svh - 2rem);
+    padding: 1.15rem;
+  }
+
+  .menu-panel-top {
+    margin-bottom: 2.5rem;
+  }
+
   .menu-link::after {
     display: none;
+  }
+
+  .menu-link-main .menu-line {
+    font-size: clamp(2rem, 8vw, 3.25rem);
+  }
+
+  .menu-panel-footer {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding-top: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-panel {
+    width: calc(100vw - 5.35rem);
+    padding: 1rem;
+  }
+
+  .menu-link-main .menu-line {
+    font-size: clamp(1.75rem, 9vw, 2.65rem);
+  }
+
+  .menu-link-footer .menu-line {
+    font-size: 1.15rem;
   }
 }

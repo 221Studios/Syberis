@@ -36,6 +36,15 @@
   transition: color 300ms var(--button-ease-power);
 }
 
+@media (max-width: 999px) {
+  .music-toggle {
+    top: 1rem;
+    right: 1rem;
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+}
+
 .music-toggle__bg {
   position: absolute;
   inset: 0;

@@ -37,6 +37,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  width: min(92vw, 100%);
   transform: translate(-50%, -50%);
   text-align: center;
   transform-style: preserve-3d;
@@ -51,4 +52,36 @@
   transform-style: preserve-3d;
   backface-visibility: hidden;
   color: var(--base-100);
+  font-size: clamp(2.75rem, 12vw, 5rem);
+  line-height: 0.9;
+}
+
+@media (min-width: 1000px) and (max-width: 1399px) {
+  .catalog-header h1 {
+    font-size: clamp(4rem, 8vw, 7rem);
+  }
+
+  .catalog-nav {
+    padding: 1.15rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .catalog-header h1 {
+    font-size: clamp(5rem, 10vw, 10rem);
+  }
+}
+
+@media (max-width: 999px) {
+  .catalog-nav {
+    flex-direction: column;
+    gap: 0.35rem;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .catalog-nav p {
+    font-size: 0.78rem;
+    max-width: 90vw;
+  }
 }

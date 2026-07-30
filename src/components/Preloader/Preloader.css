@@ -144,7 +144,7 @@
   color: #7dafe1;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 999px) {
   .preloader-svg {
     width: min(110vw, 820px);
     max-height: 75vh;
@@ -157,5 +157,12 @@
 
   .preloader-strokes-fill path {
     stroke-width: 1.75;
+  }
+}
+
+@media (max-width: 480px) {
+  .preloader-svg {
+    width: min(125vw, 720px);
+    transform: translate(-22%, -50%);
   }
 }

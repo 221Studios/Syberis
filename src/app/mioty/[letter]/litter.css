@@ -175,6 +175,38 @@
   object-fit: cover;
 }
 
+@media (min-width: 1000px) and (max-width: 1399px) {
+  .litter-hero-main {
+    gap: 1.35rem;
+    padding: 1.25rem 1.15rem 0;
+  }
+
+  .litter-hero-main h1 {
+    font-size: clamp(3.5rem, 6.5vw, 6rem);
+  }
+
+  .litter-hero-main .subheader {
+    font-size: clamp(1.35rem, 2.5vw, 2.75rem);
+  }
+
+  .litter-split {
+    grid-template-columns: minmax(0, 3.4fr) minmax(11rem, 1fr);
+  }
+
+  .litter-split-cta {
+    padding: 2rem 1.25rem;
+    gap: 1.5rem;
+  }
+
+  .litter-split-cta h5 {
+    font-size: clamp(1.75rem, 2.8vw, 2.65rem);
+  }
+
+  .litter-grown-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 999px) {
   .litter-hero {
     height: auto;
@@ -182,24 +214,29 @@
   }
 
   .litter-hero .report-hero-grid {
-    grid-template-rows: 45svh auto;
+    grid-template-rows: 42svh auto;
   }
 
   .litter-hero-main {
-    padding: 1.25rem 0.75rem 0;
-    gap: 1.25rem;
+    padding: 1.15rem 0.75rem 0;
+    gap: 1.15rem;
   }
 
   .litter-hero-main h1 {
-    font-size: clamp(3.25rem, 14vw, 5rem);
+    font-size: clamp(2.85rem, 13vw, 4.5rem);
   }
 
   .litter-hero-main .subheader {
-    font-size: clamp(1.25rem, 5vw, 2rem);
+    font-size: clamp(1.15rem, 5vw, 1.85rem);
+    transform: none;
   }
 
   .litter-hero-intro {
     font-size: 1.05rem;
+  }
+
+  .litter-parents {
+    width: 100%;
   }
 
   .litter-parent-card img {
@@ -223,17 +260,22 @@
   }
 
   .litter-split-cta {
-    padding: 3rem 1.5rem;
-    gap: 1.75rem;
+    padding: 2.5rem 1.25rem;
+    gap: 1.5rem;
   }
 
   .litter-split-cta h5 {
     max-width: none;
+    font-size: clamp(1.85rem, 7vw, 2.75rem);
   }
 
   .litter-split-cta-actions {
     flex-direction: row;
     flex-wrap: wrap;
+  }
+
+  .litter-grown {
+    padding: 4rem 0;
   }
 
   .litter-grown-grid {

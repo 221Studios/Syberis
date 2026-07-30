@@ -119,3 +119,46 @@
     0 0 12px rgba(16, 47, 79, 0.55),
     0 1px 2px rgba(16, 47, 79, 0.45);
 }
+
+@media (min-width: 1000px) and (max-width: 1399px) {
+  .showreel-visual {
+    width: 32%;
+    height: 420px;
+  }
+
+  .showreel-header {
+    padding: 0.75rem 1.15rem;
+  }
+
+  .showreel-header h1,
+  .showreel-header h2,
+  .showreel-header h3,
+  .showreel-header h4,
+  .showreel-header h5,
+  .showreel-header h6 {
+    font-size: clamp(2.5rem, 5.5vw, 5rem);
+  }
+}
+
+@media (max-width: 999px) {
+  .showreel-visual {
+    width: 78%;
+    height: min(58vh, 420px);
+  }
+
+  .showreel-header {
+    padding: 0.65rem 0.85rem;
+  }
+
+  .showreel-marquee {
+    padding: 0.4rem 0.5rem;
+  }
+
+  .showreel-marquee-track {
+    gap: 1.5rem;
+  }
+
+  .showreel-marquee-track p {
+    font-size: 0.72rem;
+  }
+}

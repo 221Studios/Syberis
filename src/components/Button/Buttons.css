@@ -41,6 +41,26 @@
   padding: 0 1.5rem;
 }
 
+@media (max-width: 480px) {
+  .button__label,
+  .button__icon {
+    min-height: 2.75rem;
+  }
+
+  .button__label {
+    padding: 0 1.15rem;
+  }
+
+  .button--default .button__icon {
+    width: 2.75rem;
+    font-size: 1.1rem;
+  }
+
+  .button--no-icon .button__label {
+    padding: 0 1.5rem;
+  }
+}
+
 .button__label::before,
 .button__icon::before {
   content: "";

@@ -90,15 +90,55 @@
   color: var(--base-100);
 }
 
-@media (max-width: 1000px) {
+@media (min-width: 1000px) and (max-width: 1399px) {
+  .cta .container {
+    padding: 1.25rem;
+  }
+
   .cta-layout {
-    grid-template-columns: 1fr;
-    gap: 3rem;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 1.75rem;
     padding: 1.5rem 0;
   }
 
   #cta-compass-svg {
-    width: min(70vw, 300px);
+    width: min(100%, 280px);
+  }
+
+  .cta-services {
+    gap: 0.6rem;
+  }
+
+  .cta-service-card {
+    min-height: 7.5rem;
+    gap: 1.5rem;
+    padding: 0.85rem;
+  }
+}
+
+@media (max-width: 999px) {
+  .cta {
+    min-height: auto;
+  }
+
+  .cta .container {
+    min-height: auto;
+    padding: 1.25rem 0.85rem;
+  }
+
+  .cta-layout {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+    padding: 1.25rem 0;
+  }
+
+  .cta-left h6,
+  .cta-services-title {
+    font-size: clamp(1.6rem, 6vw, 2.35rem);
+  }
+
+  #cta-compass-svg {
+    width: min(62vw, 260px);
   }
 
   .cta-services {
@@ -106,7 +146,23 @@
   }
 
   .cta-service-card {
-    min-height: 6rem;
-    gap: 1.5rem;
+    min-height: 5.5rem;
+    gap: 1.25rem;
+  }
+
+  .cta-footer {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta .container {
+    padding: 1rem 0.65rem;
+  }
+
+  .cta-service-card {
+    min-height: 4.75rem;
+    padding: 0.85rem;
   }
 }

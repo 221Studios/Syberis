@@ -289,22 +289,49 @@
   z-index: 5;
 }
 
-@media screen and (max-width: 1000px) {
-  .deck-slide-content {
-    justify-content: flex-end;
-    gap: 6rem;
-    padding: 1.5rem 1.5rem 8rem 1.5rem;
+@media (min-width: 1000px) and (max-width: 1399px) {
+  .deck-slide-content h1 {
+    font-size: clamp(3.75rem, 6.5vw, 6rem);
   }
 
   .deck-slide-content .subheader {
-    font-size: clamp(1.5rem, 3vw, 5rem);
-    line-height: 1.25;
-    transform: translateX(0rem);
+    font-size: clamp(1.5rem, 2.5vw, 3rem);
+    transform: translateX(-1.5rem);
+  }
+
+  .deck-slide-description {
+    max-width: 40ch;
+    font-size: 1.2rem;
+  }
+
+  .deck-action {
+    top: 2rem;
+    right: 6.5rem;
+    padding: 0.55rem 1rem;
+  }
+}
+
+@media screen and (max-width: 999px) {
+  .deck-slide-content {
+    justify-content: flex-end;
+    gap: 4.5rem;
+    padding: 1.25rem 1.25rem 7.5rem;
+  }
+
+  .deck-slide-content h1 {
+    font-size: clamp(2.75rem, 12vw, 4.5rem);
+  }
+
+  .deck-slide-content .subheader {
+    font-size: clamp(1.25rem, 4.5vw, 2.25rem);
+    line-height: 1.2;
+    transform: none;
   }
 
   .deck-slide-description {
     margin-top: 0.75rem;
-    font-size: 1.15rem;
+    max-width: 36ch;
+    font-size: 1.1rem;
   }
 
   .deck-slide-footer {
@@ -330,7 +357,8 @@
   /* Drops below the music toggle so it clears the menu rail on the left. */
   .deck-action {
     top: 7rem;
-    right: 1.5rem;
+    right: 1.25rem;
+    padding: 0.55rem 0.95rem;
   }
 
   .deck-hint {
@@ -338,5 +366,22 @@
     max-width: 80vw;
     white-space: normal;
     text-align: center;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .deck-slide-content {
+    gap: 3.5rem;
+    padding: 1rem 0.85rem 7rem;
+  }
+
+  .deck-slide-tags {
+    gap: 0.35rem;
+  }
+
+  .deck-slide-tag {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.75rem;
   }
 }

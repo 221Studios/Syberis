@@ -33,6 +33,8 @@ export default function Home() {
           <div className="hero-header">
             <Copy animateOnScroll={false} delay={heroDelay}>
               <h1 className="subheader">Hodowla</h1>
+            </Copy>
+            <Copy animateOnScroll={false} delay={heroDelay}>
               <h1>{KENNEL.name}</h1>
             </Copy>
           </div>

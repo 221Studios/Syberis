@@ -12,6 +12,8 @@ import "./FeaturedCards.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const FEATURED_CARD_START_Y = "115%";
+
 const FEATURED_CARDS_DATA = [
   {
     subtitle: "Aktualny miot",
@@ -93,7 +95,11 @@ export default function FeaturedCards({
               );
 
               gsap.set(card, {
-                y: gsap.utils.interpolate("200%", "-50%", cardProgress),
+                y: gsap.utils.interpolate(
+                  FEATURED_CARD_START_Y,
+                  "-50%",
+                  cardProgress,
+                ),
                 scale: gsap.utils.interpolate(1, 0.85, nextCardProgress),
                 "--overlay-opacity": gsap.utils.interpolate(
                   0,

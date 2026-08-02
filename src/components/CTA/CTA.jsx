@@ -1,10 +1,18 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { FiMapPin } from "react-icons/fi";
+import {
+  FiActivity,
+  FiBookOpen,
+  FiCpu,
+  FiHeart,
+  FiMapPin,
+  FiMessageCircle,
+  FiPackage,
+} from "react-icons/fi";
 import Button from "../Button/Button";
 import Copy from "../Copy/Copy";
 
@@ -15,6 +23,13 @@ gsap.registerPlugin(ScrollTrigger);
 const CTA_SVG_NS = "http://www.w3.org/2000/svg";
 const CTA_CENTER = 300;
 const CTA_CARDINAL_RADIUS = 170;
+const PROXIMITY_RADIUS = 500;
+const PUSH_FORCE = 10;
+const TILT_AMOUNT = 0.1;
+const NEIGHBOR_INFLUENCE = 0.2;
+const SPRING_STIFFNESS = 0.05;
+const BOUNCE_FRICTION = 0.85;
+const CURSOR_SMOOTHING = 0.75;
 
 const CTA_CARDINALS = [
   { label: "N", angle: -90 },
@@ -26,13 +41,34 @@ const CTA_CARDINALS = [
 const MAPS_HREF =
   "https://www.google.com/maps/search/?api=1&query=Mazowieckie%2C%20Gmina%20Ciepiel%C3%B3w";
 
+const LEGAL_NOTE =
+  "Nasza hodowla jest zarejestrowana w Ogólnopolskim Klubie Hodowców Rasowych Psów i Kotów „Cat & Dog Club” (woj. świętokrzyskie). Działamy w pełni legalnie i wydajemy dokumentację tego stowarzyszenia.";
+
 const SERVICES = [
-  "Odrobaczanie i szczepienia",
-  "Książeczka zdrowia",
-  "Socjalizacja w domu i kontakt z dziećmi",
-  "Zachipowane szczeniaki",
-  "Wyprawka na start",
-  "Kontakt po odbiorze",
+  {
+    label: "Odrobaczanie i szczepienia",
+    Icon: FiActivity,
+  },
+  {
+    label: "Książeczka zdrowia",
+    Icon: FiBookOpen,
+  },
+  {
+    label: "Socjalizacja w domu i kontakt z dziećmi",
+    Icon: FiHeart,
+  },
+  {
+    label: "Zachipowane szczeniaki",
+    Icon: FiCpu,
+  },
+  {
+    label: "Wyprawka na start",
+    Icon: FiPackage,
+  },
+  {
+    label: "Kontakt po odbiorze",
+    Icon: FiMessageCircle,
+  },
 ];
 
 const LOCATION_NOTES = [
@@ -41,7 +77,6 @@ const LOCATION_NOTES = [
     value: "Po umówieniu zapraszamy poznać pieski na żywo",
   },
   { label: "Rezerwacje", value: "Telefonicznie lub mailowo" },
-  { label: "Start", value: "Książeczka zdrowia i wyprawka" },
 ];
 
 function createCtaTick(degree) {
@@ -116,6 +151,7 @@ export default function CTA() {
   const ctaRef = useRef(null);
   const ctaCompassRef = useRef(null);
   const ctaPointerRef = useRef(null);
+  const ctaServicesRef = useRef(null);
 
   useGSAP(
     () => {
@@ -178,23 +214,6 @@ export default function CTA() {
 
       setup();
 
-      const cards = gsap.utils.toArray(".cta-service-card");
-      if (cards.length) {
-        gsap.set(cards, { y: 80, opacity: 0 });
-        gsap.to(cards, {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power3.out",
-          stagger: 0.08,
-          scrollTrigger: {
-            trigger: ".cta-services",
-            start: "top 80%",
-            once: true,
-          },
-        });
-      }
-
       let ctaResizeTimer;
       const handleCtaResize = () => {
         clearTimeout(ctaResizeTimer);
@@ -212,6 +231,138 @@ export default function CTA() {
     },
     { scope: ctaRef },
   );
+
+  useEffect(() => {
+    const cardsContainer = ctaServicesRef.current;
+    if (!cardsContainer) return;
+
+    const cards = Array.from(
+      cardsContainer.querySelectorAll(".cta-service-card"),
+    );
+    if (!cards.length) return;
+
+    const cursor = { x: 0, y: 0, vx: 0, vy: 0 };
+    let hasCursor = false;
+    let prevCursorX = 0;
+    let prevCursorY = 0;
+
+    const cardPhysics = cards.map((el, i) => {
+      gsap.set(el, {
+        x: 0,
+        y: 0,
+        rotation: 0,
+        zIndex: i,
+        transformOrigin: "50% 50%",
+        willChange: "transform",
+      });
+
+      return {
+        el,
+        restX: 0,
+        restY: 0,
+        restR: 0,
+        x: 0,
+        y: 0,
+        r: 0,
+        vx: 0,
+        vy: 0,
+        vr: 0,
+      };
+    });
+
+    function handlePointerMove(e) {
+      if (!hasCursor) {
+        hasCursor = true;
+        prevCursorX = cursor.x = e.clientX;
+        prevCursorY = cursor.y = e.clientY;
+        return;
+      }
+
+      cursor.vx =
+        cursor.vx * CURSOR_SMOOTHING +
+        (e.clientX - prevCursorX) * (1 - CURSOR_SMOOTHING);
+      cursor.vy =
+        cursor.vy * CURSOR_SMOOTHING +
+        (e.clientY - prevCursorY) * (1 - CURSOR_SMOOTHING);
+      prevCursorX = cursor.x = e.clientX;
+      prevCursorY = cursor.y = e.clientY;
+    }
+
+    function handlePointerLeave() {
+      hasCursor = false;
+      cursor.vx = 0;
+      cursor.vy = 0;
+    }
+
+    function calculatePushForce(card) {
+      const speed = Math.sqrt(cursor.vx ** 2 + cursor.vy ** 2);
+      if (speed < 0.5) return { fx: 0, fy: 0 };
+
+      const rect = card.el.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2 - card.x;
+      const cy = rect.top + rect.height / 2 - card.y;
+      const dist = Math.sqrt((cursor.x - cx) ** 2 + (cursor.y - cy) ** 2);
+
+      if (dist > PROXIMITY_RADIUS) return { fx: 0, fy: 0 };
+
+      const weight = (1 - dist / PROXIMITY_RADIUS) ** 3;
+
+      return {
+        fx: cursor.vx * PUSH_FORCE * weight,
+        fy: cursor.vy * PUSH_FORCE * weight,
+      };
+    }
+
+    function applyNeighborInfluence(forces, index) {
+      let fx = forces[index].fx;
+      let fy = forces[index].fy;
+
+      forces.forEach((f, j) => {
+        if (j === index) return;
+        const falloff = NEIGHBOR_INFLUENCE ** Math.abs(j - index);
+        fx += f.fx * falloff;
+        fy += f.fy * falloff * 0.6;
+      });
+
+      return { fx, fy };
+    }
+
+    function tickCards() {
+      const forces = cardPhysics.map(calculatePushForce);
+
+      cardPhysics.forEach((card, i) => {
+        const { fx, fy } = applyNeighborInfluence(forces, i);
+
+        card.vx =
+          (card.vx + (card.restX + fx - card.x) * SPRING_STIFFNESS) *
+          BOUNCE_FRICTION;
+        card.vy =
+          (card.vy + (card.restY + fy - card.y) * SPRING_STIFFNESS) *
+          BOUNCE_FRICTION;
+        card.vr =
+          (card.vr +
+            (card.restR + fx * TILT_AMOUNT - card.r) * SPRING_STIFFNESS) *
+          BOUNCE_FRICTION;
+
+        card.x += card.vx;
+        card.y += card.vy;
+        card.r += card.vr;
+
+        gsap.set(card.el, { x: card.x, y: card.y, rotation: card.r });
+      });
+    }
+
+    window.addEventListener("pointermove", handlePointerMove);
+    window.addEventListener("pointerleave", handlePointerLeave);
+    gsap.ticker.add(tickCards);
+
+    return () => {
+      window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("pointerleave", handlePointerLeave);
+      gsap.ticker.remove(tickCards);
+      cards.forEach((card) => gsap.set(card, { clearProps: "transform" }));
+    };
+  }, []);
 
   return (
     <section className="cta" ref={ctaRef}>
@@ -254,6 +405,8 @@ export default function CTA() {
                 </div>
               ))}
 
+              <p className="cta-legal-note">{LEGAL_NOTE}</p>
+
               <Button href="/kontakt" theme="dark">
                 Zapytaj o szczeniaka
               </Button>
@@ -265,20 +418,21 @@ export default function CTA() {
               <h6 className="cta-services-title">Co zapewniamy</h6>
             </Copy>
 
-            <div className="cta-services">
-              {SERVICES.map((service, id) => (
-                <div className="cta-service-card" key={service}>
-                  <p className="mono sm">0{id + 1}</p>
-                  <p className="md">{service}</p>
+            <div className="cta-services" ref={ctaServicesRef}>
+              {SERVICES.map(({ label, Icon }, id) => (
+                <div className="cta-service-card" key={label}>
+                  <div className="cta-service-card__top">
+                    <p className="mono sm">0{id + 1}</p>
+                    <span className="cta-service-card__icon" aria-hidden="true">
+                      <Icon />
+                    </span>
+                  </div>
+
+                  <p className="md">{label}</p>
                 </div>
               ))}
             </div>
           </div>
-        </div>
-
-        <div className="cta-footer">
-          <p className="mono sm">/Zadzwoń/</p>
-          <p className="mono sm">/Napisz/</p>
         </div>
       </div>
     </section>

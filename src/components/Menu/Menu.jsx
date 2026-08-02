@@ -150,6 +150,14 @@ export default function Menu() {
 
   return (
     <div className="menu-container">
+      <button
+        type="button"
+        className={`menu-backdrop${isOpen ? " menu-backdrop--open" : ""}`}
+        onClick={handleClose}
+        aria-label="Zamknij menu"
+        tabIndex={isOpen ? 0 : -1}
+      />
+
       <div
         className={`menu${railExpanded ? " menu--rail-expanded" : " menu--rail-collapsed"}`}
         ref={menuRef}

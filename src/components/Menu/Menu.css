@@ -10,6 +10,20 @@
   z-index: 100000;
 }
 
+.menu-backdrop {
+  position: fixed;
+  inset: 0;
+  border: 0;
+  background: transparent;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.menu-backdrop--open {
+  pointer-events: auto;
+}
+
 .menu {
   position: fixed;
   top: 1.5rem;

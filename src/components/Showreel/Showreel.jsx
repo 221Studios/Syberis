@@ -10,6 +10,9 @@ import "./Showreel.css";
 
 gsap.registerPlugin(ScrollTrigger, Flip);
 
+const SHOWREEL_SCROLL_DISTANCE = 1.15;
+const SHOWREEL_MOBILE_SCROLL_DISTANCE = 0.9;
+
 export default function Showreel() {
   const showreelRef = useRef(null);
 
@@ -108,7 +111,13 @@ export default function Showreel() {
         showreelTrigger = ScrollTrigger.create({
           trigger: section,
           start: "top top",
-          end: () => `+=${window.innerHeight * 2}`,
+          end: () =>
+            `+=${
+              window.innerHeight *
+              (window.innerWidth < 1000
+                ? SHOWREEL_MOBILE_SCROLL_DISTANCE
+                : SHOWREEL_SCROLL_DISTANCE)
+            }`,
           pin: true,
           pinSpacing: true,
           onUpdate: (self) => {

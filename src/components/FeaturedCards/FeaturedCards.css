@@ -59,7 +59,7 @@
   border-radius: 0.75rem;
   text-decoration: none;
   background-color: var(--base-100);
-  transform: translateY(200%);
+  transform: translateY(115%);
   will-change: transform;
 }
 

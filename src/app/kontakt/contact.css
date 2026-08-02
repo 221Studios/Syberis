@@ -206,6 +206,10 @@ div.pin-spacer:has(> .transmit-sticky) {
 }
 
 @media (max-width: 999px) {
+  .transmit-hero-header {
+    gap: 0.05rem;
+  }
+
   .transmit-hero-header .subheader {
     transform: translateX(-5%);
   }

@@ -34,10 +34,10 @@ const LENIS_SHARED = {
 
 const LENIS_MOBILE = {
   ...LENIS_SHARED,
-  duration: 0.8,
+  duration: 1.05,
   smoothTouch: true,
-  touchMultiplier: 1.5,
-  lerp: 0.09,
+  touchMultiplier: 3.0,
+  lerp: 0.075,
 };
 
 const LENIS_DESKTOP = {

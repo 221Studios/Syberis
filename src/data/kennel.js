@@ -167,10 +167,10 @@ export const LITTERS = [
     sireSlug: "ozzie",
     damSlug: "kaja",
     born: "2026-07-28",
-    handoverFrom: "2026-10-28",
+    handoverFrom: "2026-10-01",
     photo: "/litters/c/cover.jpg",
     intro:
-      "Pięć białych szczeniąt po Ozziem i Kai. Wszystkie są jeszcze wolne — rezerwacje przyjmujemy telefonicznie i mailowo. Pieski wyjadą do domów pomiędzy 3. a 4. miesiącem życia.",
+      "Cztery białe szczenięta po Ozziem i Kai: trzy suczki i jeden piesek. Wszystkie są jeszcze wolne — rezerwacje przyjmujemy telefonicznie i mailowo. Pieski wyjadą do domów pomiędzy 3. a 4. miesiącem życia.",
     grownGallery: [],
     puppies: [
       {
@@ -183,7 +183,7 @@ export const LITTERS = [
         photo: "/litters/c/ciri.jpg",
         traits: ["Odważna", "Pierwsza do ludzi", "Szybko się uczy"],
         description:
-          "Najodważniejsza z całej piątki. Pierwsza wychodzi do obcych, pierwsza sprawdza każdy nowy kąt i pierwsza zasypia po zabawie.",
+          "Najodważniejsza z całej czwórki. Pierwsza wychodzi do obcych, pierwsza sprawdza każdy nowy kąt i pierwsza zasypia po zabawie.",
       },
       {
         slug: "celeste",
@@ -199,15 +199,15 @@ export const LITTERS = [
       },
       {
         slug: "cleo",
-        name: "Ciastek",
-        sex: "male",
+        name: "Cleo",
+        sex: "female",
         status: "free",
         coat: WHITE_COAT,
         eyes: BLUE_EYES,
         photo: "/litters/c/cleo.jpg",
-        traits: ["Gadatliwy", "Wesoły", "Towarzyski"],
+        traits: ["Wesoła", "Towarzyska", "Ciekawska"],
         description:
-          "Najbardziej gadatliwy w miocie. Komentuje wszystko: karmienie, spacer, wejście do pokoju. Typowy husky w najlepszym wydaniu.",
+          "Wesoła i bardzo kontaktowa suczka. Szybko łapie nowe rzeczy, chętnie podchodzi do ludzi i trzyma się blisko rodzeństwa.",
       },
       {
         slug: "coco",
@@ -219,19 +219,7 @@ export const LITTERS = [
         photo: "/litters/c/coco.jpg",
         traits: ["Spokojny", "Wyważony", "Podobny do Ozziego"],
         description:
-          "Najspokojniejszy z braci, bardzo podobny charakterem do Ozziego. Lubi leżeć przy nogach i patrzeć, co się dzieje.",
-      },
-      {
-        slug: "cyan",
-        name: "Cyan",
-        sex: "male",
-        status: "free",
-        coat: WHITE_COAT,
-        eyes: BLUE_EYES,
-        photo: "/litters/c/cyan.jpg",
-        traits: ["Energiczny", "Nieustępliwy", "Do aktywnego domu"],
-        description:
-          "Motor napędowy zabaw. Nigdy nie ma dość biegania i pierwszy wciąga rodzeństwo w hałas. Będzie potrzebował aktywnego domu.",
+          "Najspokojniejszy z rodzeństwa, bardzo podobny charakterem do Ozziego. Lubi leżeć przy nogach i patrzeć, co się dzieje.",
       },
     ],
   },
@@ -247,7 +235,6 @@ export const LITTERS = [
     grownGallery: [
       "/litters/b/grown-1.jpg",
       "/litters/b/grown-2.jpg",
-      "/litters/b/grown-3.jpg",
     ],
     puppies: [
       {

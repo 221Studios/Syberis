@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import {
   PiBalloonFill,
@@ -19,7 +20,7 @@ import {
 
 import "./FooterExplosion.css";
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger);
 
 const EXPLOSION_ICONS = [
   PiDogFill,
@@ -42,6 +43,7 @@ const EXPLOSION_CONFIG = {
   verticalForce: 15,
   rotationSpeed: 10,
 };
+const EXPLOSION_TRIGGER_OFFSET = 80;
 
 class Particle {
   constructor(element, config) {
@@ -91,6 +93,26 @@ export default function FooterExplosion({ footerRef, lenis }) {
       let hasExploded = false;
       let checkTimeout;
 
+      const explode = () => {
+        const footerEl = footerRef.current;
+        if (!footerEl) return;
+
+        if (hasExploded) return;
+        hasExploded = true;
+        const size = getParticleSize();
+        explosionContainerRef.current?.style.setProperty(
+          "--particle-size",
+          `${size}px`,
+        );
+        setExploded(true);
+      };
+
+      const resetExplosion = () => {
+        hasExploded = false;
+        setExploded(false);
+        particleRefs.current = [];
+      };
+
       const checkFooterPosition = () => {
         const footerEl = footerRef.current;
         if (!footerEl) return;
@@ -98,24 +120,24 @@ export default function FooterExplosion({ footerRef, lenis }) {
         const footerRect = footerEl.getBoundingClientRect();
         const viewportHeight = window.innerHeight;
 
-        if (footerRect.top > viewportHeight + 100) {
-          hasExploded = false;
-          setExploded(false);
-          particleRefs.current = [];
-        }
-
-        if (!hasExploded && footerRect.top <= viewportHeight + 250) {
-          hasExploded = true;
-          const size = getParticleSize();
-          explosionContainerRef.current?.style.setProperty(
-            "--particle-size",
-            `${size}px`,
-          );
-          setExploded(true);
+        if (footerRect.top > viewportHeight - EXPLOSION_TRIGGER_OFFSET) {
+          resetExplosion();
+        } else {
+          explode();
         }
       };
 
       const initialCheckTimer = window.setTimeout(checkFooterPosition, 500);
+      const trigger = ScrollTrigger.create({
+        trigger: footerRef.current,
+        start: `top bottom-=${EXPLOSION_TRIGGER_OFFSET}`,
+        end: "bottom top",
+        onEnter: explode,
+        onEnterBack: explode,
+        onUpdate: checkFooterPosition,
+        onLeave: resetExplosion,
+        onLeaveBack: resetExplosion,
+      });
 
       const scrollHandler = () => {
         clearTimeout(checkTimeout);
@@ -128,9 +150,8 @@ export default function FooterExplosion({ footerRef, lenis }) {
           "--particle-size",
           `${size}px`,
         );
-        hasExploded = false;
-        setExploded(false);
-        particleRefs.current = [];
+        resetExplosion();
+        ScrollTrigger.refresh();
       };
 
       let detachScroll = () => {};
@@ -147,11 +168,11 @@ export default function FooterExplosion({ footerRef, lenis }) {
 
       return () => {
         detachScroll();
+        trigger.kill();
         window.removeEventListener("resize", resizeHandler);
         window.clearTimeout(initialCheckTimer);
         clearTimeout(checkTimeout);
-        setExploded(false);
-        particleRefs.current = [];
+        resetExplosion();
       };
     },
     { scope: footerRef, dependencies: [lenis, pathname] },
@@ -180,6 +201,8 @@ export default function FooterExplosion({ footerRef, lenis }) {
           )
         ) {
           cancelAnimationFrame(animationId);
+          setExploded(false);
+          particleRefs.current = [];
         }
       };
 

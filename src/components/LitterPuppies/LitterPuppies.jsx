@@ -7,6 +7,7 @@ import { SEX_LABEL, STATUS_LABEL } from "@/data/kennel";
 import "./LitterPuppies.css";
 
 const MOBILE_BREAKPOINT = 1000;
+const NAME_HIDE_OFFSET = "170%";
 
 const SplitChars = ({ text, headingRef }) => (
   <h1 ref={headingRef}>
@@ -17,6 +18,18 @@ const SplitChars = ({ text, headingRef }) => (
     ))}
   </h1>
 );
+
+function statusLabelForPuppy(puppy) {
+  if (puppy.status === "free") {
+    return puppy.sex === "female" ? "Wolna" : "Wolny";
+  }
+
+  if (puppy.status === "reserved") {
+    return puppy.sex === "female" ? "Zarezerwowana" : "Zarezerwowany";
+  }
+
+  return STATUS_LABEL[puppy.status];
+}
 
 /**
  * Salle Blanche "Chefs" interaction — avatar row + letter-flip names —
@@ -81,7 +94,7 @@ export default function LitterPuppies({
           });
 
           gsap.to(defaultLetters, {
-            y: "-120%",
+            y: `-${NAME_HIDE_OFFSET}`,
             duration: 0.75,
             ease: "power4.out",
             stagger: { each: 0.025, from: "center" },
@@ -110,7 +123,7 @@ export default function LitterPuppies({
           });
 
           gsap.to(nameLetters, {
-            y: "120%",
+            y: NAME_HIDE_OFFSET,
             duration: 0.75,
             ease: "power4.out",
             stagger: { each: 0.025, from: "center" },
@@ -128,7 +141,7 @@ export default function LitterPuppies({
 
       handleContainerEnter = () => {
         gsap.to(defaultLetters, {
-          y: "-120%",
+          y: `-${NAME_HIDE_OFFSET}`,
           duration: 0.75,
           ease: "power4.out",
           stagger: { each: 0.025, from: "center" },
@@ -140,7 +153,7 @@ export default function LitterPuppies({
         puppyNames.forEach((name) => {
           const letters = name.querySelectorAll(".letter");
           gsap.to(letters, {
-            y: "120%",
+            y: NAME_HIDE_OFFSET,
             duration: 0.75,
             ease: "power4.out",
             stagger: { each: 0.025, from: "center" },
@@ -178,7 +191,7 @@ export default function LitterPuppies({
       gsap.set(defaultLetters, { y: "0%" });
       puppyNames.forEach((name) => {
         const letters = name.querySelectorAll(".letter");
-        gsap.set(letters, { y: "120%" });
+        gsap.set(letters, { y: NAME_HIDE_OFFSET });
       });
       avatars.forEach((avatar) => {
         gsap.set(avatar, { clearProps: "width,height" });
@@ -266,7 +279,7 @@ export default function LitterPuppies({
           <>
             <h2 className="litter-puppies-detail-name">{active.name}</h2>
             <p className="mono sm litter-puppies-detail-meta">
-              {STATUS_LABEL[active.status]} · {SEX_LABEL[active.sex]}
+              {statusLabelForPuppy(active)} · {SEX_LABEL[active.sex]}
             </p>
             <p className="litter-puppies-detail-copy">{active.description}</p>
             {active.traits?.length ? (

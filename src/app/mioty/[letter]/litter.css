@@ -6,28 +6,36 @@
 .litter-hero .litter-hero-right {
   position: relative;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1.25rem;
   overflow: hidden;
+}
+
+.litter-hero .report-hero-image img {
+  object-fit: cover;
+  object-position: 48% 50%;
 }
 
 .litter-hero-main {
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: center;
-  gap: 1.75rem;
-  padding: 1.5rem 1.5rem 0;
-  text-align: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: clamp(2rem, 4vw, 4rem) clamp(1.5rem, 3vw, 3rem) 0;
+  text-align: left;
   color: var(--base-300);
 }
 
 .litter-hero-titles {
-  gap: 0.7rem;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  text-align: center;
 }
 
 .litter-hero-main h1 {
   margin: 0;
-  font-size: clamp(3.25rem, 8vw, 7rem);
+  font-size: clamp(4.25rem, 8.4vw, 7.35rem);
   line-height: 1;
   color: var(--base-300);
 }
@@ -35,76 +43,138 @@
 .litter-hero-main .subheader {
   width: 100%;
   margin: 0;
-  font-size: clamp(1.35rem, 3vw, 2.5rem);
+  font-size: clamp(1.35rem, 2.6vw, 2.35rem);
   line-height: 1.05;
-  color: var(--base-300);
+  color: var(--base-100);
+  opacity: 0.82;
   transform: translateX(-5%);
 }
 
 .litter-hero-body {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1.25rem;
+  align-items: flex-start;
+  gap: 1.35rem;
+  width: 100%;
 }
 
 .litter-hero-intro {
-  max-width: 28rem;
-  margin: 0 auto;
-  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
-  line-height: 1.35;
+  max-width: 34rem;
+  margin: 0;
+  font-size: clamp(1.1rem, 1.45vw, 1.35rem);
+  line-height: 1.42;
   color: var(--base-100);
   opacity: 0.85;
 }
 
 .litter-hero-availability {
+  width: max-content;
+  max-width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--base-300) 30%, transparent);
+  border-radius: 0.25rem;
   color: var(--base-300);
-  opacity: 0.85;
+  opacity: 0.95;
 }
 
 .litter-parents {
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-  width: min(22rem, 100%);
-  margin-top: 0.25rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 0.75rem;
+  width: min(36rem, 100%);
+  margin-top: 0.5rem;
+}
+
+.litter-parents-label {
+  grid-column: 1 / -1;
+  color: var(--base-300);
+  text-transform: uppercase;
+  opacity: 0.9;
 }
 
 .litter-parent-card {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.55rem;
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 0.85rem;
+  min-height: 0;
+  padding: 0.5rem;
   color: var(--base-100);
-  text-align: left;
+  text-align: center;
   text-decoration: none;
-  border: 1px solid color-mix(in srgb, var(--base-300) 35%, transparent);
+  border: none;
   border-radius: 0.25rem;
+  background-color: color-mix(in srgb, var(--base-500) 16%, transparent);
   transition:
     border-color 0.3s ease,
-    background-color 0.3s ease;
+    background-color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .litter-parent-card:hover {
-  border-color: var(--base-300);
-  background-color: color-mix(in srgb, var(--base-500) 35%, transparent);
+  background-color: color-mix(in srgb, var(--base-500) 30%, transparent);
+  transform: translateY(-2px);
 }
 
 .litter-parent-card img {
-  width: 3.75rem;
-  height: 3.75rem;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  min-height: 0;
   object-fit: cover;
   border-radius: 0.2rem;
 }
 
+.litter-parent-card > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  justify-content: stretch;
+  gap: 0.35rem;
+  padding: 0 0 0.2rem;
+  min-width: 0;
+}
+
 .litter-parent-card .mono {
+  font-family: "Bellefair", serif;
+  font-size: clamp(1.45rem, 2vw, 1.75rem);
+  line-height: 1;
   color: var(--base-300);
+  grid-column: 1;
+  text-transform: none;
+  justify-self: start;
+  white-space: nowrap;
 }
 
 .litter-parent-card h6 {
-  margin-top: 0.15rem;
-  font-size: 1.35rem;
+  margin: 0;
+  font-family: "Bellefair", serif;
+  font-size: clamp(1.45rem, 2vw, 1.75rem);
+  line-height: 1;
   color: var(--base-100);
+  grid-column: 2;
+  justify-self: center;
+  white-space: nowrap;
+}
+
+.litter-parent-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  border-radius: 0.25rem;
+  background-color: var(--base-100);
+  color: var(--base-500);
+  justify-self: end;
+  align-self: end;
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+}
+
+.litter-parent-card:hover .litter-parent-arrow {
+  transform: translateX(3px);
 }
 
 /* Puppies (wide) + CTA (narrow) */
@@ -184,16 +254,64 @@
 
 @media (min-width: 1000px) and (max-width: 1399px) {
   .litter-hero-main {
-    gap: 1.35rem;
-    padding: 1.25rem 1.15rem 0;
+    justify-content: flex-start;
+    gap: 1.25rem;
+    padding: 1.35rem 1.15rem 0;
+  }
+
+  .litter-hero-titles {
+    gap: 0.55rem;
+    margin-bottom: -0.75rem;
   }
 
   .litter-hero-main h1 {
-    font-size: clamp(3.5rem, 6.5vw, 6rem);
+    font-size: clamp(3.5rem, 6vw, 5.25rem);
   }
 
   .litter-hero-main .subheader {
-    font-size: clamp(1.35rem, 2.5vw, 2.75rem);
+    font-size: clamp(1.15rem, 2vw, 1.8rem);
+    transform: translateX(-5%);
+  }
+
+  .litter-hero-body {
+    gap: 0.85rem;
+  }
+
+  .litter-hero-intro {
+    max-width: 31rem;
+    font-size: clamp(1rem, 1.35vw, 1.15rem);
+    line-height: 1.35;
+  }
+
+  .litter-hero-availability {
+    padding: 0.42rem 0.65rem;
+  }
+
+  .litter-parents {
+    gap: 0.55rem;
+    margin-top: 0.1rem;
+  }
+
+  .litter-parent-card {
+    gap: 0.55rem;
+    padding: 0.4rem;
+  }
+
+  .litter-parent-card h6 {
+    font-size: clamp(1.2rem, 1.55vw, 1.4rem);
+  }
+
+  .litter-parent-card .mono {
+    font-size: clamp(1rem, 1.25vw, 1.15rem);
+  }
+
+  .litter-parent-card > div {
+    padding: 0;
+  }
+
+  .litter-parent-arrow {
+    width: 1.65rem;
+    height: 1.65rem;
   }
 
   .litter-split {
@@ -215,6 +333,10 @@
 }
 
 @media (max-width: 999px) {
+  .litter-hero-titles {
+    gap: 0.05rem;
+  }
+
   .litter-hero {
     height: auto;
     min-height: 100svh;
@@ -225,8 +347,9 @@
   }
 
   .litter-hero-main {
-    padding: 1.15rem 0.75rem 0;
+    padding: 1.35rem 0.75rem 0;
     gap: 1.15rem;
+    text-align: left;
   }
 
   .litter-hero-main h1 {
@@ -234,7 +357,7 @@
   }
 
   .litter-hero-main .subheader {
-    font-size: clamp(1.15rem, 5vw, 1.85rem);
+    font-size: clamp(1.1rem, 4.5vw, 1.65rem);
     transform: translateX(-5%);
   }
 
@@ -243,12 +366,16 @@
   }
 
   .litter-parents {
+    grid-template-columns: 1fr;
     width: 100%;
   }
 
   .litter-parent-card img {
-    width: 3.25rem;
-    height: 3.25rem;
+    aspect-ratio: 16 / 9;
+  }
+
+  .litter-parent-card {
+    min-height: 0;
   }
 
   .litter-split {

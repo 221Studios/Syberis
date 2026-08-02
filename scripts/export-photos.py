@@ -40,7 +40,7 @@ TARGETS = {
     "parents/mia-wide.jpg": (250, WIDE, 1600),
     "parents/cynamon-wide.jpg": (247, WIDE, 1600),
     # Litter C puppies
-    "litters/c/cover.jpg": (148, WIDE, 1600),
+    "litters/c/cover.jpg": (153, WIDE, 1600),
     "litters/c/ciri.jpg": (123, TALL, 1200),
     "litters/c/celeste.jpg": (206, TALL, 1200),
     "litters/c/cleo.jpg": (159, TALL, 1200),
@@ -55,7 +55,6 @@ TARGETS = {
     "litters/b/blue.jpg": (277, TALL, 1200),
     "litters/b/grown-1.jpg": (307, SQUARE, 900),
     "litters/b/grown-2.jpg": (366, SQUARE, 900),
-    "litters/b/grown-3.jpg": (227, SQUARE, 900),
     # Litter A
     "litters/a/cover.jpg": (103, WIDE, 1600),
     "litters/a/aki.jpg": (19, TALL, 1200),
@@ -78,7 +77,6 @@ TARGETS = {
     # Contact page cards
     "contact/card-1.jpg": (171, PORTRAIT, 1000),
     "contact/card-2.jpg": (183, PORTRAIT, 1000),
-    "contact/card-3.jpg": (227, PORTRAIT, 1000),
 }
 
 

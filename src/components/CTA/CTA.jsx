@@ -4,6 +4,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { FiMapPin } from "react-icons/fi";
 import Button from "../Button/Button";
 import Copy from "../Copy/Copy";
 
@@ -32,6 +33,15 @@ const SERVICES = [
   "Zachipowane szczeniaki",
   "Wyprawka na start",
   "Kontakt po odbiorze",
+];
+
+const LOCATION_NOTES = [
+  {
+    label: "Odwiedziny",
+    value: "Po umówieniu zapraszamy poznać pieski na żywo",
+  },
+  { label: "Rezerwacje", value: "Telefonicznie lub mailowo" },
+  { label: "Start", value: "Książeczka zdrowia i wyprawka" },
 ];
 
 function createCtaTick(degree) {
@@ -215,26 +225,39 @@ export default function CTA() {
               rel="noopener noreferrer"
               aria-label="Znajdź nas w Google Maps"
             >
-            <Copy splitType="words">
-              <h6>Znajdź nas</h6>
-            </Copy>
+              <Copy splitType="words">
+                <h6>Znajdź nas</h6>
+              </Copy>
 
-            <div className="cta-compass">
-              <svg
-                ref={ctaCompassRef}
-                id="cta-compass-svg"
-                width="600"
-                height="600"
-                viewBox="0 0 600 600"
-                xmlns="http://www.w3.org/2000/svg"
-              />
-            </div>
+              <div className="cta-compass">
+                <svg
+                  ref={ctaCompassRef}
+                  id="cta-compass-svg"
+                  width="600"
+                  height="600"
+                  viewBox="0 0 600 600"
+                  xmlns="http://www.w3.org/2000/svg"
+                />
+                <span className="cta-map-pin" aria-hidden="true">
+                  <FiMapPin />
+                </span>
+              </div>
 
+              <p className="mono sm cta-map-cta">Otwórz mapę</p>
             </a>
 
-            <Button href="/kontakt" theme="dark">
-              Zapytaj o szczeniaka
-            </Button>
+            <div className="cta-location-panel">
+              {LOCATION_NOTES.map((note) => (
+                <div className="cta-location-row" key={note.label}>
+                  <p className="mono sm">{note.label}</p>
+                  <p>{note.value}</p>
+                </div>
+              ))}
+
+              <Button href="/kontakt" theme="dark">
+                Zapytaj o szczeniaka
+              </Button>
+            </div>
           </div>
 
           <div className="cta-right">

@@ -7,16 +7,40 @@ import Copy from "@/components/Copy/Copy";
 import "./gallery.css";
 
 const images = [
-  "/gallery/img1.jpg",
-  "/gallery/img2.jpg",
-  "/gallery/img3.jpg",
-  "/gallery/img4.jpg",
-  "/gallery/img5.jpg",
-  "/gallery/img6.jpg",
-  "/gallery/img7.jpg",
-  "/gallery/img8.jpg",
-  "/gallery/img9.jpg",
-  "/gallery/img10.jpg",
+  { src: "/contact/card-1.jpg", width: 1000, height: 1250 },
+  { src: "/contact/card-2.jpg", width: 1000, height: 1250 },
+  { src: "/gallery/img1.jpg", width: 1100, height: 733 },
+  { src: "/gallery/img2.jpg", width: 1100, height: 733 },
+  { src: "/gallery/img3.jpg", width: 1100, height: 733 },
+  { src: "/gallery/img4.jpg", width: 1100, height: 733 },
+  { src: "/gallery/img5.jpg", width: 1100, height: 733 },
+  { src: "/gallery/img8.jpg", width: 1100, height: 733 },
+  { src: "/gallery/img9.jpg", width: 1100, height: 733 },
+  { src: "/gallery/img10.jpg", width: 1100, height: 733 },
+  { src: "/images/about.jpg", width: 1200, height: 1500 },
+  { src: "/images/featured-1.jpg", width: 1200, height: 1500 },
+  { src: "/images/featured-2.jpg", width: 1200, height: 1500 },
+  { src: "/images/featured-3.jpg", width: 1200, height: 1500 },
+  { src: "/images/featured-4.jpg", width: 1200, height: 1500 },
+  { src: "/images/featured-5.jpg", width: 1200, height: 1500 },
+  { src: "/images/showreel.jpg", width: 1800, height: 1012 },
+  { src: "/litters/a/cover.jpg", width: 1800, height: 1012 },
+  { src: "/litters/a/grown-2.jpg", width: 1100, height: 733 },
+  { src: "/litters/a/aki.jpg", width: 1200, height: 2133 },
+  { src: "/litters/a/alma.jpg", width: 1200, height: 2133 },
+  { src: "/litters/a/argo.jpg", width: 1200, height: 2133 },
+  { src: "/litters/a/ayla.jpg", width: 1200, height: 2133 },
+  { src: "/litters/b/cover.jpg", width: 1800, height: 1012 },
+  { src: "/litters/b/grown-1.jpg", width: 1100, height: 733 },
+  { src: "/litters/b/grown-2.jpg", width: 1100, height: 733 },
+  { src: "/litters/b/balto.jpg", width: 1200, height: 2133 },
+  { src: "/litters/b/bianka.jpg", width: 1200, height: 2133 },
+  { src: "/litters/b/blue.jpg", width: 1200, height: 2133 },
+  { src: "/litters/b/bruno.jpg", width: 1200, height: 2133 },
+  { src: "/litters/c/cover.jpg", width: 1800, height: 1012 },
+  { src: "/litters/c/celeste.jpg", width: 1200, height: 2133 },
+  { src: "/litters/c/cleo.jpg", width: 1200, height: 2133 },
+  { src: "/litters/c/cyan.jpg", width: 1200, height: 2133 },
 ];
 
 const catalogParams = {
@@ -25,7 +49,7 @@ const catalogParams = {
   curvature: 5,
   spacing: 10,
   imageWidth: 7,
-  imageHeight: 4.5,
+  imageHeight: 5.2,
   depth: 7.5,
   elevation: 0,
   lookAtRange: 20,
@@ -77,8 +101,32 @@ function createRoundedRectShape(w, h, r) {
   return shape;
 }
 
+function seededRandom(seed) {
+  let value = seed;
+
+  return () => {
+    value = (value * 1664525 + 1013904223) % 4294967296;
+    return value / 4294967296;
+  };
+}
+
+function stableShuffle(items, seed = 20260801) {
+  const random = seededRandom(seed);
+  const shuffled = [...items];
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled;
+}
+
 function buildCatalogGrid(rows, cols) {
+  const shuffled = stableShuffle(images.map((_, i) => i));
   const grid = [];
+  const usedCounts = new Map();
+
   for (let row = 0; row < rows; row++) {
     grid[row] = [];
     for (let col = 0; col < cols; col++) {
@@ -86,39 +134,62 @@ function buildCatalogGrid(rows, cols) {
       if (col > 0) excluded.add(grid[row][col - 1]);
       if (row > 0) excluded.add(grid[row - 1][col]);
 
-      const available = images.map((_, i) => i).filter((i) => !excluded.has(i));
+      const leastUsed = Math.min(
+        ...shuffled
+          .filter((i) => !excluded.has(i))
+          .map((i) => usedCounts.get(i) ?? 0),
+      );
+      const available = shuffled.filter(
+        (i) => !excluded.has(i) && (usedCounts.get(i) ?? 0) === leastUsed,
+      );
+      const picked = available[0];
 
-      grid[row][col] = available[Math.floor(Math.random() * available.length)];
+      usedCounts.set(picked, (usedCounts.get(picked) ?? 0) + 1);
+      grid[row][col] = picked;
     }
   }
+
   return grid;
 }
 
-function createImagePlane(row, col, loader, imageIndex) {
-  const src = images[imageIndex];
+function getPlaneSize(image) {
+  const aspect = image.width / image.height;
+  const maxWidth = catalogParams.imageWidth;
+  const maxHeight = catalogParams.imageHeight;
+
+  if (aspect >= 1) {
+    return {
+      width: maxWidth,
+      height: maxWidth / aspect,
+    };
+  }
+
+  return {
+    width: maxHeight * aspect,
+    height: maxHeight,
+  };
+}
+
+function createImagePlane(row, col, loader, imageIndex, anisotropy) {
+  const image = images[imageIndex];
+  const { width, height } = getPlaneSize(image);
 
   const catalogRadius = 0.15;
-  const shape = createRoundedRectShape(
-    catalogParams.imageWidth,
-    catalogParams.imageHeight,
-    catalogRadius,
-  );
+  const shape = createRoundedRectShape(width, height, catalogRadius);
   const geometry = new THREE.ShapeGeometry(shape);
 
   const catalogUvAttr = geometry.attributes.uv;
   for (let i = 0; i < catalogUvAttr.count; i++) {
-    const u =
-      (catalogUvAttr.getX(i) + catalogParams.imageWidth / 2) /
-      catalogParams.imageWidth;
-    const v =
-      (catalogUvAttr.getY(i) + catalogParams.imageHeight / 2) /
-      catalogParams.imageHeight;
+    const u = (catalogUvAttr.getX(i) + width / 2) / width;
+    const v = (catalogUvAttr.getY(i) + height / 2) / height;
     catalogUvAttr.setXY(i, u, v);
   }
 
-  const texture = loader.load(src);
-  texture.minFilter = THREE.LinearFilter;
+  const texture = loader.load(image.src);
+  texture.generateMipmaps = true;
+  texture.minFilter = THREE.LinearMipmapLinearFilter;
   texture.magFilter = THREE.LinearFilter;
+  texture.anisotropy = anisotropy;
   texture.colorSpace = THREE.SRGBColorSpace;
 
   const material = new THREE.MeshBasicMaterial({
@@ -180,6 +251,7 @@ export default function CatalogPage() {
     catalogRenderer.outputColorSpace = THREE.SRGBColorSpace;
 
     const catalogLoader = new THREE.TextureLoader();
+    const catalogAnisotropy = catalogRenderer.capabilities.getMaxAnisotropy();
 
     const catalogGrid = buildCatalogGrid(
       catalogParams.rows,
@@ -194,6 +266,7 @@ export default function CatalogPage() {
           col,
           catalogLoader,
           catalogGrid[row][col],
+          catalogAnisotropy,
         );
         catalogPlanes.push(plane);
         catalogScene.add(plane);

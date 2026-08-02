@@ -92,6 +92,16 @@
   z-index: 2;
 }
 
-.music-toggle-canvas {
+.music-toggle-icon {
   display: block;
+  width: 1.55rem;
+  height: 1.55rem;
+  stroke-width: 1.8;
+}
+
+@media (max-width: 999px) {
+  .music-toggle-icon {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
 }

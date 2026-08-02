@@ -318,9 +318,12 @@
 
 @media screen and (max-width: 999px) {
   .deck-slide-content {
-    justify-content: flex-end;
-    gap: 4.5rem;
-    padding: 1.25rem 1.25rem 7.5rem;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    align-items: center;
+    justify-content: normal;
+    gap: 1.25rem;
+    padding: 10.5rem 1.25rem 7.5rem;
   }
 
   .deck-slide-content h1 {
@@ -329,8 +332,12 @@
 
   .deck-slide-content .subheader {
     font-size: clamp(1.25rem, 4.5vw, 2.25rem);
-    line-height: 1.2;
+    line-height: 1.05;
     transform: none;
+  }
+
+  .deck-slide-title-block {
+    gap: 0.05rem;
   }
 
   .deck-slide-description {
@@ -340,6 +347,7 @@
   }
 
   .deck-slide-footer {
+    align-self: end;
     flex-direction: column;
     flex-wrap: wrap;
     gap: 0.75rem;
@@ -377,8 +385,16 @@
 
 @media (max-width: 480px) {
   .deck-slide-content {
-    gap: 3.5rem;
-    padding: 1rem 0.85rem 7rem;
+    gap: 1rem;
+    padding: 10rem 0.85rem 6.25rem;
+  }
+
+  .deck-switch {
+    bottom: 1.5rem;
+  }
+
+  .deck-hint {
+    display: none;
   }
 
   .deck-slide-tags {

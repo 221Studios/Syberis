@@ -47,7 +47,7 @@ const FEATURED_CARDS_DATA = [
 
 export default function FeaturedCards({
   kicker = "[ Hodowla Syberis ]",
-  title = "Poznaj mioty, rodziców i zdjęcia z hodowli",
+  title,
   ctaHref = "/mioty",
   ctaLabel = "Zobacz mioty",
   cards = FEATURED_CARDS_DATA,
@@ -140,7 +140,16 @@ export default function FeaturedCards({
             </Copy>
 
             <Copy splitType="words">
-              <h5 className="v2">{title}</h5>
+              <h5 className="v2">
+                {title ?? (
+                  <>
+                    Poznaj mioty, rodziców{" "}
+                    <span className="featured-cards-nowrap">
+                      i zdjęcia z hodowli
+                    </span>
+                  </>
+                )}
+              </h5>
             </Copy>
 
             <Copy variant="slide" delay={0.5}>

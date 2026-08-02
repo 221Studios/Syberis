@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { FiArrowRight } from "react-icons/fi";
 import LitterPuppies from "@/components/LitterPuppies/LitterPuppies";
 import Button from "@/components/Button/Button";
 import Copy from "@/components/Copy/Copy";
@@ -86,6 +87,9 @@ export default async function LitterPage({ params }) {
                   </p>
 
                   <div className="litter-parents">
+                    <p className="mono sm litter-parents-label">
+                      Rodzice miotu
+                    </p>
                     <Link
                       href="/rodzice"
                       className="litter-parent-card"
@@ -94,6 +98,9 @@ export default async function LitterPage({ params }) {
                       <div>
                         <p className="mono sm">{sire.role}</p>
                         <h6>{sire.name}</h6>
+                        <span className="litter-parent-arrow" aria-hidden="true">
+                          <FiArrowRight />
+                        </span>
                       </div>
                     </Link>
                     <Link
@@ -102,8 +109,11 @@ export default async function LitterPage({ params }) {
                     >
                       <img src={dam.photo} alt={dam.name} />
                       <div>
-                        <p className="mono sm">{dam.role}</p>
+                        <p className="mono sm">Matka</p>
                         <h6>{dam.name}</h6>
+                        <span className="litter-parent-arrow" aria-hidden="true">
+                          <FiArrowRight />
+                        </span>
                       </div>
                     </Link>
                   </div>

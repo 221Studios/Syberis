@@ -37,6 +37,10 @@
   margin: 1.5rem 0 3rem 0;
 }
 
+.featured-cards-nowrap {
+  white-space: nowrap;
+}
+
 .featured-cards-container {
   position: relative;
   flex: 1;

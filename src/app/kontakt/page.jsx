@@ -35,7 +35,7 @@ const transmitCards = [
   },
   {
     id: "transmit-card-3",
-    image: "/contact/card-3.jpg",
+    image: "/images/showreel.jpg",
     index: "03",
     label: "Ogłoszenie",
     value: "OLX",

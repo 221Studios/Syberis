@@ -86,7 +86,7 @@
 
 @media (max-width: 999px) {
   .footer-brand {
-    gap: 0.55rem;
+    gap: 0.05rem;
   }
 
   .footer-brand .subheader {
@@ -96,6 +96,7 @@
 
   .footer-brand h1:not(.subheader) {
     font-size: clamp(2.75rem, 14vw, 4.5rem);
+    transform: translateY(2%);
   }
 }
 
@@ -254,6 +255,13 @@
   white-space: nowrap;
 }
 
+.footer-bottom-year {
+  color: var(--base-500);
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
 @media (min-width: 1000px) and (max-width: 1399px) {
   .footer-arc {
     top: 30%;
@@ -272,12 +280,20 @@
 @media (max-width: 999px) {
   .footer {
     height: auto;
-    min-height: 100svh;
+    min-height: 0;
+    padding: 0.5rem;
+  }
+
+  .footer-wrapper {
+    height: auto;
+    min-height: 0;
+    padding: 4.5rem 0.5rem 0;
   }
 
   .footer-arc {
-    top: 16%;
+    top: 0.75rem;
     width: 200%;
+    transform: translate(-50%, 0);
   }
 
   .footer-arc-text {
@@ -286,7 +302,8 @@
 
   .footer-content {
     gap: 2rem;
-    padding: 0.5rem;
+    margin: 5.5rem auto 0 auto;
+    padding: 0.5rem 0;
   }
 
   .footer-center {
@@ -336,16 +353,33 @@
   }
 
   .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.35rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0.75rem;
     padding: 0.875rem 0;
   }
 
   .footer-bottom-site p,
+  .footer-bottom-year,
   .footer-bottom-credit {
-    font-size: 0.68rem;
-    white-space: normal;
+    font-size: clamp(0.58rem, 2.5vw, 0.68rem);
+    white-space: nowrap;
+  }
+
+  .footer-bottom-site {
+    justify-self: center;
+    text-align: center;
+  }
+
+  .footer-bottom-year {
+    justify-self: center;
+    text-align: center;
+  }
+
+  .footer-bottom-credit {
+    justify-self: center;
+    text-align: center;
   }
 }
 

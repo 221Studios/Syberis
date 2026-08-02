@@ -301,6 +301,10 @@ div.pin-spacer:has(> .report-section) {
 }
 
 @media screen and (max-width: 999px) {
+  .report-header {
+    gap: 0.05rem;
+  }
+
   .report-hero-grid {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;

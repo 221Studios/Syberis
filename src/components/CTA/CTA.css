@@ -32,7 +32,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
+  justify-content: stretch;
+  align-self: stretch;
+  gap: 0;
+  min-height: 38rem;
   text-align: center;
 }
 
@@ -40,7 +43,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
+  justify-content: center;
+  gap: 0.65rem;
+  width: 100%;
+  min-height: 50%;
   color: inherit;
   text-decoration: none;
 }
@@ -52,17 +58,103 @@
 }
 
 .cta-compass {
+  position: relative;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  height: min(50vw, 190px);
-  overflow: hidden;
+  align-items: center;
+  width: 100%;
+  height: min(28vw, 250px);
+  overflow: visible;
 }
 
 #cta-compass-svg {
-  width: min(100%, 380px);
+  width: min(72%, 250px);
   height: auto;
   aspect-ratio: 1;
+}
+
+.cta-map-pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid rgba(244, 249, 255, 0.38);
+  border-radius: 999px;
+  background-color: color-mix(in srgb, var(--base-100) 12%, transparent);
+  color: var(--base-100);
+  transform: translate(-50%, -50%);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.cta-map-pin svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.cta-map-link:hover .cta-map-pin,
+.cta-map-link:focus-visible .cta-map-pin {
+  background-color: var(--base-100);
+  color: var(--base-500);
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.cta-map-cta {
+  color: var(--base-300);
+  text-transform: uppercase;
+  opacity: 0.9;
+  transition:
+    color 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.cta-map-link:hover .cta-map-cta,
+.cta-map-link:focus-visible .cta-map-cta {
+  color: var(--base-100);
+  opacity: 1;
+}
+
+.cta-location-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 50%;
+  padding: 1rem 0 0;
+}
+
+.cta-location-row {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: baseline;
+  width: 100%;
+  color: var(--base-100);
+  text-align: left;
+}
+
+.cta-location-row .mono {
+  color: var(--base-300);
+  text-transform: uppercase;
+}
+
+.cta-location-row p:last-child {
+  margin: 0;
+  max-width: 22rem;
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  line-height: 1.25;
+}
+
+.cta-location-panel .button {
+  align-self: center;
+  margin-top: 2rem;
 }
 
 .cta-right {
@@ -113,11 +205,28 @@
   }
 
   #cta-compass-svg {
-    width: min(100%, 280px);
+    width: min(70%, 210px);
   }
 
   .cta-compass {
-    height: min(50vw, 140px);
+    height: min(24vw, 190px);
+  }
+
+  .cta-left {
+    min-height: 31rem;
+  }
+
+  .cta-location-panel {
+    gap: 0.7rem;
+  }
+
+  .cta-location-panel .button {
+    margin-top: 1.5rem;
+  }
+
+  .cta-location-row {
+    grid-template-columns: 6.65rem minmax(0, 1fr);
+    gap: 0.7rem;
   }
 
   .cta-services {
@@ -153,11 +262,34 @@
   }
 
   #cta-compass-svg {
-    width: min(62vw, 260px);
+    width: min(58vw, 220px);
   }
 
   .cta-compass {
-    height: min(31vw, 130px);
+    height: min(58vw, 220px);
+  }
+
+  .cta-left {
+    min-height: auto;
+  }
+
+  .cta-map-link,
+  .cta-location-panel {
+    min-height: auto;
+  }
+
+  .cta-location-panel {
+    padding-top: 1.25rem;
+  }
+
+  .cta-location-panel .button {
+    margin-top: 0.85rem;
+  }
+
+  .cta-location-row {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+    text-align: center;
   }
 
   .cta-services {

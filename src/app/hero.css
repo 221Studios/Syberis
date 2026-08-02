@@ -84,7 +84,11 @@
 
 @media (max-width: 999px) {
   .hero-header {
-    gap: 0.65rem;
+    gap: 0;
+  }
+
+  .hero-header h1:not(.subheader) {
+    transform: translateY(2%);
   }
 
   .hero-footer {

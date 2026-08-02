@@ -8,6 +8,7 @@ import "./LitterPuppies.css";
 
 const MOBILE_BREAKPOINT = 1000;
 const NAME_HIDE_OFFSET = "170%";
+const NAME_SHOW_OFFSET = "5%";
 
 const SplitChars = ({ text, headingRef }) => (
   <h1 ref={headingRef}>
@@ -65,7 +66,7 @@ export default function LitterPuppies({
     if (!defaultHeading || !avatars.length) return;
 
     const defaultLetters = defaultHeading.querySelectorAll(".letter");
-    gsap.set(defaultLetters, { y: "0%" });
+    gsap.set(defaultLetters, { y: NAME_SHOW_OFFSET });
 
     let avatarHandlers = [];
     let handleContainerEnter = null;
@@ -101,7 +102,7 @@ export default function LitterPuppies({
           });
 
           gsap.to(nameLetters, {
-            y: "0%",
+            y: NAME_SHOW_OFFSET,
             duration: 0.75,
             ease: "power4.out",
             stagger: { each: 0.025, from: "center" },
@@ -161,7 +162,7 @@ export default function LitterPuppies({
         });
 
         gsap.to(defaultLetters, {
-          y: "0%",
+          y: NAME_SHOW_OFFSET,
           duration: 0.75,
           ease: "power4.out",
           stagger: { each: 0.025, from: "center" },
@@ -188,7 +189,7 @@ export default function LitterPuppies({
         handleContainerLeave = null;
       }
 
-      gsap.set(defaultLetters, { y: "0%" });
+      gsap.set(defaultLetters, { y: NAME_SHOW_OFFSET });
       puppyNames.forEach((name) => {
         const letters = name.querySelectorAll(".letter");
         gsap.set(letters, { y: NAME_HIDE_OFFSET });

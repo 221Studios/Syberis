@@ -53,7 +53,7 @@
   position: relative;
   width: 100%;
   /* One tight line box — must match h1 size so hidden letters at 120% fully clear. */
-  height: calc(clamp(4.5rem, 9vw, 9rem) * 1.08);
+  height: calc(clamp(4.5rem, 9vw, 9rem) * 1.13);
   overflow: hidden;
 }
 
@@ -84,7 +84,7 @@
 }
 
 .litter-puppies-name--default h1 .letter {
-  transform: translateY(0%);
+  transform: translateY(5%);
 }
 
 .litter-puppies-detail {
@@ -247,7 +247,7 @@
   }
 
   .litter-puppies-name--default h1 .letter {
-    transform: translateY(0%) !important;
+    transform: translateY(5%) !important;
   }
 
   .litter-puppies-detail {

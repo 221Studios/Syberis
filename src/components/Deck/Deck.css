@@ -106,6 +106,13 @@
   transform-style: preserve-3d;
 }
 
+@media (min-width: 1000px) {
+  .deck-slide-title-block {
+    /* Extra ~10% title-height so kicker and "MIOT X" overlap less */
+    gap: 1.4rem;
+  }
+}
+
 .deck-slide-description {
   max-width: 44ch;
   margin-top: 1.25rem;

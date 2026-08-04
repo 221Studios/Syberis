@@ -41,6 +41,10 @@
   background-repeat: no-repeat;
 }
 
+.deck-slide-img--icon {
+  background-position: 50% 50%;
+}
+
 .deck-slide-content {
   position: absolute;
   inset: 0;

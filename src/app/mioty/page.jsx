@@ -4,13 +4,14 @@ import {
   countByStatus,
   formatDate,
   getParent,
+  litterSlug,
   litterTitle,
 } from "@/data/kennel";
 
 export const metadata = {
   title: "Mioty | Syberis",
   description:
-    "Mioty białych husky w hodowli Syberis — aktualny miot C oraz poprzednie mioty A i B.",
+    "Mioty białych husky w hodowli Syberis — oznaczane osobno dla każdej suczki.",
 };
 
 function litterSlide(litter) {
@@ -24,7 +25,7 @@ function litterSlide(litter) {
     meta: `Urodzone ${formatDate(litter.born)}`,
     kicker: isCurrent ? "Aktualny miot" : "Miot zakończony",
     title: litterTitle(litter.letter),
-    href: `/mioty/${litter.letter.toLowerCase()}`,
+    href: `/mioty/${litterSlug(litter)}`,
     footnote: `${sire.name} × ${dam.name}`,
     tags: [
       `${litter.puppies.length} szczeniąt`,

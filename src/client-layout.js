@@ -36,7 +36,7 @@ const LENIS_MOBILE = {
   ...LENIS_SHARED,
   duration: 1.05,
   smoothTouch: true,
-  touchMultiplier: 3.0,
+  touchMultiplier: 1.5,
   lerp: 0.075,
 };
 

@@ -86,21 +86,38 @@ export default function About() {
               </Copy>
 
               <div className="about-services-grid">
-                {PARENTS.map((parent, id) => (
-                  <Link
-                    href="/rodzice"
-                    className="about-service-card"
-                    key={parent.slug}
-                  >
-                    <p className="mono sm">0{id + 1}</p>
-                    {parent.photo ? (
-                      <div className="about-service-photo">
-                        <img src={parent.photo} alt={parent.name} />
-                      </div>
-                    ) : null}
-                    <p className="md about-parent-name">{parent.name}</p>
-                  </Link>
-                ))}
+                {PARENTS.map((parent, id) => {
+                  const homePhoto = parent.homePhoto ?? parent.photo;
+                  const homePhotoStyle =
+                    parent.homePhotoPosition || parent.homePhotoScale
+                      ? {
+                          objectPosition: parent.homePhotoPosition,
+                          "--parent-photo-scale": parent.homePhotoScale,
+                          "--parent-photo-x": parent.homePhotoOffsetX,
+                          "--parent-photo-y": parent.homePhotoOffsetY,
+                        }
+                      : undefined;
+
+                  return (
+                    <Link
+                      href="/rodzice"
+                      className="about-service-card"
+                      key={parent.slug}
+                    >
+                      <p className="mono sm">0{id + 1}</p>
+                      {homePhoto ? (
+                        <div className="about-service-photo">
+                          <img
+                            src={homePhoto}
+                            alt={parent.name}
+                            style={homePhotoStyle}
+                          />
+                        </div>
+                      ) : null}
+                      <p className="md about-parent-name">{parent.name}</p>
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </div>

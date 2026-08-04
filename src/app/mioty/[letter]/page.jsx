@@ -9,6 +9,7 @@ import {
   formatDate,
   getLitter,
   getParent,
+  litterSlug,
   litterTitle,
 } from "@/data/kennel";
 
@@ -16,7 +17,7 @@ import "@/components/ParentProfile/ParentProfile.css";
 import "./litter.css";
 
 export function generateStaticParams() {
-  return LITTERS.map((litter) => ({ letter: litter.letter.toLowerCase() }));
+  return LITTERS.map((litter) => ({ letter: litterSlug(litter) }));
 }
 
 export async function generateMetadata({ params }) {

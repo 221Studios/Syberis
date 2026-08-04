@@ -85,6 +85,14 @@
   border-radius: 0.5rem;
 }
 
+.featured-card-img img {
+  transform: translate(
+      var(--featured-card-img-x, 0),
+      var(--featured-card-img-y, 0)
+    )
+    scale(var(--featured-card-img-scale, 1));
+}
+
 .featured-card-img::after {
   content: "";
   position: absolute;

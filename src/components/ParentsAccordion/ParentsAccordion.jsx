@@ -160,6 +160,16 @@ export default function ParentsAccordion({ parents }) {
                 <img
                   className="parents-accordion-img"
                   src={parent.photo}
+                  style={
+                    parent.photoPosition || parent.photoScale
+                        ? {
+                            objectPosition: parent.photoPosition,
+                            "--parent-photo-scale": parent.photoScale,
+                            "--parent-photo-x": parent.photoOffsetX,
+                            "--parent-photo-y": parent.photoOffsetY,
+                          }
+                        : undefined
+                    }
                   alt={`${parent.name} — białe husky`}
                 />
 

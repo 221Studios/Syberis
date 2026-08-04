@@ -353,7 +353,9 @@ export default function Deck({ slides, counterPrefix = "NR", hint, action }) {
         {slides.map((slide, i) => (
           <div className="deck-slide" key={slide.title + i}>
             <div
-              className="deck-slide-img"
+              className={`deck-slide-img${
+                slide.image?.endsWith(".svg") ? " deck-slide-img--icon" : ""
+              }`}
               style={{ backgroundImage: `url(${slide.image})` }}
             />
             <div className="deck-slide-content">

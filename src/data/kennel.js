@@ -47,6 +47,11 @@ export const PARENTS = [
     coat: WHITE_COAT,
     eyes: BLUE_EYES,
     photo: "/parents/ozzie.jpg",
+    homePhoto: "/parents/ozzie-home.jpg",
+    homePhotoPosition: "50% 86%",
+    homePhotoScale: 1.8,
+    homePhotoOffsetX: "12%",
+    homePhotoOffsetY: "-24%",
     wide: "/parents/ozzie-wide.jpg",
     tagline: "Spokojny szef stada",
     traits: ["Łagodny", "Wytrzymały", "Ufny wobec ludzi"],
@@ -76,7 +81,10 @@ export const PARENTS = [
     born: "2021-03-02",
     coat: WHITE_COAT,
     eyes: BLUE_EYES,
-    photo: "/parents/kaja.jpg",
+    photo: "/parents/kaja-forest.jpg",
+    homePhoto: "/parents/kaja.jpg",
+    photoPosition: "52% 76%",
+    photoScale: 1.35,
     wide: "/parents/kaja-wide.jpg",
     tagline: "Matka miotu C",
     traits: ["Opiekuńcza", "Wesoła", "Charakterna"],
@@ -137,6 +145,8 @@ export const PARENTS = [
     coat: WHITE_COAT,
     eyes: BLUE_EYES,
     photo: "/parents/cynamon.jpg",
+    homePhoto: "/parents/cynamon-home.jpg",
+    homePhotoPosition: "45% 68%",
     wide: "/parents/cynamon-wide.jpg",
     tagline: "Najmłodszy w stadzie",
     traits: ["Energiczny", "Towarzyski", "Ciekawski"],
@@ -162,69 +172,71 @@ export const PARENTS = [
 
 export const LITTERS = [
   {
-    letter: "C",
+    letter: "A",
+    slug: "kaja-a",
     status: "current",
     sireSlug: "ozzie",
     damSlug: "kaja",
     born: "2026-07-28",
     handoverFrom: "2026-10-01",
-    photo: "/litters/c/cover.jpg",
+    photo: "/litters/kaja-a/placeholder.svg",
     intro:
       "Cztery białe szczenięta po Ozziem i Kai: trzy suczki i jeden piesek. Wszystkie są jeszcze wolne — rezerwacje przyjmujemy telefonicznie i mailowo. Pieski wyjadą do domów pomiędzy 3. a 4. miesiącem życia.",
     grownGallery: [],
     puppies: [
       {
-        slug: "ciri",
-        name: "Ciri",
+        slug: "aria",
+        name: "Aria",
         sex: "female",
         status: "free",
         coat: WHITE_COAT,
         eyes: BLUE_EYES,
-        photo: "/litters/c/ciri.jpg",
-        traits: ["Odważna", "Pierwsza do ludzi", "Szybko się uczy"],
+        photo: "/litters/kaja-a/placeholder.svg",
+        traits: ["Noworodek", "Obserwujemy", "W hodowli"],
         description:
-          "Najodważniejsza z całej czwórki. Pierwsza wychodzi do obcych, pierwsza sprawdza każdy nowy kąt i pierwsza zasypia po zabawie.",
+          "Aria dopiero się urodziła, dlatego czekamy z oficjalnym opisem charakteru i zdjęciami do pierwszej sesji.",
       },
       {
-        slug: "celeste",
-        name: "Celeste",
+        slug: "aura",
+        name: "Aura",
         sex: "female",
         status: "free",
         coat: WHITE_COAT,
         eyes: BLUE_EYES,
-        photo: "/litters/c/celeste.jpg",
-        traits: ["Spokojna", "Uważna", "Przywiązana do człowieka"],
+        photo: "/litters/kaja-a/placeholder.svg",
+        traits: ["Noworodek", "Obserwujemy", "W hodowli"],
         description:
-          "Cicha obserwatorka. Zanim wejdzie w zabawę, przygląda się z boku, a potem nie odpuszcza do końca. Bardzo mocno trzyma się ludzi.",
+          "Aura dopiero się urodziła, dlatego na opis charakteru i oficjalne zdjęcia przyjdzie jeszcze pora.",
       },
       {
-        slug: "cleo",
-        name: "Cleo",
+        slug: "asha",
+        name: "Asha",
         sex: "female",
         status: "free",
         coat: WHITE_COAT,
         eyes: BLUE_EYES,
-        photo: "/litters/c/cleo.jpg",
-        traits: ["Wesoła", "Towarzyska", "Ciekawska"],
+        photo: "/litters/kaja-a/placeholder.svg",
+        traits: ["Noworodek", "Obserwujemy", "W hodowli"],
         description:
-          "Wesoła i bardzo kontaktowa suczka. Szybko łapie nowe rzeczy, chętnie podchodzi do ludzi i trzyma się blisko rodzeństwa.",
+          "Asha dopiero się urodziła, dlatego na razie pokazujemy tylko tymczasową podkładkę zamiast zdjęcia.",
       },
       {
-        slug: "coco",
-        name: "Coco",
+        slug: "atlas",
+        name: "Atlas",
         sex: "male",
         status: "free",
         coat: WHITE_COAT,
         eyes: BLUE_EYES,
-        photo: "/litters/c/coco.jpg",
-        traits: ["Spokojny", "Wyważony", "Podobny do Ozziego"],
+        photo: "/litters/kaja-a/placeholder.svg",
+        traits: ["Noworodek", "Obserwujemy", "W hodowli"],
         description:
-          "Najspokojniejszy z rodzeństwa, bardzo podobny charakterem do Ozziego. Lubi leżeć przy nogach i patrzeć, co się dzieje.",
+          "Atlas dopiero się urodził, dlatego czekamy z oficjalnym opisem charakteru i zdjęciami do pierwszej sesji.",
       },
     ],
   },
   {
     letter: "B",
+    slug: "mia-b",
     status: "finished",
     sireSlug: "ozzie",
     damSlug: "mia",
@@ -301,6 +313,7 @@ export const LITTERS = [
   },
   {
     letter: "A",
+    slug: "mia-a",
     status: "finished",
     sireSlug: "ozzie",
     damSlug: "mia",
@@ -364,9 +377,17 @@ export function getParent(slug) {
   return PARENTS.find((parent) => parent.slug === slug) ?? null;
 }
 
-export function getLitter(letter) {
-  const target = String(letter).toUpperCase();
-  return LITTERS.find((litter) => litter.letter === target) ?? null;
+export function litterSlug(litter) {
+  return litter.slug ?? litter.letter.toLowerCase();
+}
+
+export function getLitter(slug) {
+  const target = String(slug).toLowerCase();
+  return (
+    LITTERS.find((litter) => litterSlug(litter) === target) ??
+    LITTERS.find((litter) => litter.letter.toLowerCase() === target) ??
+    null
+  );
 }
 
 export function getCurrentLitter() {

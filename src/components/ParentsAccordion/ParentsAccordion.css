@@ -104,7 +104,11 @@
   height: 100%;
   object-fit: cover;
   object-position: center 22%;
-  transform: translateX(-50%);
+  transform: translate(
+      calc(-50% + var(--parent-photo-x, 0%)),
+      var(--parent-photo-y, 0)
+    )
+    scale(var(--parent-photo-scale, 1));
 }
 
 .parents-accordion-overlay {
@@ -298,7 +302,11 @@
   height: auto;
   aspect-ratio: 16 / 10;
   object-fit: cover;
-  transform: none;
+  transform: translate(
+      var(--parent-photo-x, 0),
+      var(--parent-photo-y, 0)
+    )
+    scale(var(--parent-photo-scale, 1));
   border-radius: 0.35rem;
 }
 

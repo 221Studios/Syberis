@@ -17,14 +17,18 @@ const FEATURED_CARD_START_Y = "115%";
 const FEATURED_CARDS_DATA = [
   {
     subtitle: "Aktualny miot",
-    title: "Miot C",
-    image: "/images/featured-2.jpg",
-    href: "/mioty/c",
+    title: "Miot A",
+    image: "/litters/kaja-a/placeholder.svg",
+    href: "/mioty/kaja-a",
   },
   {
     subtitle: "Nasze psy",
     title: "Rodzice",
-    image: "/images/featured-4.jpg",
+    image: "/parents/ozzie-home.jpg",
+    imagePosition: "50% 86%",
+    imageScale: 1.8,
+    imageOffsetX: "12%",
+    imageOffsetY: "-24%",
     href: "/rodzice",
   },
   {
@@ -170,7 +174,20 @@ export default function FeaturedCards({
             {cards.map((card) => (
               <Link href={card.href} className="featured-card" key={card.title}>
                 <div className="featured-card-img">
-                  <img src={card.image} alt={card.alt ?? card.title} />
+                  <img
+                    src={card.image}
+                    alt={card.alt ?? card.title}
+                    style={
+                      card.imagePosition || card.imageScale
+                        ? {
+                            objectPosition: card.imagePosition,
+                            "--featured-card-img-scale": card.imageScale,
+                            "--featured-card-img-x": card.imageOffsetX,
+                            "--featured-card-img-y": card.imageOffsetY,
+                          }
+                        : undefined
+                    }
+                  />
                 </div>
                 <div className="featured-card-content">
                   <h6 className="subheader">{card.subtitle}</h6>

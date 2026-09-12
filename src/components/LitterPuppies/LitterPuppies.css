@@ -31,14 +31,7 @@
   border: none;
   background: transparent;
   cursor: pointer;
-  filter: saturate(0);
   will-change: width, height;
-  transition: filter 0.35s ease;
-}
-
-.litter-puppies-avatar.is-active,
-.litter-puppies-avatar:hover {
-  filter: saturate(1);
 }
 
 .litter-puppies-avatar img {
@@ -212,18 +205,21 @@
     height: auto;
     aspect-ratio: 1;
     padding: 3px;
-    filter: grayscale(1) saturate(0.15) brightness(0.78);
-    opacity: 0.72;
     transition:
-      filter 0.35s ease,
       opacity 0.35s ease,
       transform 0.35s ease;
   }
 
   .litter-puppies-avatar.is-active {
-    filter: grayscale(0) saturate(1) brightness(1);
     opacity: 1;
     transform: scale(1.025);
+  }
+
+  .litter-puppies-avatar.is-sold,
+  .litter-puppies-avatar.is-sold:hover,
+  .litter-puppies-avatar.is-sold.is-active {
+    opacity: 0.78;
+    transform: none;
   }
 
   .litter-puppies-names {

@@ -24,7 +24,9 @@ export const CONTACT = {
 };
 
 const WHITE_COAT = "Białe";
+const CINNAMON_COAT = "Biało-cynamonowe";
 const BLUE_EYES = "Niebieskie";
+const BROWN_EYES = "Brązowe";
 
 export const STATUS_LABEL = {
   free: "Wolny",
@@ -43,7 +45,7 @@ export const PARENTS = [
     name: "Ozzie",
     role: "Ojciec",
     sex: "male",
-    born: "2019-05-14",
+    born: "2024-01",
     coat: WHITE_COAT,
     eyes: BLUE_EYES,
     photo: "/parents/ozzie.jpg",
@@ -54,17 +56,11 @@ export const PARENTS = [
     homePhotoOffsetY: "-24%",
     wide: "/parents/ozzie-wide.jpg",
     tagline: "Spokojny szef stada",
-    traits: ["Łagodny", "Wytrzymały", "Ufny wobec ludzi"],
     facts: [
       { label: "Rola w hodowli", value: "Ojciec wszystkich miotów" },
       { label: "Waga", value: "ok. 27 kg" },
       { label: "Umaszczenie", value: "Białe, bez odmian" },
       { label: "Oczy", value: "Niebieskie" },
-      { label: "Charakter", value: "Spokojny, nie wchodzi w konflikty" },
-    ],
-    bio: [
-      "Ozzie jest ojcem wszystkich naszych miotów. Duży, biały, z bardzo spokojną głową — nie wchodzi w konflikty i pierwszy podchodzi do gości.",
-      "W domu jest cieniem, w lesie silnikiem. Potrafi ciągnąć rowerzystę pół dnia i wrócić po więcej. Ten spokój przechodzi na szczeniaki: po Ozziem rodzą się psy, które da się wszędzie zabrać.",
     ],
     photos: [
       "/parents/ozzie-wide.jpg",
@@ -78,26 +74,20 @@ export const PARENTS = [
     name: "Kaja",
     role: "Matka miotu C",
     sex: "female",
-    born: "2021-03-02",
+    born: "2021-06",
     coat: WHITE_COAT,
-    eyes: BLUE_EYES,
+    eyes: BROWN_EYES,
     photo: "/parents/kaja-forest.jpg",
     homePhoto: "/parents/kaja.jpg",
     photoPosition: "52% 76%",
     photoScale: 1.35,
     wide: "/parents/kaja-wide.jpg",
     tagline: "Matka miotu C",
-    traits: ["Opiekuńcza", "Wesoła", "Charakterna"],
     facts: [
       { label: "Rola w hodowli", value: "Matka miotu C" },
       { label: "Waga", value: "ok. 22 kg" },
       { label: "Umaszczenie", value: "Białe, bez odmian" },
-      { label: "Oczy", value: "Niebieskie" },
-      { label: "Charakter", value: "Opiekuńcza, ma swoje zdanie" },
-    ],
-    bio: [
-      "Kaja jest matką aktualnego miotu C. Bardzo opiekuńcza, przy szczeniakach cierpliwa do granic — pozwala im na wszystko i sama pilnuje, żeby nikt nie został z tyłu.",
-      "Wobec ludzi otwarta i wesoła, ale ma swoje zdanie. Jak jej się coś nie podoba, mówi to bardzo wyraźnie. Szczeniaki po Kai są śmiałe i szybko przywiązują się do człowieka.",
+      { label: "Oczy", value: "Brązowe" },
     ],
     photos: [
       "/parents/kaja-wide.jpg",
@@ -111,23 +101,17 @@ export const PARENTS = [
     name: "Mia",
     role: "Matka miotów A i B",
     sex: "female",
-    born: "2020-06-21",
+    born: "2020-03",
     coat: WHITE_COAT,
     eyes: BLUE_EYES,
     photo: "/parents/mia.jpg",
     wide: "/parents/mia-wide.jpg",
     tagline: "Matka miotów A i B",
-    traits: ["Niezależna", "Szybka", "Spokojna przy dzieciach"],
     facts: [
       { label: "Rola w hodowli", value: "Matka miotów A i B" },
       { label: "Waga", value: "ok. 21 kg" },
       { label: "Umaszczenie", value: "Białe, bez odmian" },
       { label: "Oczy", value: "Niebieskie" },
-      { label: "Charakter", value: "Niezależna, bardzo dobra przy dzieciach" },
-    ],
-    bio: [
-      "Mia dała nam mioty A i B. Drobniejsza od Kai, szybsza i bardziej niezależna — potrafi przez godzinę patrzeć w las, zamiast biegać za piłką.",
-      "Świetnie znosi dzieci i hałas. Szczeniaki po niej wychodzą wyjątkowo pewne siebie i bardzo dobrze radzą sobie w domach z małymi dziećmi.",
     ],
     photos: [
       "/parents/mia-wide.jpg",
@@ -141,25 +125,19 @@ export const PARENTS = [
     name: "Cynamon",
     role: "Najmłodszy w stadzie",
     sex: "male",
-    born: "2023-01-08",
-    coat: WHITE_COAT,
+    born: "2025-11",
+    coat: CINNAMON_COAT,
     eyes: BLUE_EYES,
     photo: "/parents/cynamon.jpg",
     homePhoto: "/parents/cynamon-home.jpg",
     homePhotoPosition: "45% 68%",
     wide: "/parents/cynamon-wide.jpg",
     tagline: "Najmłodszy w stadzie",
-    traits: ["Energiczny", "Towarzyski", "Ciekawski"],
     facts: [
       { label: "Rola w hodowli", value: "Jeszcze bez miotu" },
       { label: "Waga", value: "ok. 24 kg" },
-      { label: "Umaszczenie", value: "Białe, bez odmian" },
+      { label: "Umaszczenie", value: "Biało-cynamonowe" },
       { label: "Oczy", value: "Niebieskie" },
-      { label: "Charakter", value: "Energiczny, cień Ozziego" },
-    ],
-    bio: [
-      "Cynamon jest najmłodszy i najbardziej rozbrykany z naszej czwórki. Jeszcze nie ma miotu — na razie po prostu rośnie i uczy się bycia psem.",
-      "Cień Ozziego. Robi wszystko to, co starszy pies, tylko dwa razy głośniej. Jeśli szukasz psa, który nigdy nie ma dość, to jest jego typ charakteru.",
     ],
     photos: [
       "/parents/cynamon-wide.jpg",
@@ -177,24 +155,24 @@ export const LITTERS = [
     status: "current",
     sireSlug: "ozzie",
     damSlug: "kaja",
-    born: "2026-07-28",
-    handoverFrom: "2026-10-01",
-    photo: "/litters/kaja-a/placeholder.svg",
+    born: "2026-07-15",
+    handoverFrom: "2026-09-15",
+    photo: "/litters/kaja-a/cover.jpg",
     intro:
-      "Cztery białe szczenięta po Ozziem i Kai: trzy suczki i jeden piesek. Wszystkie są jeszcze wolne — rezerwacje przyjmujemy telefonicznie i mailowo. Pieski wyjadą do domów pomiędzy 3. a 4. miesiącem życia.",
+      "Cztery białe szczenięta po Ozziem i Kai: trzy suczki i jeden piesek. Trzy są jeszcze wolne — rezerwacje przyjmujemy telefonicznie i mailowo. Pieski wyjadą do domów pomiędzy 2. a 4. miesiącem życia.",
     grownGallery: [],
     puppies: [
       {
         slug: "aria",
         name: "Aria",
         sex: "female",
-        status: "free",
+        status: "sold",
         coat: WHITE_COAT,
         eyes: BLUE_EYES,
-        photo: "/litters/kaja-a/placeholder.svg",
-        traits: ["Noworodek", "Obserwujemy", "W hodowli"],
+        photo: "/litters/kaja-a/aria.jpg",
+        traits: ["W nowym domu"],
         description:
-          "Aria dopiero się urodziła, dlatego czekamy z oficjalnym opisem charakteru i zdjęciami do pierwszej sesji.",
+          "Aria ma już nowy dom. Zostawiamy jej zdjęcie w miocie na pamiątkę.",
       },
       {
         slug: "aura",
@@ -203,10 +181,10 @@ export const LITTERS = [
         status: "free",
         coat: WHITE_COAT,
         eyes: BLUE_EYES,
-        photo: "/litters/kaja-a/placeholder.svg",
-        traits: ["Noworodek", "Obserwujemy", "W hodowli"],
+        photo: "/litters/kaja-a/aura.jpg",
+        traits: ["Suczka", "W hodowli"],
         description:
-          "Aura dopiero się urodziła, dlatego na opis charakteru i oficjalne zdjęcia przyjdzie jeszcze pora.",
+          "Aura jest jeszcze wolna. Rezerwacje przyjmujemy telefonicznie i mailowo.",
       },
       {
         slug: "asha",
@@ -215,10 +193,10 @@ export const LITTERS = [
         status: "free",
         coat: WHITE_COAT,
         eyes: BLUE_EYES,
-        photo: "/litters/kaja-a/placeholder.svg",
-        traits: ["Noworodek", "Obserwujemy", "W hodowli"],
+        photo: "/litters/kaja-a/asha.jpg",
+        traits: ["Suczka", "W hodowli"],
         description:
-          "Asha dopiero się urodziła, dlatego na razie pokazujemy tylko tymczasową podkładkę zamiast zdjęcia.",
+          "Asha jest jeszcze wolna. Rezerwacje przyjmujemy telefonicznie i mailowo.",
       },
       {
         slug: "atlas",
@@ -227,10 +205,10 @@ export const LITTERS = [
         status: "free",
         coat: WHITE_COAT,
         eyes: BLUE_EYES,
-        photo: "/litters/kaja-a/placeholder.svg",
-        traits: ["Noworodek", "Obserwujemy", "W hodowli"],
+        photo: "/litters/kaja-a/atlas.jpg",
+        traits: ["Piesek", "W hodowli"],
         description:
-          "Atlas dopiero się urodził, dlatego czekamy z oficjalnym opisem charakteru i zdjęciami do pierwszej sesji.",
+          "Atlas jest jeszcze wolny. Rezerwacje przyjmujemy telefonicznie i mailowo.",
       },
     ],
   },
@@ -257,6 +235,7 @@ export const LITTERS = [
         coat: WHITE_COAT,
         eyes: BLUE_EYES,
         photo: "/litters/b/balto.jpg",
+        photoPosition: "50% 18%",
         traits: ["Największy z miotu", "Wytrzymały"],
         description:
           "Największy z miotu B, dziś pies do biegania z właścicielem po górach.",
@@ -404,8 +383,31 @@ export function countByStatus(puppies, status) {
   return puppies.filter((puppy) => puppy.status === status).length;
 }
 
+/** Pre-baked B&W asset — avoids live CSS `filter: grayscale()` on large photos. */
+export function mutedPhoto(src) {
+  if (!src || typeof src !== "string") return src;
+  if (src.includes("-muted.")) return src;
+  return src.replace(/(\.[a-z0-9]+)$/i, "-muted$1");
+}
+
+const MONTHS_PL = [
+  "styczeń",
+  "luty",
+  "marzec",
+  "kwiecień",
+  "maj",
+  "czerwiec",
+  "lipiec",
+  "sierpień",
+  "wrzesień",
+  "październik",
+  "listopad",
+  "grudzień",
+];
+
 export function formatDate(iso) {
   const [year, month, day] = iso.split("-");
+  if (!day) return `${MONTHS_PL[Number(month) - 1]} ${year}`;
   return `${day}.${month}.${year}`;
 }
 

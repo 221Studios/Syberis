@@ -1,13 +1,19 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FiVolume2, FiVolumeX } from "react-icons/fi";
 
 import "./MusicToggle.css";
 
+const DEFAULT_VOLUME = 0.1;
+
 export default function MusicToggle() {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    if (audioRef.current) audioRef.current.volume = DEFAULT_VOLUME;
+  }, []);
 
   const handleToggle = () => {
     const audio = audioRef.current;
@@ -17,6 +23,7 @@ export default function MusicToggle() {
     setIsPlaying(next);
 
     if (next) {
+      audio.volume = DEFAULT_VOLUME;
       audio.play();
     } else {
       audio.pause();

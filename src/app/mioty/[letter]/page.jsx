@@ -11,6 +11,7 @@ import {
   getParent,
   litterSlug,
   litterTitle,
+  mutedPhoto,
 } from "@/data/kennel";
 
 import "@/components/ParentProfile/ParentProfile.css";
@@ -52,13 +53,13 @@ export default async function LitterPage({ params }) {
     : "Wszystkie w nowych domach";
 
   return (
-    <main className="litter-page">
+    <main className={`litter-page${isCurrent ? "" : " litter-page--finished"}`}>
       <section className="report-hero litter-hero">
         <div className="container">
           <div className="report-hero-grid">
             <div className="report-hero-image">
               <img
-                src={litter.photo}
+                src={isCurrent ? litter.photo : mutedPhoto(litter.photo)}
                 alt={`${litterTitle(litter.letter)} — szczenięta Syberis`}
               />
             </div>
@@ -95,7 +96,15 @@ export default async function LitterPage({ params }) {
                       href="/rodzice"
                       className="litter-parent-card"
                     >
-                      <img src={sire.photo} alt={sire.name} />
+                      <img
+                        src={sire.photo}
+                        alt={sire.name}
+                        style={
+                          sire.photoPosition
+                            ? { objectPosition: sire.photoPosition }
+                            : undefined
+                        }
+                      />
                       <div>
                         <p className="mono sm">{sire.role}</p>
                         <h6>{sire.name}</h6>
@@ -108,7 +117,15 @@ export default async function LitterPage({ params }) {
                       href="/rodzice"
                       className="litter-parent-card"
                     >
-                      <img src={dam.photo} alt={dam.name} />
+                      <img
+                        src={dam.photo}
+                        alt={dam.name}
+                        style={
+                          dam.photoPosition
+                            ? { objectPosition: dam.photoPosition }
+                            : undefined
+                        }
+                      />
                       <div>
                         <p className="mono sm">Matka</p>
                         <h6>{dam.name}</h6>
@@ -118,21 +135,6 @@ export default async function LitterPage({ params }) {
                       </div>
                     </Link>
                   </div>
-                </div>
-              </div>
-
-              <div className="report-hero-meta">
-                <div className="report-hero-meta-left">
-                  <Copy variant="flicker" delay={0.85} animateOnScroll={false}>
-                    <p className="mono sm">
-                      {sire.name} × {dam.name}
-                    </p>
-                  </Copy>
-                </div>
-                <div className="report-hero-meta-right">
-                  <Copy variant="flicker" delay={0.85} animateOnScroll={false}>
-                    <p className="mono sm">ur. {formatDate(litter.born)}</p>
-                  </Copy>
                 </div>
               </div>
             </div>
@@ -179,7 +181,7 @@ export default async function LitterPage({ params }) {
               {litter.grownGallery.map((src) => (
                 <div className="litter-grown-item" key={src}>
                   <img
-                    src={src}
+                    src={isCurrent ? src : mutedPhoto(src)}
                     alt={`Dorosły pies z ${litterTitle(litter.letter)}`}
                   />
                 </div>

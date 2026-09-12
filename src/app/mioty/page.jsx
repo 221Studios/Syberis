@@ -6,6 +6,7 @@ import {
   getParent,
   litterSlug,
   litterTitle,
+  mutedPhoto,
 } from "@/data/kennel";
 
 export const metadata = {
@@ -21,7 +22,7 @@ function litterSlide(litter) {
   const isCurrent = litter.status === "current";
 
   return {
-    image: litter.photo,
+    image: isCurrent ? litter.photo : mutedPhoto(litter.photo),
     meta: `Urodzone ${formatDate(litter.born)}`,
     kicker: isCurrent ? "Aktualny miot" : "Miot zakończony",
     title: litterTitle(litter.letter),

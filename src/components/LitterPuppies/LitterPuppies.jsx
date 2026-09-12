@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
-import { SEX_LABEL, STATUS_LABEL } from "@/data/kennel";
+import { SEX_LABEL, STATUS_LABEL, mutedPhoto } from "@/data/kennel";
 
 import "./LitterPuppies.css";
 
@@ -238,7 +238,7 @@ export default function LitterPuppies({
             type="button"
             className={`litter-puppies-avatar${
               activeIndex === index ? " is-active" : ""
-            }`}
+            }${puppy.status === "sold" ? " is-sold" : ""}`}
             key={puppy.slug}
             ref={(el) => {
               avatarRefs.current[index] = el;
@@ -247,7 +247,17 @@ export default function LitterPuppies({
             aria-label={puppy.name}
             aria-pressed={activeIndex === index}
           >
-            <img src={puppy.photo} alt={puppy.name} />
+            <img
+              src={
+                puppy.status === "sold" ? mutedPhoto(puppy.photo) : puppy.photo
+              }
+              alt={puppy.name}
+              style={
+                puppy.photoPosition
+                  ? { objectPosition: puppy.photoPosition }
+                  : undefined
+              }
+            />
           </button>
         ))}
       </div>

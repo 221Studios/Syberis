@@ -176,10 +176,11 @@ export default function ParentsAccordion({ parents }) {
                 <div className="parents-accordion-overlay" />
 
                 <div className="parents-accordion-inner">
+                  <span className="parents-accordion-number mono">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
                   <div className="parents-accordion-content">
-                    <span className="parents-accordion-number mono">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
                     <p className="parents-accordion-title">{parent.name}</p>
                     <p className="parents-accordion-role mono">
                       {parent.role}
@@ -199,20 +200,6 @@ export default function ParentsAccordion({ parents }) {
                     <p className="mono parents-accordion-meta">
                       {parent.coat} · oczy {parent.eyes.toLowerCase()}
                     </p>
-
-                    {parent.bio?.map((paragraph) => (
-                      <p className="parents-accordion-bio" key={paragraph}>
-                        {paragraph}
-                      </p>
-                    ))}
-
-                    {parent.traits?.length ? (
-                      <ul className="parents-accordion-traits">
-                        {parent.traits.map((trait) => (
-                          <li key={trait}>{trait}</li>
-                        ))}
-                      </ul>
-                    ) : null}
                   </div>
                 </div>
               </div>

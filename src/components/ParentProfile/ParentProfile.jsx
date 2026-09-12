@@ -242,7 +242,7 @@ export default function ParentProfile({ parent, litters }) {
                 <h5 className="v2">Charakter</h5>
               </Copy>
 
-              {parent.bio.map((paragraph) => (
+              {parent.bio?.map((paragraph) => (
                 <Copy splitType="lines" key={paragraph.slice(0, 24)}>
                   <p className="lg">{paragraph}</p>
                 </Copy>
@@ -319,9 +319,11 @@ export default function ParentProfile({ parent, litters }) {
 
               <Copy splitType="lines">
                 <p className="lg">
-                  {parent.traits.join(" · ")}. Chętnie opowiemy więcej o
-                  charakterze rodziców i pokażemy je na spotkaniu przed
-                  odbiorem szczeniaka.
+                  {parent.traits?.length
+                    ? `${parent.traits.join(" · ")}. `
+                    : ""}
+                  Chętnie opowiemy więcej o charakterze rodziców i pokażemy je
+                  na spotkaniu przed odbiorem szczeniaka.
                 </p>
               </Copy>
 

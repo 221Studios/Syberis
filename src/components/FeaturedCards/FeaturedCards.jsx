@@ -18,7 +18,7 @@ const FEATURED_CARDS_DATA = [
   {
     subtitle: "Aktualny miot",
     title: "Miot A",
-    image: "/litters/kaja-a/placeholder.svg",
+    image: "/litters/kaja-a/cover.jpg",
     href: "/mioty/kaja-a",
   },
   {
@@ -40,7 +40,7 @@ const FEATURED_CARDS_DATA = [
   {
     subtitle: "Poprzednie mioty",
     title: "Miot A i B",
-    image: "/images/featured-3.jpg",
+    image: "/litters/b/cover-muted.jpg",
     href: "/mioty",
   },
   {
@@ -172,7 +172,11 @@ export default function FeaturedCards({
             ref={featuredCardsContainerRef}
           >
             {cards.map((card) => (
-              <Link href={card.href} className="featured-card" key={card.title}>
+              <Link
+                href={card.href}
+                className="featured-card"
+                key={card.title}
+              >
                 <div className="featured-card-img">
                   <img
                     src={card.image}

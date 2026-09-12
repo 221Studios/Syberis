@@ -192,7 +192,7 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <a className="footer-bottom-site" href="/">
-            <p className="mono sm">syberis.fly.dev</p>
+            <p className="mono sm">Syberis</p>
           </a>
           <p className="mono sm footer-bottom-year">&copy; 2026</p>
           <p className="mono sm footer-bottom-credit">by 221Studios</p>

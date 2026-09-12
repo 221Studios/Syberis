@@ -83,10 +83,11 @@ export default function FeaturedCards({
         featuredCardsTrigger = ScrollTrigger.create({
           trigger: section,
           start: "top top",
-          end: `+=${window.innerHeight * totalCards}px`,
+          end: () => `+=${window.innerHeight * totalCards}px`,
           pin: true,
           pinSpacing: true,
           scrub: true,
+          invalidateOnRefresh: true,
           onUpdate: (self) => {
             const progress = self.progress * totalCards;
 
@@ -121,18 +122,26 @@ export default function FeaturedCards({
         featuredCardsTrigger = null;
       }
 
-      setup();
+      // Wait for async pins above (Showreel SVG decode) before measuring start.
+      const bootTimer = window.setTimeout(() => {
+        setup();
+        ScrollTrigger.refresh();
+      }, 350);
 
       let featuredCardsResizeTimer;
       const handleFeaturedCardsResize = () => {
         clearTimeout(featuredCardsResizeTimer);
-        featuredCardsResizeTimer = setTimeout(setup, 250);
+        featuredCardsResizeTimer = setTimeout(() => {
+          setup();
+          ScrollTrigger.refresh();
+        }, 250);
       };
 
       window.addEventListener("resize", handleFeaturedCardsResize);
 
       return () => {
         cleanup();
+        clearTimeout(bootTimer);
         clearTimeout(featuredCardsResizeTimer);
         window.removeEventListener("resize", handleFeaturedCardsResize);
       };

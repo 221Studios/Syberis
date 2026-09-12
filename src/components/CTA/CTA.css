@@ -4,6 +4,7 @@
   min-height: auto;
   margin-top: -0.75rem;
   padding: 0.75rem;
+  overflow-x: clip;
   background-color: var(--base-200);
 }
 
@@ -14,6 +15,7 @@
   width: 100%;
   min-height: auto;
   padding: 1.5rem;
+  overflow-x: clip;
   border-radius: 0.75rem;
   background-color: var(--base-400);
 }
@@ -70,7 +72,7 @@
   align-items: center;
   width: 100%;
   height: min(28vw, 250px);
-  overflow: visible;
+  overflow: hidden;
 }
 
 #cta-compass-svg {
@@ -188,7 +190,7 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.75rem;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .cta-service-card {

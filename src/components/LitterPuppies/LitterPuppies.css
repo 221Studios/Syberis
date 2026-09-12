@@ -114,6 +114,7 @@
   max-width: 36rem;
   font-size: clamp(1.15rem, 1.8vw, 1.45rem);
   line-height: 1.35;
+  white-space: pre-line;
 }
 
 .litter-puppies-detail-hint {

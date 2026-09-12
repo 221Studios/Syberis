@@ -34,7 +34,15 @@ export default function Showreel() {
       let showreelTrigger;
       let showreelMarqueeTween;
 
-      function setup() {
+      function cleanup() {
+        showreelTrigger?.kill();
+        showreelHeaderFlip?.kill();
+        showreelVisualFlip?.kill();
+        showreelMarqueeFlip?.kill();
+        showreelMarqueeTween?.kill();
+      }
+
+      async function setup() {
         cleanup();
 
         headers.forEach((h) => h.classList.remove("end-state"));
@@ -48,6 +56,16 @@ export default function Showreel() {
         visual.classList.toggle(
           "showreel-visual--compact",
           window.innerWidth < 1000,
+        );
+
+        // Measure Flip only after header SVGs have a real layout size.
+        await Promise.all(
+          headers.map((h) => {
+            const img = h.querySelector("img");
+            if (!img) return Promise.resolve();
+            if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+            return img.decode().catch(() => {});
+          }),
         );
 
         // eslint-disable-next-line no-unused-expressions
@@ -120,20 +138,18 @@ export default function Showreel() {
             }`,
           pin: true,
           pinSpacing: true,
+          invalidateOnRefresh: true,
           onUpdate: (self) => {
             showreelHeaderFlip.progress(self.progress);
             showreelVisualFlip.progress(self.progress);
             showreelMarqueeFlip.progress(self.progress);
           },
         });
-      }
 
-      function cleanup() {
-        showreelTrigger?.kill();
-        showreelHeaderFlip?.kill();
-        showreelVisualFlip?.kill();
-        showreelMarqueeFlip?.kill();
-        showreelMarqueeTween?.kill();
+        // Showreel pin is created after async SVG decode — refresh so later
+        // pins (FeaturedCards) recalculate start and don't overlay CTA early.
+        ScrollTrigger.refresh();
+        requestAnimationFrame(() => ScrollTrigger.refresh());
       }
 
       setup();
@@ -141,7 +157,9 @@ export default function Showreel() {
       let showreelResizeTimer;
       const handleShowreelResize = () => {
         clearTimeout(showreelResizeTimer);
-        showreelResizeTimer = setTimeout(setup, 250);
+        showreelResizeTimer = setTimeout(() => {
+          setup();
+        }, 250);
       };
 
       window.addEventListener("resize", handleShowreelResize);

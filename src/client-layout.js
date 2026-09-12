@@ -65,6 +65,16 @@ function LenisScrollSync() {
     return () => window.clearTimeout(timer);
   }, [pathname]);
 
+  useEffect(() => {
+    const onLoad = () => ScrollTrigger.refresh();
+    if (document.readyState === "complete") {
+      const t = window.setTimeout(onLoad, 100);
+      return () => window.clearTimeout(t);
+    }
+    window.addEventListener("load", onLoad);
+    return () => window.removeEventListener("load", onLoad);
+  }, []);
+
   return null;
 }
 

@@ -23,13 +23,16 @@ gsap.registerPlugin(ScrollTrigger);
 const CTA_SVG_NS = "http://www.w3.org/2000/svg";
 const CTA_CENTER = 300;
 const CTA_CARDINAL_RADIUS = 170;
-const PROXIMITY_RADIUS = 500;
-const PUSH_FORCE = 10;
-const TILT_AMOUNT = 0.1;
-const NEIGHBOR_INFLUENCE = 0.2;
+const PROXIMITY_RADIUS = 220;
+const PUSH_FORCE = 6;
+const TILT_AMOUNT = 0.08;
+const NEIGHBOR_INFLUENCE = 0.15;
 const SPRING_STIFFNESS = 0.05;
 const BOUNCE_FRICTION = 0.85;
 const CURSOR_SMOOTHING = 0.75;
+/** Keep transforms inside the CTA so document width/height never grow (scrollbar flash). */
+const MAX_CARD_SHIFT = 36;
+const MAX_CARD_TILT = 4;
 
 const CTA_CARDINALS = [
   { label: "N", angle: -90 },
@@ -347,6 +350,10 @@ export default function CTA() {
         card.x += card.vx;
         card.y += card.vy;
         card.r += card.vr;
+
+        card.x = Math.max(-MAX_CARD_SHIFT, Math.min(MAX_CARD_SHIFT, card.x));
+        card.y = Math.max(-MAX_CARD_SHIFT, Math.min(MAX_CARD_SHIFT, card.y));
+        card.r = Math.max(-MAX_CARD_TILT, Math.min(MAX_CARD_TILT, card.r));
 
         gsap.set(card.el, { x: card.x, y: card.y, rotation: card.r });
       });

@@ -122,11 +122,28 @@ export default function FeaturedCards({
         featuredCardsTrigger = null;
       }
 
-      // Wait for async pins above (Showreel SVG decode) before measuring start.
-      const bootTimer = window.setTimeout(() => {
+      // Showreel creates its pin after async SVG decode. Measuring FeaturedCards
+      // start before that spacer exists pins "Poznaj mioty" over CTA / Znajdź nas.
+      let cancelled = false;
+      let bootRaf = 0;
+
+      function showreelPinReady() {
+        const showreel = document.querySelector(".showreel");
+        if (!showreel) return true;
+        return Boolean(showreel.closest(".pin-spacer"));
+      }
+
+      function boot(attempt = 0) {
+        if (cancelled) return;
+        if (!showreelPinReady() && attempt < 90) {
+          bootRaf = window.requestAnimationFrame(() => boot(attempt + 1));
+          return;
+        }
         setup();
         ScrollTrigger.refresh();
-      }, 350);
+      }
+
+      bootRaf = window.requestAnimationFrame(() => boot(0));
 
       let featuredCardsResizeTimer;
       const handleFeaturedCardsResize = () => {
@@ -140,8 +157,9 @@ export default function FeaturedCards({
       window.addEventListener("resize", handleFeaturedCardsResize);
 
       return () => {
+        cancelled = true;
         cleanup();
-        clearTimeout(bootTimer);
+        cancelAnimationFrame(bootRaf);
         clearTimeout(featuredCardsResizeTimer);
         window.removeEventListener("resize", handleFeaturedCardsResize);
       };

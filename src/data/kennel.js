@@ -45,10 +45,11 @@ export const PARENTS = [
     name: "Ozzie",
     role: "Ojciec",
     sex: "male",
-    born: "2024-01",
+    born: "2023-12-14",
     coat: WHITE_COAT,
     eyes: BLUE_EYES,
     photo: "/parents/ozzie.jpg",
+    photoPosition: "50% 58%",
     homePhoto: "/parents/ozzie-home.jpg",
     homePhotoPosition: "50% 86%",
     homePhotoScale: 1.8,
@@ -74,7 +75,7 @@ export const PARENTS = [
     name: "Kaja",
     role: "Matka miotu C",
     sex: "female",
-    born: "2021-06",
+    born: "2023-05-22",
     coat: WHITE_COAT,
     eyes: BROWN_EYES,
     photo: "/parents/kaja-forest.jpg",
@@ -85,7 +86,7 @@ export const PARENTS = [
     tagline: "Matka miotu C",
     facts: [
       { label: "Rola w hodowli", value: "Matka miotu C" },
-      { label: "Waga", value: "ok. 22 kg" },
+      { label: "Waga", value: "ok. 27 kg" },
       { label: "Umaszczenie", value: "Białe, bez odmian" },
       { label: "Oczy", value: "Brązowe" },
     ],
@@ -101,7 +102,7 @@ export const PARENTS = [
     name: "Mia",
     role: "Matka miotów A i B",
     sex: "female",
-    born: "2020-03",
+    born: "2020-04-29",
     coat: WHITE_COAT,
     eyes: BLUE_EYES,
     photo: "/parents/mia.jpg",
@@ -109,7 +110,7 @@ export const PARENTS = [
     tagline: "Matka miotów A i B",
     facts: [
       { label: "Rola w hodowli", value: "Matka miotów A i B" },
-      { label: "Waga", value: "ok. 21 kg" },
+      { label: "Waga", value: "ok. 26 kg" },
       { label: "Umaszczenie", value: "Białe, bez odmian" },
       { label: "Oczy", value: "Niebieskie" },
     ],
@@ -405,10 +406,26 @@ const MONTHS_PL = [
   "grudzień",
 ];
 
+const MONTHS_PL_GENITIVE = [
+  "stycznia",
+  "lutego",
+  "marca",
+  "kwietnia",
+  "maja",
+  "czerwca",
+  "lipca",
+  "sierpnia",
+  "września",
+  "października",
+  "listopada",
+  "grudnia",
+];
+
 export function formatDate(iso) {
   const [year, month, day] = iso.split("-");
-  if (!day) return `${MONTHS_PL[Number(month) - 1]} ${year}`;
-  return `${day}.${month}.${year}`;
+  const monthIndex = Number(month) - 1;
+  if (!day) return `${MONTHS_PL[monthIndex]} ${year}`;
+  return `${Number(day)} ${MONTHS_PL_GENITIVE[monthIndex]} ${year}`;
 }
 
 export function litterTitle(letter) {

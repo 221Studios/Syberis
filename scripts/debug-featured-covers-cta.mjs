@@ -12,7 +12,14 @@ await page.evaluate(() => {
   document.documentElement.classList.remove("is-intro");
   document.querySelector(".preloader")?.remove();
 });
-await page.waitForTimeout(2000);
+// Wait until Showreel + FeaturedCards pin spacers exist (async SVG decode).
+await page.waitForFunction(
+  () =>
+    document.querySelectorAll(".pin-spacer").length >= 2 ||
+    window.innerWidth < 1000,
+  { timeout: 15000 },
+);
+await page.waitForTimeout(400);
 
 const result = await page.evaluate(async () => {
   const cta = document.querySelector(".cta");
@@ -41,6 +48,7 @@ const result = await page.evaluate(async () => {
     ctaBottom: Math.round(cr.bottom),
     featTop: Math.round(fr.top),
     featPos: cs.position,
+    pinSpacers: document.querySelectorAll(".pin-spacer").length,
   };
 });
 

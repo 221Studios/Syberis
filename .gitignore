@@ -4,3 +4,7 @@ out
 .DS_Store
 *.log
 .env*.local
+.venv/
+venv/
+__pycache__/
+.idea/

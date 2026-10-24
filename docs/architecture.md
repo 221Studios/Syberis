@@ -6,7 +6,7 @@ Syberis is a server-rendered and statically generated Next.js App Router site. R
 flowchart TD
   Visitor[Visitor]
   Routes[Next.js App Router<br/>/, /mioty, /rodzice, /galeria, /kontakt]
-  LitterRoute[/mioty/[letter]]
+  LitterRoute["/mioty/[letter]"]
   Data[src/data/kennel.js<br/>kennel, parents, litters, puppies]
   Contact[src/lib/contact.js<br/>phone and email links]
   Features[Features<br/>home, litters, parents, gallery, contact]
@@ -16,11 +16,13 @@ flowchart TD
   Output[Next.js standalone output]
 
   Visitor --> Routes
-  Routes --> Data
-  Routes --> Contact
   Routes --> Features
-  Features --> Shared
+  Routes --> LitterRoute
   LitterRoute --> Data
+  LitterRoute --> Features
+  Features --> Data
+  Features --> Contact
+  Features --> Shared
   Features --> Motion
   Features --> Assets
   Routes --> Output

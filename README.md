@@ -40,7 +40,7 @@ Syberis brings the kennel's story, dogs, current and past litters, photo gallery
 Requirements: Node.js 20.9 or newer and npm.
 
 ```bash
-git clone https://github.com/n3xus47/Syberis.git syberis
+git clone https://github.com/221Studios/Syberis.git syberis
 cd syberis
 npm ci
 npm run dev

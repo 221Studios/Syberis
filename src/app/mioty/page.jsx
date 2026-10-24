@@ -1,4 +1,4 @@
-import Deck from "@/components/Deck/Deck";
+import Deck from "@/features/litters/Deck/Deck";
 import {
   LITTERS,
   countByStatus,

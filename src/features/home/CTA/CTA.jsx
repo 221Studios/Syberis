@@ -13,8 +13,8 @@ import {
   FiMessageCircle,
   FiPackage,
 } from "react-icons/fi";
-import Button from "../Button/Button";
-import Copy from "../Copy/Copy";
+import Button from "@/shared/ui/Button/Button";
+import Copy from "@/shared/ui/Copy/Copy";
 import { CONTACT, KENNEL } from "@/data/kennel";
 
 import "./CTA.css";

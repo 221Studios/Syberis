@@ -5,8 +5,8 @@ import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import Button from "../Button/Button";
-import Copy from "../Copy/Copy";
+import Button from "@/shared/ui/Button/Button";
+import Copy from "@/shared/ui/Copy/Copy";
 
 import "./FeaturedCards.css";
 

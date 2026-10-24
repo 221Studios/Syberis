@@ -5,7 +5,7 @@ import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import Copy from "../Copy/Copy";
+import Copy from "@/shared/ui/Copy/Copy";
 import ScrollVideo from "../ScrollVideo/ScrollVideo";
 import { PARENTS } from "@/data/kennel";
 

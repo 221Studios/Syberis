@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 import { ReactLenis, useLenis } from "lenis/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
-import Menu from "./components/Menu/Menu";
-import Footer from "./components/Footer/Footer";
-import MusicToggle from "./components/MusicToggle/MusicToggle";
+import Menu from "./shared/layout/Menu/Menu";
+import Footer from "./shared/layout/Footer/Footer";
+import MusicToggle from "./shared/layout/MusicToggle/MusicToggle";
 import TransitionProvider from "./providers/TransitionProvider";
 
 gsap.registerPlugin(ScrollTrigger);

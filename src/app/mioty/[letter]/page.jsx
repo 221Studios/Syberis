@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FiArrowRight } from "react-icons/fi";
-import LitterPuppies from "@/components/LitterPuppies/LitterPuppies";
-import Button from "@/components/Button/Button";
-import Copy from "@/components/Copy/Copy";
+import LitterPuppies from "@/features/litters/LitterPuppies/LitterPuppies";
+import Button from "@/shared/ui/Button/Button";
+import Copy from "@/shared/ui/Copy/Copy";
 import {
   LITTERS,
   formatDate,
@@ -14,7 +14,7 @@ import {
   mutedPhoto,
 } from "@/data/kennel";
 
-import "@/components/ParentProfile/ParentProfile.css";
+import "@/features/parents/ParentProfile/ParentProfile.css";
 import "./litter.css";
 
 export function generateStaticParams() {

@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { SEX_LABEL, formatDate } from "@/data/kennel";
 
-import Copy from "@/components/Copy/Copy";
+import Copy from "@/shared/ui/Copy/Copy";
 
 import "./ParentsAccordion.css";
 

@@ -3,12 +3,12 @@
 import Preloader, {
   isInitialLoad,
   INTRO_DURATION,
-} from "@/components/Preloader/Preloader";
-import Showreel from "@/components/Showreel/Showreel";
-import About from "@/components/About/About";
-import FeaturedCards from "@/components/FeaturedCards/FeaturedCards";
-import CTA from "@/components/CTA/CTA";
-import Copy from "@/components/Copy/Copy";
+} from "@/shared/layout/Preloader/Preloader";
+import Showreel from "@/features/home/Showreel/Showreel";
+import About from "@/features/home/About/About";
+import FeaturedCards from "@/features/home/FeaturedCards/FeaturedCards";
+import CTA from "@/features/home/CTA/CTA";
+import Copy from "@/shared/ui/Copy/Copy";
 import { KENNEL } from "@/data/kennel";
 
 import "./hero.css";

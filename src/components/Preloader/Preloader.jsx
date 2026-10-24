@@ -21,8 +21,7 @@ const BLOCK_SIZE_MOBILE = 80;
 const MOBILE_BREAKPOINT = 1000;
 
 /**
- * Vectorised from introkreska.svg (husky one-line drawing). Same stroke-dash
- * fill as the old HoE horizon line — base draws first, gold paints over it.
+ * The base draws first; the gold layer fills over it with the same stroke dash.
  */
 const HUSKY_PATHS = [
   "M247.0,799.0 L245.0,798.0 L245.0,789.0 L266.0,525.0 L331.0,377.0 L335.0,232.0 L401.0,89.0 L422.0,83.0 L428.0,83.0 L479.0,197.0 L505.0,219.0 L512.0,228.0 L418.0,279.0 L404.0,290.0 L362.0,350.0 L350.0,410.0 L355.0,410.0 L406.0,371.0 L447.0,367.0 L483.0,351.0 L507.0,349.0 L526.0,381.0 L500.0,390.0 L469.0,378.0 L463.0,372.0 L460.0,364.0 L456.0,363.0",

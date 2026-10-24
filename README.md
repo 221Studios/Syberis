@@ -69,7 +69,9 @@ Contribution and commit conventions are in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Deployment
 
-`next.config.mjs` enables Next.js standalone output. The repository includes a `Dockerfile` and deployment scripts; the live site is hosted at the Studio 221 domain. CI checks pull requests and pushes to `main` by running formatting, lint, unit tests, and a production build.
+`next.config.mjs` enables Next.js standalone output. Pull requests run the quality checks; pushes to `main` deploy automatically after those checks pass. The workflow syncs the source to the production host over SSH, then runs the restricted `/usr/local/sbin/syberis-deploy` command to rebuild and restart the Docker container.
+
+The GitHub repository needs the `DEPLOY_SSH_KEY` Actions secret and these Actions variables: `DEPLOY_HOST`, `DEPLOY_PORT`, `DEPLOY_USER`, `DEPLOY_PATH`, and `DEPLOY_KNOWN_HOSTS`. Run `scripts/setup-deploy-host.sh` once on the server to install the root-owned deployment command and its limited sudo rule. `scripts/deploy-221studio.sh` runs the same deployment command manually on the host.
 
 ## Credits and project context
 

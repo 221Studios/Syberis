@@ -1,6 +1,14 @@
 .git
+.claude
+.idea
 .next
 node_modules
 npm-debug.log
 next-*.log
 README.md
+.env*
+AGENTS.md
+CLAUDE.md
+CONTEXT.md
+ozziee.jpg
+docs/adr

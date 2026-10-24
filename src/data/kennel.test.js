@@ -40,6 +40,19 @@ describe("kennel data interface", () => {
     );
   });
 
+  it("keeps litter letters unique per dam and matches puppy initials", () => {
+    const litterKeys = LITTERS.map(
+      ({ damSlug, letter }) => `${damSlug}:${letter}`,
+    );
+    expect(new Set(litterKeys).size).toBe(litterKeys.length);
+
+    for (const litter of LITTERS) {
+      for (const puppy of litter.puppies) {
+        expect(puppy.name.startsWith(litter.letter)).toBe(true);
+      }
+    }
+  });
+
   it("accounts for every puppy in a litter by status", () => {
     for (const litter of LITTERS) {
       const counted = ["free", "reserved", "sold"].reduce(

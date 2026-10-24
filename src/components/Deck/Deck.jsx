@@ -65,6 +65,7 @@ export default function Deck({ slides, counterPrefix = "NR", hint, action }) {
   useEffect(() => {
     const deckSlidesEl = deckSlidesRef.current;
     if (!deckSlidesEl) return;
+    let isMounted = true;
 
     const deckSlideEls = [...deckSlidesEl.querySelectorAll(".deck-slide")];
     const deckDecos = [...deckSlidesEl.querySelectorAll(".deck-deco")];
@@ -324,9 +325,12 @@ export default function Deck({ slides, counterPrefix = "NR", hint, action }) {
       });
     }
 
-    preloadImages(slides.map((slide) => slide.image)).then(deckInit);
+    preloadImages(slides.map((slide) => slide.image)).then(() => {
+      if (isMounted) deckInit();
+    });
 
     return () => {
+      isMounted = false;
       if (deckTimelineRef.current) deckTimelineRef.current.kill();
       if (deckObserverRef.current) deckObserverRef.current.kill();
       deckSplitsRef.current.forEach((slideSplits) =>

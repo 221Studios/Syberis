@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ReactLenis, useLenis } from "lenis/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -81,8 +81,6 @@ function LenisScrollSync() {
 }
 
 export default function ClientLayout({ children }) {
-  const pageRef = useRef(null);
-  const pageWrapperRef = useRef(null);
   const pathname = usePathname();
 
   const [isMobile, setIsMobile] = useState(false);
@@ -104,10 +102,10 @@ export default function ClientLayout({ children }) {
     <TransitionProvider>
       <ReactLenis root options={lenisOptions}>
         <LenisScrollSync />
-        <div className="page" ref={pageRef}>
+        <div className="page">
           <Menu />
           <MusicToggle />
-          <div className="page-wrapper" ref={pageWrapperRef}>
+          <div className="page-wrapper">
             {children}
             {showFooter && <Footer />}
           </div>

@@ -1,6 +1,6 @@
 """Build indexed contact sheets from the kennel photo dump.
 
-Lets a human (or the agent) eyeball every frame at once and pick keepers by
+Lets a person review every frame at once and pick keepers by
 index; `photo-index.json` maps those indices back to the source files.
 """
 

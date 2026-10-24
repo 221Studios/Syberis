@@ -8,8 +8,8 @@
     "start": "next start",
     "test": "vitest run",
     "lint": "eslint .",
-    "format": "prettier --write \"src/**/*.{js,jsx,css}\" README.md CONTRIBUTING.md CONTEXT.md docs/architecture.md eslint.config.mjs vitest.config.mjs .prettierrc.json .github/workflows/ci.yml",
-    "format:check": "prettier --check \"src/**/*.{js,jsx,css}\" README.md CONTRIBUTING.md CONTEXT.md docs/architecture.md eslint.config.mjs vitest.config.mjs .prettierrc.json .github/workflows/ci.yml"
+    "format": "prettier --write \"src/**/*.{js,jsx,css}\" README.md CONTRIBUTING.md docs/architecture.md eslint.config.mjs vitest.config.mjs .prettierrc.json .github/workflows/ci.yml",
+    "format:check": "prettier --check \"src/**/*.{js,jsx,css}\" README.md CONTRIBUTING.md docs/architecture.md eslint.config.mjs vitest.config.mjs .prettierrc.json .github/workflows/ci.yml"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

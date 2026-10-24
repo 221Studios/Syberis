@@ -73,7 +73,7 @@ export const PARENTS = [
   {
     slug: "kaja",
     name: "Kaja",
-    role: "Matka miotu C",
+    role: "Matka miotu A",
     sex: "female",
     born: "2023-05-22",
     coat: WHITE_COAT,
@@ -83,9 +83,9 @@ export const PARENTS = [
     photoPosition: "52% 76%",
     photoScale: 1.35,
     wide: "/parents/kaja-wide.jpg",
-    tagline: "Matka miotu C",
+    tagline: "Matka miotu A",
     facts: [
-      { label: "Rola w hodowli", value: "Matka miotu C" },
+      { label: "Rola w hodowli", value: "Matka miotu A" },
       { label: "Waga", value: "ok. 27 kg" },
       { label: "Umaszczenie", value: "Białe, bez odmian" },
       { label: "Oczy", value: "Brązowe" },

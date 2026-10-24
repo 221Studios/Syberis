@@ -5,11 +5,16 @@ index; `photo-index.json` maps those indices back to the source files.
 """
 
 import json
+import os
 import pathlib
 
 from PIL import Image, ImageDraw
 
-SOURCE_ROOT = pathlib.Path("/home/n3xus/Projekty/Syberis")
+SOURCE_ROOT = pathlib.Path(
+    os.environ.get(
+        "SYBERIS_PHOTO_SOURCE", pathlib.Path(__file__).resolve().parent.parent
+    )
+)
 OUT_DIR = pathlib.Path("/tmp/syberis-sheets")
 
 COLS, ROWS = 6, 8
@@ -23,7 +28,13 @@ def collect():
     for folder in sorted(SOURCE_ROOT.glob("Miot 1-*/Miot 1")):
         photos.extend(sorted(folder.glob("*.jpg")))
     # Drop Google Photos edit duplicates like "...~2.jpg"
-    return [p for p in photos if "~" not in p.name]
+    photos = [p for p in photos if "~" not in p.name]
+    if not photos:
+        raise FileNotFoundError(
+            "No source photos found. Put the photo dump under SOURCE_ROOT or "
+            "set SYBERIS_PHOTO_SOURCE to its directory."
+        )
+    return photos
 
 
 def build():

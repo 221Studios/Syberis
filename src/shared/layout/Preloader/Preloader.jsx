@@ -12,10 +12,6 @@ gsap.registerPlugin(useGSAP);
 
 export let isInitialLoad = true;
 
-function clearIntroGuard() {
-  document.documentElement.classList.remove("is-intro");
-}
-
 const BLOCK_SIZE_DESKTOP = 120;
 const BLOCK_SIZE_MOBILE = 80;
 const MOBILE_BREAKPOINT = 1000;
@@ -80,7 +76,6 @@ export default function Preloader() {
   useEffect(() => {
     return () => {
       isInitialLoad = false;
-      clearIntroGuard();
     };
   }, []);
 
@@ -159,7 +154,6 @@ export default function Preloader() {
       // GSAP timeline; without this the curtain could stay up indefinitely.
       const failsafe = setTimeout(
         () => {
-          clearIntroGuard();
           setLoaderAnimating(false);
           setShowPreloader(false);
         },
@@ -253,7 +247,6 @@ export default function Preloader() {
             scale: 0,
             duration: BLOCKS_OUT,
             ease: "power2.inOut",
-            onStart: clearIntroGuard,
             stagger: {
               grid: [rows, cols],
               from: "center",

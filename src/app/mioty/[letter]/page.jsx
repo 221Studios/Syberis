@@ -49,7 +49,7 @@ export default async function LitterPage({ params }) {
   const availabilityLine = isCurrent
     ? freeCount
       ? `${freeCount} z ${litter.puppies.length} wolnych`
-      : `Wszystkie z ${litter.puppies.length} zarezerwowane`
+      : "Brak wolnych szczeniąt"
     : "Wszystkie w nowych domach";
 
   return (

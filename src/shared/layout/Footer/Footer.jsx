@@ -39,7 +39,7 @@ const FOOTER_SOCIAL_LINKS = [
     href: CONTACT.tiktok,
     Icon: FaTiktok,
   },
-];
+].filter(({ href }) => href);
 
 const FOOTER_CONTACT_LINKS = [
   { label: CONTACT.phonePrimary, href: telHref(CONTACT.phonePrimary) },

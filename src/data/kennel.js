@@ -16,7 +16,7 @@ export const CONTACT = {
   phonePrimary: "512 974 084",
   email: "hodowlasyberis@gmail.com",
   olx: "https://www.olx.pl/oferty/uzytkownik/18Del/",
-  instagram: "https://www.instagram.com/",
+  instagram: null,
   tiktok: "https://www.tiktok.com/@hodowla.syberis.w",
   maps: "https://www.google.com/maps/search/?api=1&query=Radom%2C%20Mazowieckie",
 };
@@ -155,7 +155,6 @@ export const LITTERS = [
     sireSlug: "ozzie",
     damSlug: "kaja",
     born: "2026-07-15",
-    handoverFrom: "2026-09-15",
     photo: "/litters/kaja-a/cover.jpg",
     intro:
       "Cztery białe szczenięta po Ozziem i Kai: trzy suczki i jeden piesek. Trzy są jeszcze wolne — rezerwacje przyjmujemy telefonicznie i mailowo. Pieski wyjadą do domów pomiędzy 2. a 4. miesiącem życia.",

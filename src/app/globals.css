@@ -34,6 +34,28 @@ body {
   overflow-x: clip;
 }
 
+html:has(.preloader) {
+  overflow: hidden;
+}
+
+html:has(.preloader) body {
+  background-color: var(--base-500);
+  transition: background-color 0.9s ease;
+}
+
+html:has(.preloader) .menu-container,
+html:has(.preloader) .music-toggle-container,
+html:has(.preloader) .page-wrapper > *:not(.preloader) {
+  visibility: hidden;
+}
+
+.preloader-logo,
+.preloader-title-wrap,
+.preloader-tagline {
+  opacity: 0;
+  transform: translateY(40%);
+}
+
 img {
   width: 100%;
   height: 100%;

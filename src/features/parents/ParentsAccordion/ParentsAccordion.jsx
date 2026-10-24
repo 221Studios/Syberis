@@ -40,6 +40,9 @@ export default function ParentsAccordion({ parents }) {
         gsap.killTweensOf(panel);
         gsap.killTweensOf(details);
         panel.classList.remove("is-expanded");
+        panel.setAttribute("role", "group");
+        panel.tabIndex = -1;
+        panel.removeAttribute("aria-expanded");
         panel.style.flexGrow = "";
         panel.style.flexShrink = "";
         panel.style.flexBasis = "";
@@ -48,7 +51,10 @@ export default function ParentsAccordion({ parents }) {
       }
 
       const isActive = i === activeRef.current;
+      panel.setAttribute("role", "button");
+      panel.tabIndex = 0;
       panel.classList.toggle("is-expanded", isActive);
+      panel.setAttribute("aria-expanded", String(isActive));
       panel.style.flexGrow = isActive ? EXPANDED : COLLAPSED;
       panel.style.flexShrink = "0";
       panel.style.flexBasis = "0";
@@ -75,6 +81,7 @@ export default function ParentsAccordion({ parents }) {
         ease: EASE,
       });
       panel.classList.toggle("is-expanded", i === index);
+      panel.setAttribute("aria-expanded", String(i === index));
     });
 
     const prevDetails = detailsRef.current[prevIndex];
@@ -105,7 +112,9 @@ export default function ParentsAccordion({ parents }) {
     panelsRef.current.forEach((panel, i) => {
       if (!panel) return;
       const isActive = i === DEFAULT_ACTIVE;
+      panel.setAttribute("role", "button");
       panel.classList.toggle("is-expanded", isActive);
+      panel.setAttribute("aria-expanded", String(isActive));
       panel.style.flexGrow = isActive ? EXPANDED : COLLAPSED;
       panel.style.flexShrink = "0";
       panel.style.flexBasis = "0";
@@ -131,6 +140,27 @@ export default function ParentsAccordion({ parents }) {
     return () => window.removeEventListener("resize", handleResize);
   }, [applyLayout, parents]);
 
+  const handlePanelKeyDown = (event, index) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      setActive(index);
+      return;
+    }
+
+    const direction =
+      event.key === "ArrowRight" || event.key === "ArrowDown"
+        ? 1
+        : event.key === "ArrowLeft" || event.key === "ArrowUp"
+          ? -1
+          : 0;
+
+    if (direction) {
+      event.preventDefault();
+      const nextIndex = (index + direction + parents.length) % parents.length;
+      panelsRef.current[nextIndex]?.focus();
+    }
+  };
+
   return (
     <section className="parents-accordion" ref={sectionRef}>
       <div className="parents-accordion-header">
@@ -154,7 +184,14 @@ export default function ParentsAccordion({ parents }) {
                   panelsRef.current[index] = el;
                 }}
                 className="parents-accordion-panel"
+                role="button"
+                tabIndex={0}
+                aria-label={`${parent.name}, ${parent.role}`}
+                aria-expanded={index === DEFAULT_ACTIVE}
                 onMouseEnter={() => setActive(index)}
+                onFocus={() => setActive(index)}
+                onClick={() => setActive(index)}
+                onKeyDown={(event) => handlePanelKeyDown(event, index)}
               >
                 <img
                   className="parents-accordion-img"

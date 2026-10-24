@@ -196,9 +196,7 @@ export default function FooterExplosion({ footerRef, lenis }) {
         animationId = requestAnimationFrame(animate);
 
         if (
-          particles.every(
-            (particle) => particle.y > container.offsetHeight / 2,
-          )
+          particles.every((particle) => particle.y > container.offsetHeight / 2)
         ) {
           cancelAnimationFrame(animationId);
           setExploded(false);

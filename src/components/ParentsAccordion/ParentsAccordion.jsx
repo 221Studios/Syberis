@@ -162,14 +162,14 @@ export default function ParentsAccordion({ parents }) {
                   src={parent.photo}
                   style={
                     parent.photoPosition || parent.photoScale
-                        ? {
-                            objectPosition: parent.photoPosition,
-                            "--parent-photo-scale": parent.photoScale,
-                            "--parent-photo-x": parent.photoOffsetX,
-                            "--parent-photo-y": parent.photoOffsetY,
-                          }
-                        : undefined
-                    }
+                      ? {
+                          objectPosition: parent.photoPosition,
+                          "--parent-photo-scale": parent.photoScale,
+                          "--parent-photo-x": parent.photoOffsetX,
+                          "--parent-photo-y": parent.photoOffsetY,
+                        }
+                      : undefined
+                  }
                   alt={`${parent.name} — białe husky`}
                 />
 
@@ -182,9 +182,7 @@ export default function ParentsAccordion({ parents }) {
 
                   <div className="parents-accordion-content">
                     <p className="parents-accordion-title">{parent.name}</p>
-                    <p className="parents-accordion-role mono">
-                      {parent.role}
-                    </p>
+                    <p className="parents-accordion-role mono">{parent.role}</p>
                   </div>
 
                   <div

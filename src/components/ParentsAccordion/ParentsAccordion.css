@@ -272,10 +272,7 @@
   height: auto;
   aspect-ratio: 16 / 10;
   object-fit: cover;
-  transform: translate(
-      var(--parent-photo-x, 0),
-      var(--parent-photo-y, 0)
-    )
+  transform: translate(var(--parent-photo-x, 0), var(--parent-photo-y, 0))
     scale(var(--parent-photo-scale, 1));
   border-radius: 0.35rem;
 }

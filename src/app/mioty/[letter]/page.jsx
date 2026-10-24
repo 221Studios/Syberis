@@ -68,7 +68,9 @@ export default async function LitterPage({ params }) {
               <div className="litter-hero-main">
                 <div className="title-stack litter-hero-titles">
                   <Copy animateOnScroll={false} delay={0.5}>
-                    <h1 className="subheader">{LITTER_STATUS[litter.status]}</h1>
+                    <h1 className="subheader">
+                      {LITTER_STATUS[litter.status]}
+                    </h1>
                   </Copy>
                   <Copy animateOnScroll={false} delay={0.5}>
                     <h1>{litterTitle(litter.letter)}</h1>
@@ -92,10 +94,7 @@ export default async function LitterPage({ params }) {
                     <p className="mono sm litter-parents-label">
                       Rodzice miotu
                     </p>
-                    <Link
-                      href="/rodzice"
-                      className="litter-parent-card"
-                    >
+                    <Link href="/rodzice" className="litter-parent-card">
                       <img
                         src={sire.photo}
                         alt={sire.name}
@@ -108,15 +107,15 @@ export default async function LitterPage({ params }) {
                       <div>
                         <p className="mono sm">{sire.role}</p>
                         <h6>{sire.name}</h6>
-                        <span className="litter-parent-arrow" aria-hidden="true">
+                        <span
+                          className="litter-parent-arrow"
+                          aria-hidden="true"
+                        >
                           <FiArrowRight />
                         </span>
                       </div>
                     </Link>
-                    <Link
-                      href="/rodzice"
-                      className="litter-parent-card"
-                    >
+                    <Link href="/rodzice" className="litter-parent-card">
                       <img
                         src={dam.photo}
                         alt={dam.name}
@@ -129,7 +128,10 @@ export default async function LitterPage({ params }) {
                       <div>
                         <p className="mono sm">Matka</p>
                         <h6>{dam.name}</h6>
-                        <span className="litter-parent-arrow" aria-hidden="true">
+                        <span
+                          className="litter-parent-arrow"
+                          aria-hidden="true"
+                        >
                           <FiArrowRight />
                         </span>
                       </div>

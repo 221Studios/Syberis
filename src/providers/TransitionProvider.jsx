@@ -21,7 +21,9 @@ export default function TransitionProvider({ children }) {
     cellsRef.current = [];
 
     const blockSize =
-      window.innerWidth < MOBILE_BREAKPOINT ? BLOCK_SIZE_MOBILE : BLOCK_SIZE_DESKTOP;
+      window.innerWidth < MOBILE_BREAKPOINT
+        ? BLOCK_SIZE_MOBILE
+        : BLOCK_SIZE_DESKTOP;
     const cols = Math.ceil(window.innerWidth / blockSize);
     const rows = Math.ceil(window.innerHeight / blockSize);
 

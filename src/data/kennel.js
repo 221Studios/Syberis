@@ -10,17 +10,17 @@ export const KENNEL = {
   name: "Syberis",
   tagline: "Białe husky o niebieskich oczach",
   claim: "Hodowla domowa, poza FCI",
-  location: "Polska",
+  location: "Radom, Mazowieckie",
   since: 2023,
 };
 
 export const CONTACT = {
   phonePrimary: "512 974 084",
   email: "hodowlasyberis@gmail.com",
-  // TODO: point at the real listing once it is published.
-  olx: "https://www.olx.pl/",
+  olx: "https://www.olx.pl/oferty/uzytkownik/18Del/",
   instagram: "https://www.instagram.com/",
-  tiktok: "https://www.tiktok.com/",
+  tiktok: "https://www.tiktok.com/@hodowla.syberis.w",
+  maps: "https://www.google.com/maps/search/?api=1&query=Radom%2C%20Mazowieckie",
 };
 
 const WHITE_COAT = "Białe";
@@ -185,7 +185,7 @@ export const LITTERS = [
         photo: "/litters/kaja-a/aria.jpg",
         traits: ["Suczka", "W hodowli"],
         description:
-          "Aria jest jeszcze wolna. Rezerwacje przyjmujemy\ntelefonicznie\ni mailowo.",
+          "Aria jest jeszcze wolna. Rezerwacje przyjmujemy telefonicznie i mailowo.",
       },
       {
         slug: "ayla",
@@ -197,7 +197,7 @@ export const LITTERS = [
         photo: "/litters/kaja-a/ayla.jpg",
         traits: ["Suczka", "W hodowli"],
         description:
-          "Ayla jest jeszcze wolna. Rezerwacje przyjmujemy\ntelefonicznie\ni mailowo.",
+          "Ayla jest jeszcze wolna. Rezerwacje przyjmujemy telefonicznie i mailowo.",
       },
       {
         slug: "abi",
@@ -209,7 +209,7 @@ export const LITTERS = [
         photo: "/litters/kaja-a/abi.jpg",
         traits: ["Suczka", "W hodowli"],
         description:
-          "Abi jest jeszcze wolna. Rezerwacje przyjmujemy\ntelefonicznie\ni mailowo.",
+          "Abi jest jeszcze wolna. Rezerwacje przyjmujemy telefonicznie i mailowo.",
       },
     ],
   },
@@ -223,10 +223,7 @@ export const LITTERS = [
     photo: "/litters/b/cover.jpg",
     intro:
       "Miot B po Ozziem i Mii. Wszystkie pieski są już w swoich domach — zostawiamy je tutaj na pamiątkę i pokazujemy, jak urosły.",
-    grownGallery: [
-      "/litters/b/grown-1.jpg",
-      "/litters/b/grown-2.jpg",
-    ],
+    grownGallery: ["/litters/b/grown-1.jpg", "/litters/b/grown-2.jpg"],
     puppies: [
       {
         slug: "balto",
@@ -336,7 +333,8 @@ export const LITTERS = [
         eyes: BLUE_EYES,
         photo: "/litters/a/argo.jpg",
         traits: ["Zawsze w ruchu", "Wytrzymały"],
-        description: "Zawsze w ruchu. Właściciele mówią, że nauczył ich biegać.",
+        description:
+          "Zawsze w ruchu. Właściciele mówią, że nauczył ich biegać.",
       },
       {
         slug: "ayla",

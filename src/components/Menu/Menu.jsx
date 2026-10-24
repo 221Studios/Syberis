@@ -4,15 +4,13 @@ import { useRef, useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { useLenis } from "lenis/react";
-import { FiChevronUp, FiChevronDown } from "react-icons/fi";
+import { FiChevronUp, FiChevronDown, FiPhone } from "react-icons/fi";
+import { FaTiktok } from "react-icons/fa6";
 import { CONTACT } from "@/data/kennel";
 import { mailHref, telHref } from "@/lib/contact";
 
 import "./Menu.css";
-
-gsap.registerPlugin(useGSAP);
 
 const MENU_PRIMARY_LINKS = [
   { href: "/", label: "Start" },
@@ -22,130 +20,122 @@ const MENU_PRIMARY_LINKS = [
   { href: "/kontakt", label: "Kontakt" },
 ];
 
-const MENU_FOOTER_LINKS_LEFT = [
-  { href: telHref(CONTACT.phonePrimary), label: CONTACT.phonePrimary },
+const MENU_CONTACT_PRIMARY = [
+  {
+    href: telHref(CONTACT.phonePrimary),
+    label: CONTACT.phonePrimary,
+    Icon: FiPhone,
+    external: false,
+  },
+  {
+    href: CONTACT.olx,
+    label: "OLX",
+    external: true,
+  },
 ];
 
-const MENU_FOOTER_LINKS_RIGHT = [
-  { href: mailHref(CONTACT.email), label: "E-mail" },
-  { href: CONTACT.olx, label: "Ogłoszenie OLX" },
+const MENU_CONTACT_SECONDARY = [
+  {
+    href: CONTACT.tiktok,
+    label: "TikTok",
+    Icon: FaTiktok,
+    external: true,
+  },
+  {
+    href: mailHref(CONTACT.email),
+    label: "E-mail",
+    external: false,
+  },
 ];
 
-function MenuLineLink({ href, label, className = "", onClick }) {
+function isSpecialHref(href) {
+  return /^(https?:|tel:|mailto:)/i.test(href);
+}
+
+function MenuLineLink({
+  href,
+  label,
+  className = "",
+  onClick,
+  Icon,
+  external,
+}) {
+  const content = (
+    <span className="menu-line-mask">
+      <span className="menu-line">
+        {Icon ? <Icon className="menu-line-icon" aria-hidden="true" /> : null}
+        {label}
+      </span>
+    </span>
+  );
+
+  if (external || isSpecialHref(href)) {
+    return (
+      <a
+        href={href}
+        className={className}
+        onClick={onClick}
+        {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      >
+        {content}
+      </a>
+    );
+  }
+
   return (
     <Link href={href} className={className} onClick={onClick}>
-      <span className="menu-line-mask">
-        <span className="menu-line">{label}</span>
-      </span>
+      {content}
     </Link>
   );
 }
 
 export default function Menu() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [openPath, setOpenPath] = useState(null);
   const [railExpanded, setRailExpanded] = useState(false);
-  const menuRef = useRef(null);
-  const menuOpenTlRef = useRef(null);
-  const menuCloseTlRef = useRef(null);
+  const toggleWordRef = useRef(null);
+  const closeWordRef = useRef(null);
   const lenis = useLenis();
   const pathname = usePathname();
-
-  useGSAP(
-    () => {
-      gsap.set(".menu-panel", {
-        clipPath: "polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%)",
-        pointerEvents: "none",
-        visibility: "hidden",
-      });
-      gsap.set(".menu-toggle-word", { yPercent: 0 });
-      gsap.set(".menu-close-word", { yPercent: 140 });
-      gsap.set(".menu-line", { yPercent: 100 });
-
-      menuOpenTlRef.current = gsap
-        .timeline({ paused: true, defaults: { ease: "power3.out" } })
-        .set(".menu-panel", { visibility: "visible", pointerEvents: "all" }, 0)
-        .to(".menu-toggle-word", { yPercent: -140, duration: 0.5 }, 0)
-        .to(".menu-close-word", { yPercent: 0, duration: 0.5 }, 0)
-        .to(
-          ".menu-panel",
-          {
-            clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-            duration: 0.7,
-          },
-          0,
-        )
-        .to(".menu-line", { yPercent: 10, duration: 0.65, stagger: 0.04 }, 0.1);
-
-      menuCloseTlRef.current = gsap
-        .timeline({ paused: true, defaults: { ease: "power3.out" } })
-        .set(".menu-panel", { pointerEvents: "none" }, 0)
-        .to(".menu-toggle-word", { yPercent: 0, duration: 0.6 }, 0)
-        .to(".menu-close-word", { yPercent: 140, duration: 0.6 }, 0)
-        .to(
-          ".menu-panel",
-          {
-            clipPath: "polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%)",
-            duration: 0.65,
-          },
-          0.06,
-        )
-        .set(".menu-panel", { visibility: "hidden" }, 0.71)
-        .set(".menu-line", { yPercent: 100 }, 0.75);
-    },
-    { scope: menuRef },
-  );
+  const isOpen = openPath === pathname;
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (closeWordRef.current) {
+      gsap.set(closeWordRef.current, { yPercent: 140 });
+    }
+  }, []);
 
-    menuOpenTlRef.current?.pause();
-    menuCloseTlRef.current?.pause(0);
+  useEffect(() => {
+    const toggleWord = toggleWordRef.current;
+    const closeWord = closeWordRef.current;
+    if (!toggleWord || !closeWord) return;
 
-    gsap.set(".menu-panel", {
-      clipPath: "polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%)",
-      pointerEvents: "none",
-      visibility: "hidden",
+    gsap.to(toggleWord, {
+      yPercent: isOpen ? -140 : 0,
+      duration: 0.4,
+      ease: "power3.out",
+      overwrite: true,
     });
-    gsap.set(".menu-toggle-word", { yPercent: 0 });
-    gsap.set(".menu-close-word", { yPercent: 140 });
-    gsap.set(".menu-line", { yPercent: 100 });
+    gsap.to(closeWord, {
+      yPercent: isOpen ? 0 : 140,
+      duration: 0.4,
+      ease: "power3.out",
+      overwrite: true,
+    });
+  }, [isOpen]);
 
-    lenis?.start();
-    setIsOpen(false);
-  }, [pathname]);
+  useEffect(() => {
+    if (isOpen) lenis?.stop();
+    else lenis?.start();
+  }, [isOpen, lenis]);
 
   const handleClose = () => {
-    if (isOpen) {
-      lenis?.start();
-      menuOpenTlRef.current?.pause();
-      menuCloseTlRef.current?.play(0);
-      setIsOpen(false);
-    }
+    if (isOpen) setOpenPath(null);
   };
 
   const handleLinkClick = (href) => {
-    if (href === pathname) {
+    if (isSpecialHref(href) || href === pathname) {
       handleClose();
     }
-  };
-
-  const handleToggle = () => {
-    setIsOpen((prev) => {
-      const next = !prev;
-
-      if (next) {
-        lenis?.stop();
-        menuCloseTlRef.current?.pause(0);
-        gsap.set(".menu-line", { yPercent: 100 });
-        menuOpenTlRef.current?.play(0);
-      } else {
-        lenis?.start();
-        menuOpenTlRef.current?.pause();
-        menuCloseTlRef.current?.play(0);
-      }
-
-      return next;
-    });
   };
 
   return (
@@ -159,8 +149,7 @@ export default function Menu() {
       />
 
       <div
-        className={`menu${railExpanded ? " menu--rail-expanded" : " menu--rail-collapsed"}`}
-        ref={menuRef}
+        className={`menu${railExpanded ? " menu--rail-expanded" : " menu--rail-collapsed"}${isOpen ? " menu--open" : ""}`}
       >
         <div className="menu-rail">
           {railExpanded ? (
@@ -177,13 +166,17 @@ export default function Menu() {
             <button
               type="button"
               className="menu-box menu-toggle"
-              onClick={handleToggle}
+              onClick={() => setOpenPath(isOpen ? null : pathname)}
               aria-expanded={isOpen}
               aria-controls="main-menu-panel"
             >
               <span className="menu-toggle-mask">
-                <p className="mono sm menu-toggle-word">Menu</p>
-                <p className="mono sm menu-close-word">Close</p>
+                <p className="mono sm menu-toggle-word" ref={toggleWordRef}>
+                  Menu
+                </p>
+                <p className="mono sm menu-close-word" ref={closeWordRef}>
+                  Close
+                </p>
               </span>
             </button>
 
@@ -191,9 +184,7 @@ export default function Menu() {
               type="button"
               className="menu-box menu-rail-arrow"
               onClick={() => setRailExpanded((prev) => !prev)}
-              aria-label={
-                railExpanded ? "Zwiń menu" : "Rozwiń logo i pasek menu"
-              }
+              aria-label={railExpanded ? "Zwiń pasek logo" : "Rozwiń logo"}
               aria-expanded={railExpanded}
             >
               {railExpanded ? (
@@ -205,14 +196,18 @@ export default function Menu() {
           </div>
         </div>
 
-        <aside id="main-menu-panel" className="menu-panel">
+        <aside
+          id="main-menu-panel"
+          className="menu-panel"
+          aria-hidden={!isOpen}
+        >
           <div className="menu-panel-top">
             <p className="mono sm">
               Syberis — hobbystyczna hodowla psów rasy Siberian Husky
             </p>
           </div>
 
-          <nav className="menu-panel-nav" aria-label="Main pages">
+          <nav className="menu-panel-nav" aria-label="Strony">
             {MENU_PRIMARY_LINKS.map((link) => (
               <MenuLineLink
                 key={link.href}
@@ -225,29 +220,34 @@ export default function Menu() {
           </nav>
 
           <div className="menu-panel-footer">
-            <div className="menu-panel-footer-col">
-              {MENU_FOOTER_LINKS_LEFT.map((link) => (
-                <MenuLineLink
-                  key={link.label}
-                  href={link.href}
-                  label={link.label}
-                  className="menu-link menu-link-footer"
-                  onClick={() => handleLinkClick(link.href)}
-                />
-              ))}
-            </div>
-
-            <div className="menu-panel-footer-col">
-              {MENU_FOOTER_LINKS_RIGHT.map((link) => (
-                <MenuLineLink
-                  key={link.label}
-                  href={link.href}
-                  label={link.label}
-                  className="menu-link menu-link-footer"
-                  onClick={() => handleLinkClick(link.href)}
-                />
-              ))}
-            </div>
+            <nav className="menu-panel-contact" aria-label="Kontakt">
+              <div className="menu-panel-contact-primary">
+                {MENU_CONTACT_PRIMARY.map((link) => (
+                  <MenuLineLink
+                    key={link.label}
+                    href={link.href}
+                    label={link.label}
+                    Icon={link.Icon}
+                    external={link.external}
+                    className="menu-link menu-link-footer menu-link-contact-primary"
+                    onClick={() => handleLinkClick(link.href)}
+                  />
+                ))}
+              </div>
+              <div className="menu-panel-contact-secondary">
+                {MENU_CONTACT_SECONDARY.map((link) => (
+                  <MenuLineLink
+                    key={link.label}
+                    href={link.href}
+                    label={link.label}
+                    Icon={link.Icon}
+                    external={link.external}
+                    className="menu-link menu-link-footer"
+                    onClick={() => handleLinkClick(link.href)}
+                  />
+                ))}
+              </div>
+            </nav>
           </div>
         </aside>
       </div>

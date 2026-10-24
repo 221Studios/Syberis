@@ -229,9 +229,7 @@ export default function LitterPuppies({
   const active = activeIndex != null ? puppies[activeIndex] : null;
 
   return (
-    <section
-      className={`litter-puppies${active ? " has-active" : ""}`}
-    >
+    <section className={`litter-puppies${active ? " has-active" : ""}`}>
       <div className="litter-puppies-avatars" ref={avatarContainerRef}>
         {puppies.map((puppy, index) => (
           <button

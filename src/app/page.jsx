@@ -41,7 +41,9 @@ export default function Home() {
 
           <div className="hero-footer">
             <Copy variant="flicker" delay={footerDelay} animateOnScroll={false}>
-              <p className="mono sm">Niedługo nowy miot. Zapraszamy do kontaktu.</p>
+              <p className="mono sm">
+                Niedługo nowy miot. Zapraszamy do kontaktu.
+              </p>
             </Copy>
             <Copy variant="flicker" delay={footerDelay} animateOnScroll={false}>
               <p className="mono sm">[ Działamy od 2023 roku ]</p>

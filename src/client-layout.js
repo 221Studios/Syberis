@@ -29,21 +29,23 @@ const LENIS_SHARED = {
   wheelMultiplier: 1,
   orientation: "vertical",
   smoothWheel: true,
-  syncTouch: true,
 };
 
 const LENIS_MOBILE = {
   ...LENIS_SHARED,
-  duration: 1.05,
-  smoothTouch: true,
-  touchMultiplier: 1.5,
-  lerp: 0.075,
+  // Native touch scroll — Lenis smoothTouch/syncTouch feels like fighting the page.
+  duration: 0.7,
+  smoothTouch: false,
+  syncTouch: false,
+  touchMultiplier: 2,
+  lerp: 0.12,
 };
 
 const LENIS_DESKTOP = {
   ...LENIS_SHARED,
   duration: 1.2,
   smoothTouch: false,
+  syncTouch: true,
   touchMultiplier: 2,
   lerp: 0.1,
 };

@@ -5,13 +5,17 @@
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "vitest run",
+    "lint": "eslint .",
+    "format": "prettier --write \"src/**/*.{js,jsx,css}\" README.md CONTRIBUTING.md CONTEXT.md docs/architecture.md eslint.config.mjs vitest.config.mjs .prettierrc.json .github/workflows/ci.yml",
+    "format:check": "prettier --check \"src/**/*.{js,jsx,css}\" README.md CONTRIBUTING.md CONTEXT.md docs/architecture.md eslint.config.mjs vitest.config.mjs .prettierrc.json .github/workflows/ci.yml"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
     "gsap": "^3.14.2",
     "lenis": "1.3.8",
-    "next": "16.1.7",
+    "next": "^16.4.3",
     "next-transition-router": "^0.2.11",
     "react": "19.2.3",
     "react-dom": "19.2.3",
@@ -19,6 +23,10 @@
     "three": "^0.183.2"
   },
   "devDependencies": {
-    "playwright": "^1.55.0"
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.3",
+    "playwright": "^1.55.0",
+    "prettier": "^3.9.10",
+    "vitest": "^5.0.5"
   }
 }

@@ -1,5 +1,7 @@
 # Syberis
 
+> **Historical planning notes:** parts of this document describe an earlier planned release and may not match the current site or kennel data. Use the [README](README.md) and the live website for the current project overview.
+
 Witryna hodowlana husky **Syberis**: klimat i zaufanie plus jasna ścieżka do aktualnych miotów i kontaktu.
 
 ## Language

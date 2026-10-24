@@ -15,6 +15,7 @@ import {
 } from "react-icons/fi";
 import Button from "../Button/Button";
 import Copy from "../Copy/Copy";
+import { CONTACT, KENNEL } from "@/data/kennel";
 
 import "./CTA.css";
 
@@ -40,9 +41,6 @@ const CTA_CARDINALS = [
   { label: "S", angle: 90 },
   { label: "W", angle: 180 },
 ];
-
-const MAPS_HREF =
-  "https://www.google.com/maps/search/?api=1&query=Mazowieckie%2C%20Gmina%20Ciepiel%C3%B3w";
 
 const LEGAL_NOTE =
   "Nasza hodowla jest zarejestrowana w Ogólnopolskim Klubie Hodowców Rasowych Psów i Kotów „Cat & Dog Club” (woj. świętokrzyskie). Działamy w pełni legalnie i wydajemy dokumentację tego stowarzyszenia.";
@@ -378,10 +376,10 @@ export default function CTA() {
           <div className="cta-left">
             <a
               className="cta-map-link"
-              href={MAPS_HREF}
+              href={CONTACT.maps}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Znajdź nas w Google Maps"
+              aria-label={`Znajdź nas w Google Maps — ${KENNEL.location}`}
             >
               <Copy splitType="words">
                 <h6>Znajdź nas</h6>
@@ -401,7 +399,7 @@ export default function CTA() {
                 </span>
               </div>
 
-              <p className="mono sm cta-map-cta">Otwórz mapę</p>
+              <p className="mono sm cta-map-cta">{KENNEL.location}</p>
             </a>
 
             <div className="cta-location-panel">

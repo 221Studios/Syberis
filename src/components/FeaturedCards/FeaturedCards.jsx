@@ -199,11 +199,7 @@ export default function FeaturedCards({
             ref={featuredCardsContainerRef}
           >
             {cards.map((card) => (
-              <Link
-                href={card.href}
-                className="featured-card"
-                key={card.title}
-              >
+              <Link href={card.href} className="featured-card" key={card.title}>
                 <div className="featured-card-img">
                   <img
                     src={card.image}

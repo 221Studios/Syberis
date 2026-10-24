@@ -6,7 +6,7 @@
 
 Syberis brings the kennel's story, dogs, current and past litters, photo gallery, and contact details together in one place. The experience pairs editorial photography and motion with a direct path to puppy information and contact, and is designed to work on phones as well as desktop.
 
-<img src="public/images/showreel.jpg" alt="Siberian Husky puppies playing together" width="900">
+<img src="public/images/readme-hero.jpg" alt="Siberian Husky puppies with the Syberis logo" width="900">
 
 ## What the project demonstrates
 

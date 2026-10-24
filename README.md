@@ -1,78 +1,152 @@
 # Syberis
 
-> A production website for a Siberian Husky kennel, built by Studio 221.
+![Wersja 0.1.0](https://img.shields.io/badge/wersja-0.1.0-green.svg)
 
-**Live website:** [syberis.221studio.pl](https://syberis.221studio.pl/)
+**Demo na żywo:** [syberis.221studio.pl](https://syberis.221studio.pl/)
 
-Syberis brings the kennel's story, dogs, current and past litters, photo gallery, and contact details together in one place. The experience pairs editorial photography and motion with a direct path to puppy information and contact, and is designed to work on phones as well as desktop.
+Syberis to wielostronicowa strona hodowli Siberian Husky, która łączy historię hodowli, profile psów, informacje o miotach i kontakt w jednym miejscu. Pomaga zainteresowanym poznać psy i sprawdzić informacje o szczeniętach.
 
-<img src="public/images/readme-hero.jpg" alt="Siberian Husky puppies with the Syberis logo" width="900">
+<img src="public/images/readme-hero.jpg" alt="Szczenięta rasy Siberian Husky z logo Syberis" width="900">
 
-## What the project demonstrates
+## 📑 Spis treści
 
-- A multi-page, Polish-language site built with Next.js App Router.
-- Reusable pages driven by a central kennel and litter data module.
-- Interactive litter browsing, parent profiles, and a Three.js photo gallery.
-- GSAP scroll and page-transition effects, with mobile-specific behavior.
-- Contact links for phone, email, maps, and the kennel's social channels.
-- A standalone production build suitable for container deployment.
+- [O projekcie](#-o-projekcie)
+- [Główne funkcje](#-główne-funkcje)
+- [Technologie](#-technologie)
+- [Instalacja i uruchomienie](#️-instalacja-i-uruchomienie)
+- [Użycie](#-użycie)
+- [Architektura](#-architektura)
+- [Testowanie i jakość kodu](#-testowanie-i-jakość-kodu)
+- [CI/CD i wdrożenie](#-cicd-i-wdrożenie)
+- [Współtworzenie](#-współtworzenie)
+- [Licencja](#-licencja)
 
-## Pages
+## 🚀 O projekcie
 
-| Route             | Purpose                                            |
-| ----------------- | -------------------------------------------------- |
-| `/`               | Brand introduction and featured content            |
-| `/mioty`          | Current and completed litters                      |
-| `/mioty/[letter]` | Litter details, puppies, parents, and availability |
-| `/rodzice`        | Profiles of the kennel's dogs                      |
-| `/galeria`        | Interactive photo gallery                          |
-| `/kontakt`        | Contact options and location                       |
+To responsywna, polskojęzyczna strona prezentująca hodowlę Syberis. Zawiera informacje o psach, aktualnych i wcześniejszych miotach, zdjęcia oraz dane kontaktowe. Treści hodowli są oddzielone od widoków i przechowywane w centralnym module danych.
 
-## Tech stack
+## ✨ Główne funkcje
 
-- Next.js 16.4, React 19, JavaScript
-- GSAP, Lenis, Three.js
-- CSS, with locally hosted fonts and photography
-- Vitest, ESLint, Prettier, GitHub Actions
+- [x] **Przegląd miotów:** lista aktualnych i zakończonych miotów z informacjami o dostępności szczeniąt.
+- [x] **Profile psów:** zdjęcia, informacje i powiązania rodziców z miotami.
+- [x] **Szczegóły miotu:** profile szczeniąt, rodzice i statusy dostępności.
+- [x] **Galeria 3D:** interaktywna galeria zdjęć z obsługą ruchu wskaźnika i gestów dotykowych.
+- [x] **Animacje i przejścia:** efekty przewijania oraz przejścia między podstronami.
+- [x] **Kontakt:** bezpośrednie odnośniki do telefonu, poczty, mapy i mediów społecznościowych.
+- [x] **Układ mobilny:** dostosowane widoki i interakcje na telefonach oraz komputerach.
 
-## Run locally
+## 🛠 Technologie
 
-Requirements: Node.js 20.9 or newer and npm.
+- **Framework i biblioteka UI:** Next.js 16, React 19
+- **Język:** JavaScript
+- **Animacje i przewijanie:** GSAP, `@gsap/react`, Lenis
+- **Grafika 3D:** Three.js
+- **Style:** CSS
+- **Testy:** Vitest
+- **Jakość kodu:** ESLint, Prettier
+- **CI/CD:** GitHub Actions, Docker
+
+## ⚙️ Instalacja i uruchomienie
+
+### Wymagania wstępne
+
+- Node.js 20.9 lub nowszy
+- npm
+- Git
+
+### Kroki instalacji
+
+1. Sklonuj repozytorium:
+
+   ```bash
+   git clone https://github.com/221Studios/Syberis.git syberis
+   cd syberis
+   ```
+
+2. Zainstaluj zależności:
+
+   ```bash
+   npm ci
+   ```
+
+3. Uruchom serwer deweloperski:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Otwórz [http://localhost:3000](http://localhost:3000).
+
+Lokalne uruchomienie nie wymaga zmiennych środowiskowych.
+
+## 📖 Użycie
+
+Po uruchomieniu aplikacji można przejść do głównych sekcji strony:
+
+| Ścieżka           | Zawartość                                         |
+| ----------------- | ------------------------------------------------- |
+| `/`               | Informacje o hodowli i wyróżnione treści          |
+| `/mioty`          | Aktualne i zakończone mioty                       |
+| `/mioty/[letter]` | Szczegóły miotu, szczenięta, rodzice i dostępność |
+| `/rodzice`        | Profile psów hodowlanych                          |
+| `/galeria`        | Interaktywna galeria zdjęć                        |
+| `/kontakt`        | Formy kontaktu i lokalizacja                      |
+
+Przydatne polecenia:
 
 ```bash
-git clone https://github.com/221Studios/Syberis.git syberis
-cd syberis
-npm ci
-npm run dev
-```
-
-Open <http://localhost:3000>. The site does not require environment variables for local development.
-
-## Project commands
-
-```bash
-npm run dev          # local development server
-npm run build        # production build
-npm start            # serve the production build
-npm test             # unit tests
+npm run dev          # serwer deweloperski
+npm run build        # kompilacja produkcyjna
+npm start            # uruchomienie wersji produkcyjnej
+npm test             # testy jednostkowe
 npm run lint         # ESLint
-npm run format:check # Prettier check
-npm run format       # format supported source and documentation files
+npm run format:check # kontrola formatowania
+npm run format       # formatowanie plików projektu
 ```
 
-## Architecture
+## 🏗 Architektura
 
-The app uses the Next.js App Router. Route modules compose page-level experiences from focused UI modules. Kennel, dog, litter, and puppy content lives in `src/data/kennel.js`; contact link formatting lives in `src/lib/contact.js`. This keeps content changes separate from page rendering and gives data helpers a small, directly testable interface.
+Aplikacja korzysta z Next.js App Router. Moduły routingu odpowiadają za adresy i metadane, katalog `src/features/` zawiera funkcje poszczególnych części strony, a `src/shared/` — współdzielone elementy interfejsu i układu. Dane hodowli znajdują się w `src/data/kennel.js`, a formatowanie odnośników kontaktowych w `src/lib/contact.js`.
 
-See [the architecture notes](docs/architecture.md) for the route map, module responsibilities, and deployment shape.
-Contribution and commit conventions are in [CONTRIBUTING.md](CONTRIBUTING.md).
+```mermaid
+flowchart TD
+    Visitor[Odwiedzający] --> Routes[Next.js App Router]
+    Routes --> Features[src/features/<br/>strona główna · mioty · rodzice · galeria · kontakt]
+    Features --> Shared[src/shared/<br/>wspólny interfejs i układ]
+    Features --> KennelData[src/data/kennel.js<br/>dane hodowli, psów i miotów]
+    Features --> Contact[src/lib/contact.js<br/>odnośniki telefoniczne i e-mail]
+    Features --> Browser[Interakcje w przeglądarce]
+    Browser --> GSAP
+    Browser --> Lenis
+    Browser --> ThreeJS[Three.js — galeria 3D]
+    Features --> Assets[public/<br/>zdjęcia, fonty, audio]
+    Routes --> Standalone[Wersja Next.js standalone]
+    Standalone --> Docker[Wdrożenie w Dockerze]
+```
 
-## Deployment
+Szczegółowy opis modułów, routingu i wdrożenia znajduje się w [dokumentacji architektury](docs/architecture.md).
 
-`next.config.mjs` enables Next.js standalone output. Pull requests run the quality checks; pushes to `main` deploy automatically after those checks pass. The workflow syncs the source to the production host over SSH, then runs the restricted `/usr/local/sbin/syberis-deploy` command to rebuild and restart the Docker container.
+## 🧪 Testowanie i jakość kodu
 
-The GitHub repository needs the `DEPLOY_SSH_KEY` Actions secret and these Actions variables: `DEPLOY_HOST`, `DEPLOY_PORT`, `DEPLOY_USER`, `DEPLOY_PATH`, and `DEPLOY_KNOWN_HOSTS`. Run `scripts/setup-deploy-host.sh` once on the server to install the root-owned deployment command and its limited sudo rule. `scripts/deploy-221studio.sh` runs the same deployment command manually on the host.
+Vitest sprawdza kluczową logikę danych hodowli oraz tworzenie odnośników kontaktowych. GitHub Actions uruchamia instalację zależności, audyt npm, kontrolę formatowania, ESLint, testy i kompilację przy każdym pull requeście oraz pushu do `main`.
 
-## Credits and project context
+```bash
+npm test
+npm run format:check
+npm run lint
+npm run build
+```
 
-This repository presents a Studio 221 project. The live site and its content belong to the Syberis kennel. See the [live website](https://syberis.221studio.pl/) for the current public experience.
+## 🚀 CI/CD i wdrożenie
+
+Po przejściu kontroli push do `main` uruchamia wdrożenie produkcyjne. Workflow synchronizuje pliki z serwerem przez SSH, a następnie wywołuje ograniczone polecenie `/usr/local/sbin/syberis-deploy`, które buduje i restartuje kontener Dockera.
+
+Do wdrożenia repozytorium GitHub wymaga sekretu `DEPLOY_SSH_KEY` oraz zmiennych Actions: `DEPLOY_HOST`, `DEPLOY_PORT`, `DEPLOY_USER`, `DEPLOY_PATH` i `DEPLOY_KNOWN_HOSTS`. Skrypt `scripts/setup-deploy-host.sh` instaluje na serwerze polecenie wdrożeniowe i ograniczoną regułę sudo. `scripts/deploy-221studio.sh` pozwala uruchomić wdrożenie ręcznie na serwerze.
+
+## 🤝 Współtworzenie
+
+Zasady współtworzenia i format commitów opisuje plik [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## 📄 Licencja
+
+Repozytorium nie zawiera obecnie pliku licencji. Prawa do strony i jej treści należą do hodowli Syberis; projekt powstał w Studio 221. Szczegóły można znaleźć na [stronie hodowli](https://syberis.221studio.pl/).

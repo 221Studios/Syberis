@@ -1,9 +1,7 @@
 /**
  * Single source of truth for kennel content.
  *
- * Photos live in /public and were exported by scripts/export-photos.py.
- * All current frames come from the May 2025 shoot of one litter, so parent
- * portraits still show young dogs — swap those files when adult photos exist.
+ * Photo paths point to the corresponding files in /public.
  */
 
 export const KENNEL = {

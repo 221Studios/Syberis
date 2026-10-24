@@ -68,8 +68,7 @@ export default function Showreel() {
           }),
         );
 
-        // eslint-disable-next-line no-unused-expressions
-        section.offsetHeight;
+        void section.offsetHeight;
 
         marqueeContainer.style.width = `${marqueeContainer.offsetWidth}px`;
 

@@ -41,10 +41,8 @@ TARGETS = {
     "parents/cynamon-wide.jpg": (247, WIDE, 1600),
     # Litter C puppies
     "litters/c/cover.jpg": (153, WIDE, 1600),
-    "litters/c/ciri.jpg": (123, TALL, 1200),
     "litters/c/celeste.jpg": (206, TALL, 1200),
     "litters/c/cleo.jpg": (159, TALL, 1200),
-    "litters/c/coco.jpg": (290, TALL, 1200),
     "litters/c/cyan.jpg": (327, TALL, 1200),
     # Litter B
     "litters/b/cover.jpg": (153, WIDE, 1600),

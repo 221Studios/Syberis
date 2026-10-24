@@ -20,8 +20,7 @@ function weightOf(parent) {
 }
 
 /**
- * Deadlock Studio-style hover accordion — four parents, full kennel info
- * in the expanded card (no separate profile pages).
+ * Shows parent profiles in an expandable accordion with kennel details.
  */
 export default function ParentsAccordion({ parents }) {
   const sectionRef = useRef(null);

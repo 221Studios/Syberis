@@ -14,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const MOBILE_BREAKPOINT = 1000;
 // Full-screen decks and the 3D wall own the whole viewport; skip footer there.
-// Litter detail pages (`/mioty/c`) are normal scroll pages and keep the footer.
+// Litter detail pages are normal scroll pages and keep the footer.
 const FOOTER_EXCLUDED_EXACT = ["/mioty"];
 const FOOTER_EXCLUDED_PREFIXES = ["/galeria"];
 

@@ -121,8 +121,7 @@ export default function Preloader() {
       )
         return;
 
-      // Logo, title and tagline share the same slide/fade in+out as before;
-      // only the gold overlay on the title also grows width (Salle Blanche).
+      // Fade and slide the brand elements together while the gold title layer expands.
       const brandParts = [logo, titleWrap, tagline].filter(Boolean);
 
       const blockSize =
@@ -196,7 +195,7 @@ export default function Preloader() {
           },
           0,
         )
-        // Gold husky stroke + Salle Blanche title fill run together.
+        // Reveal the gold husky stroke and title fill together.
         .to(
           fillPaths,
           {
@@ -303,7 +302,7 @@ export default function Preloader() {
             aria-hidden
           />
 
-          {/* Salle Blanche fill: dim base + gold overlay whose width grows. */}
+          {/* The gold title layer grows over its dimmed base. */}
           <div className="preloader-title-wrap" aria-label={KENNEL.name}>
             <h2 className="preloader-title preloader-title-base" aria-hidden>
               {KENNEL.name}

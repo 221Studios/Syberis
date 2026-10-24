@@ -94,7 +94,7 @@
   transform: translateY(40%);
 }
 
-/* Salle Blanche text fill: two stacked titles, the top one clipped by width. */
+/* The gold title layer sits above the dim title and reveals from left to right. */
 .preloader-title-wrap {
   position: relative;
   z-index: 2;
@@ -114,8 +114,7 @@
   text-align: center;
 }
 
-/* Solid dim tone (matches former rgba(244,249,255,.18) on --base-500)
-   so any residual glyph contact cannot additively brighten. */
+/* Keep the base title dim where the edges of both title layers meet. */
 .preloader-title-base {
   color: #39536f;
 }

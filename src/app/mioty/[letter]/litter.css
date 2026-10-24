@@ -2,7 +2,7 @@
   background-color: var(--base-100);
 }
 
-/* HoE report split — right panel carries title + intro + parents. */
+/* The right panel holds the litter title, introduction, and parent details. */
 .litter-hero .litter-hero-right {
   position: relative;
   justify-content: space-between;

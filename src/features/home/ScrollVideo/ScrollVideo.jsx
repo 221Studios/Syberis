@@ -10,7 +10,7 @@ import "./ScrollVideo.css";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 /**
- * Scroll-scrubbed frame sequence (videoscrollefekt style: canvas + scrub).
+ * Draws an image sequence to a canvas as the page scrolls.
  * Frames only advance while this element is actually visible on screen —
  * from the moment it appears until it leaves the viewport.
  */

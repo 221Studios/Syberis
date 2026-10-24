@@ -33,8 +33,7 @@ function statusLabelForPuppy(puppy) {
 }
 
 /**
- * Salle Blanche "Chefs" interaction — avatar row + letter-flip names —
- * wired to puppies of one litter.
+ * Shows one litter's puppies with selectable portraits and animated names.
  */
 export default function LitterPuppies({
   puppies,

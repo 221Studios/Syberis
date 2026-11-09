@@ -96,6 +96,11 @@
   outline-offset: -4px;
 }
 
+.parents-accordion-photo {
+  position: absolute;
+  inset: 0;
+}
+
 .parents-accordion-img {
   position: absolute;
   top: 0;
@@ -266,62 +271,69 @@
   background-color: var(--base-500);
 }
 
-.parents-accordion--stacked .parents-accordion-img {
+.parents-accordion--stacked .parents-accordion-photo {
   position: relative;
-  inset: unset;
-  top: auto;
-  left: auto;
-  display: block;
-  flex-shrink: 0;
+  inset: auto;
   width: 100%;
-  height: auto;
   aspect-ratio: 16 / 10;
-  object-fit: cover;
-  transform: translate(var(--parent-photo-x, 0), var(--parent-photo-y, 0))
-    scale(var(--parent-photo-scale, 1));
+  overflow: hidden;
   border-radius: 0.35rem;
 }
 
-.parents-accordion--stacked .parents-accordion-overlay {
-  inset: unset;
-  top: 0;
-  left: 0;
+.parents-accordion--stacked .parents-accordion-img {
+  inset: 0;
   width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 10;
-  border-radius: 0.35rem;
+  transform: translate(var(--parent-photo-x, 0), var(--parent-photo-y, 0))
+    scale(var(--parent-photo-scale, 1));
+}
+
+.parents-accordion--stacked .parents-accordion-overlay {
+  display: none;
 }
 
 .parents-accordion--stacked .parents-accordion-inner {
   position: relative;
   inset: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 0.85rem;
-  padding: 1.75rem 1.5rem 2rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
+  align-items: start;
+  justify-items: start;
+  gap: clamp(0.65rem, 2.3vw, 1rem);
+  padding: clamp(0.85rem, 3.6vw, 1.5rem);
+  padding-top: clamp(1.25rem, 5vw, 2rem);
   text-align: left;
 }
 
-.parents-accordion--stacked .parents-accordion-title {
-  font-size: clamp(3rem, 12vw, 4.5rem);
-}
-
-.parents-accordion--stacked .parents-accordion-role {
-  margin-top: 0.45rem;
-  font-size: clamp(1.05rem, 3.4vw, 1.35rem);
-}
-
-.parents-accordion--stacked .parents-accordion-meta {
-  font-size: 0.95rem;
+.parents-accordion--stacked .parents-accordion-number {
+  grid-area: 1 / 2;
+  min-width: 3rem;
+  padding-inline: 0.5rem;
 }
 
 .parents-accordion--stacked .parents-accordion-content {
+  grid-area: 1 / 1;
   align-items: flex-start;
+  gap: 0.25rem;
+  padding: 0;
+}
+
+.parents-accordion--stacked .parents-accordion-title {
+  font-size: clamp(2.4rem, 11vw, 4.5rem);
+}
+
+.parents-accordion--stacked .parents-accordion-role {
+  margin-top: 0;
+  font-size: clamp(0.8rem, 2.6vw, 1.1rem);
+  text-wrap: wrap;
+}
+
+.parents-accordion--stacked .parents-accordion-meta {
+  font-size: clamp(0.8rem, 2.2vw, 0.95rem);
+  overflow-wrap: anywhere;
 }
 
 .parents-accordion--stacked .parents-accordion-details {
+  grid-column: 1 / -1;
   display: flex;
   align-items: flex-start;
   gap: 0.6rem;
@@ -348,13 +360,5 @@
 
   .parents-accordion--stacked .parents-accordion-header {
     padding: 0 1rem 0.45rem;
-  }
-
-  .parents-accordion--stacked .parents-accordion-inner {
-    padding: 1.35rem 1.1rem 1.75rem;
-  }
-
-  .parents-accordion--stacked .parents-accordion-title {
-    font-size: clamp(2.65rem, 13vw, 3.75rem);
   }
 }

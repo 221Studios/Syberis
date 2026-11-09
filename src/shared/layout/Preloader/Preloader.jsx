@@ -44,7 +44,6 @@ const GAP_AFTER_BASE = 0.15;
 const FILL_IN = 1.9;
 const GAP_AFTER_FILL = 0.25;
 const BOTH_OUT = 0.9;
-const GAP_BEFORE_BLOCKS = 0;
 const BLOCKS_OUT = 0.5;
 const BLOCK_STAGGER = 0.05;
 
@@ -70,7 +69,6 @@ function prepareStrokes(paths) {
 export default function Preloader() {
   const wrapperRef = useRef(null);
   const [showPreloader, setShowPreloader] = useState(isInitialLoad);
-  const [loaderAnimating, setLoaderAnimating] = useState(isInitialLoad);
   const lenis = useLenis();
 
   useEffect(() => {
@@ -80,12 +78,10 @@ export default function Preloader() {
   }, []);
 
   useEffect(() => {
-    if (loaderAnimating) {
-      if (lenis) lenis.stop();
-    } else {
-      if (lenis) lenis.start();
-    }
-  }, [lenis, loaderAnimating]);
+    if (!showPreloader || !lenis) return;
+    lenis.stop();
+    return () => lenis.start();
+  }, [lenis, showPreloader]);
 
   useGSAP(
     () => {
@@ -150,22 +146,11 @@ export default function Preloader() {
       gsap.set(fillPaths, { opacity: 0 });
       gsap.set(svgEl, { visibility: "visible" });
 
-      // A backgrounded tab throttles requestAnimationFrame, which stalls the
-      // GSAP timeline; without this the curtain could stay up indefinitely.
-      const failsafe = setTimeout(
-        () => {
-          setLoaderAnimating(false);
-          setShowPreloader(false);
-        },
-        (INTRO_DURATION + 1.5) * 1000,
-      );
-
       const tl = gsap.timeline({
         delay: DELAY,
         onComplete: () => {
           clearTimeout(failsafe);
-          setLoaderAnimating(false);
-          setTimeout(() => setShowPreloader(false), 100);
+          setShowPreloader(false);
         },
       });
 
@@ -240,21 +225,24 @@ export default function Preloader() {
           "<",
         )
         .set(svgEl, { visibility: "hidden" })
-        .fromTo(
-          cells,
-          { scale: 1.05 },
-          {
-            scale: 0,
-            duration: BLOCKS_OUT,
-            ease: "power2.inOut",
-            stagger: {
-              grid: [rows, cols],
-              from: "center",
-              each: BLOCK_STAGGER,
-            },
+        .call(() => root.classList.add("preloader--revealing"))
+        .to(cells, {
+          scale: 0,
+          duration: BLOCKS_OUT,
+          ease: "power2.inOut",
+          stagger: {
+            grid: [rows, cols],
+            from: "center",
+            each: BLOCK_STAGGER,
           },
-          `+=${GAP_BEFORE_BLOCKS}`,
-        );
+        });
+
+      // Use the full staggered duration so the safety timer cannot cut off
+      // the last cells on viewports with a larger grid.
+      const failsafe = setTimeout(
+        () => setShowPreloader(false),
+        (tl.delay() + tl.totalDuration() + 1.5) * 1000,
+      );
 
       return () => clearTimeout(failsafe);
     },

@@ -38,14 +38,15 @@ html:has(.preloader) {
   overflow: hidden;
 }
 
-html:has(.preloader) body {
+html:has(.preloader:not(.preloader--revealing)) body {
   background-color: var(--base-500);
-  transition: background-color 0.9s ease;
 }
 
-html:has(.preloader) .menu-container,
-html:has(.preloader) .music-toggle-container,
-html:has(.preloader) .page-wrapper > *:not(.preloader) {
+html:has(.preloader:not(.preloader--revealing)) .menu-container,
+html:has(.preloader:not(.preloader--revealing)) .music-toggle-container,
+html:has(.preloader:not(.preloader--revealing))
+  .page-wrapper
+  > *:not(.preloader) {
   visibility: hidden;
 }
 

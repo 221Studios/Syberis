@@ -164,10 +164,10 @@ p.mono.menu-close-word {
   color: var(--base-500);
 }
 
-.menu-link::after {
+.menu-line::after {
   content: "";
   position: absolute;
-  bottom: 5%;
+  bottom: calc(0.5lh + 0.01em);
   right: 0;
   width: 100%;
   height: 0.165rem;
@@ -178,12 +178,13 @@ p.mono.menu-close-word {
   will-change: transform;
 }
 
-.menu-link:hover::after {
+.menu-link:is(:hover, :focus-visible) .menu-line::after {
   transform: scaleX(1);
   transform-origin: left;
 }
 
-.menu-link-footer::after {
+.menu-link-footer .menu-line::after {
+  bottom: 0;
   height: 0.095rem;
 }
 
@@ -195,6 +196,7 @@ p.mono.menu-close-word {
 }
 
 .menu-line {
+  position: relative;
   display: block;
 }
 
@@ -327,7 +329,7 @@ p.mono.menu-close-word {
     margin-bottom: 1.25rem;
   }
 
-  .menu-link::after {
+  .menu-line::after {
     display: none;
   }
 
@@ -359,5 +361,45 @@ p.mono.menu-close-word {
 
   .menu-link-footer .menu-line {
     font-size: 1.15rem;
+  }
+}
+
+/* Fit the links to the available height, including short landscape windows. */
+@media (max-height: 880px) {
+  .menu-panel {
+    padding: clamp(0.65rem, 2.2svh, 1.25rem);
+  }
+
+  .menu-panel-top {
+    margin-bottom: clamp(0.45rem, 1.6svh, 0.9rem);
+  }
+
+  .menu-panel-nav {
+    gap: clamp(0.12rem, 0.65svh, 0.38rem);
+  }
+
+  .menu-link-main .menu-line {
+    font-size: clamp(1.35rem, min(6.8svh, 8.5vw), 3.5rem);
+    line-height: 1.05;
+  }
+
+  .menu-link-main .menu-line-mask {
+    padding-block: 0.19em;
+  }
+
+  .menu-panel-footer {
+    margin-top: 0.55rem;
+    padding-top: 0.45rem;
+  }
+
+  .menu-panel-contact {
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 0.3rem 1rem;
+  }
+
+  .menu-link-footer .menu-line,
+  .menu-link-contact-primary .menu-line {
+    font-size: clamp(0.95rem, 2.5svh, 1.15rem);
   }
 }

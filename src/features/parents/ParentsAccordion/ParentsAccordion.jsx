@@ -193,23 +193,28 @@ export default function ParentsAccordion({ parents }) {
                 onClick={() => setActive(index)}
                 onKeyDown={(event) => handlePanelKeyDown(event, index)}
               >
-                <img
-                  className="parents-accordion-img"
-                  src={parent.photo}
-                  style={
-                    parent.photoPosition || parent.photoScale
-                      ? {
-                          objectPosition: parent.photoPosition,
-                          "--parent-photo-scale": parent.photoScale,
-                          "--parent-photo-x": parent.photoOffsetX,
-                          "--parent-photo-y": parent.photoOffsetY,
-                        }
-                      : undefined
-                  }
-                  alt={`${parent.name} — białe husky`}
-                />
+                <div className="parents-accordion-photo">
+                  <img
+                    className="parents-accordion-img"
+                    src={parent.photo}
+                    style={
+                      parent.photoPosition || parent.photoScale
+                        ? {
+                            objectPosition: parent.photoPosition,
+                            "--parent-photo-scale": parent.photoScale,
+                            "--parent-photo-x": parent.photoOffsetX,
+                            "--parent-photo-y": parent.photoOffsetY,
+                          }
+                        : undefined
+                    }
+                    alt={`${parent.name} — białe husky`}
+                  />
 
-                <div className="parents-accordion-overlay" />
+                  <div
+                    className="parents-accordion-overlay"
+                    aria-hidden="true"
+                  />
+                </div>
 
                 <div className="parents-accordion-inner">
                   <span className="parents-accordion-number mono">

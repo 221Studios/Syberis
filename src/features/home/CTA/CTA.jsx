@@ -31,7 +31,7 @@ const NEIGHBOR_INFLUENCE = 0.15;
 const SPRING_STIFFNESS = 0.05;
 const BOUNCE_FRICTION = 0.85;
 const CURSOR_SMOOTHING = 0.75;
-/** Keep transforms inside the CTA so document width/height never grow (scrollbar flash). */
+// Keep the movement close to each card's resting position.
 const MAX_CARD_SHIFT = 36;
 const MAX_CARD_TILT = 4;
 

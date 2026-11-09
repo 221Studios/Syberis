@@ -206,3 +206,9 @@
     transform: translate(-22%, -50%);
   }
 }
+
+@media (max-width: 599px) and (orientation: portrait) {
+  .preloader-brand {
+    top: clamp(-6rem, -12svh, -2.5rem);
+  }
+}

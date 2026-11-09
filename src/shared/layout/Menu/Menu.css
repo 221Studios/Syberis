@@ -371,7 +371,7 @@ p.mono.menu-close-word {
   }
 
   .menu-panel-top {
-    margin-bottom: clamp(0.45rem, 1.6svh, 0.9rem);
+    margin-bottom: clamp(0.45rem, calc(3.6svh - 0.35rem), 1.5rem);
   }
 
   .menu-panel-nav {
@@ -394,8 +394,18 @@ p.mono.menu-close-word {
 
   .menu-panel-contact {
     flex-flow: row wrap;
-    justify-content: center;
-    gap: 0.3rem 1rem;
+    align-items: flex-start;
+    gap: 0.55rem clamp(1.5rem, 5vw, 3rem);
+    text-align: left;
+  }
+
+  .menu-panel-contact-primary,
+  .menu-panel-contact-secondary {
+    align-items: flex-start;
+  }
+
+  .menu-panel-contact .menu-link {
+    justify-content: flex-start;
   }
 
   .menu-link-footer .menu-line,

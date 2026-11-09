@@ -2,7 +2,7 @@
 
 ![Wersja 0.1.0](https://img.shields.io/badge/wersja-0.1.0-green.svg)
 
-**Oficjalna strona klienta:** [syberis.221studio.pl](https://syberis.221studio.pl/)
+**Oficjalna strona klienta:** [syberis.pl](https://syberis.pl/)
 
 Syberis to wielostronicowa strona hodowli Siberian Husky, która łączy historię hodowli, profile psów, informacje o miotach i kontakt w jednym miejscu. Pomaga zainteresowanym poznać psy i sprawdzić informacje o szczeniętach.
 
@@ -149,4 +149,4 @@ Zasady współtworzenia i format commitów opisuje plik [CONTRIBUTING.md](CONTRI
 
 ## 📄 Licencja
 
-Repozytorium nie zawiera obecnie pliku licencji. Prawa do strony i jej treści należą do hodowli Syberis; projekt powstał w Studio 221. Szczegóły można znaleźć na [stronie hodowli](https://syberis.221studio.pl/).
+Repozytorium nie zawiera obecnie pliku licencji. Prawa do strony i jej treści należą do hodowli Syberis; projekt powstał w Studio 221. Szczegóły można znaleźć na [stronie hodowli](https://syberis.pl/).

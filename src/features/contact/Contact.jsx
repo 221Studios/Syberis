@@ -4,9 +4,10 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import Button from "@/shared/ui/Button/Button";
 import Copy from "@/shared/ui/Copy/Copy";
-import { CONTACT } from "@/data/kennel";
-import { mailHref, telHref } from "@/lib/contact";
+import { CONTACT, KENNEL } from "@/data/kennel";
+import { mailHref, smsHref, telHref } from "@/lib/contact";
 
 import "./contact.css";
 
@@ -21,7 +22,8 @@ const transmitCards = [
     value: CONTACT.phonePrimary,
     href: telHref(CONTACT.phonePrimary),
     label2: "SMS",
-    value2: "Też odpowiadamy",
+    value2: "Napisz SMS",
+    href2: smsHref(CONTACT.phonePrimary),
   },
   {
     id: "transmit-card-2",
@@ -37,11 +39,11 @@ const transmitCards = [
     id: "transmit-card-3",
     image: "/images/showreel.jpg",
     index: "03",
-    label: "Ogłoszenie",
+    label: "Profil hodowli",
     value: "OLX",
     href: CONTACT.olx,
-    label2: "Odbiór szczeniaka",
-    value2: "Po 2,5 miesiącu życia",
+    label2: "Wizyty i odbiór",
+    value2: "Po umówieniu",
   },
 ];
 
@@ -237,10 +239,18 @@ export default function TransmitPage() {
             <Copy animateOnScroll={false} delay={0.65}>
               <h1>Szczeniaka</h1>
             </Copy>
+            <div className="transmit-hero-actions">
+              <Button href={telHref(CONTACT.phonePrimary)} theme="dark">
+                Zadzwoń
+              </Button>
+              <Button href={smsHref(CONTACT.phonePrimary)} theme="dark">
+                Napisz SMS
+              </Button>
+            </div>
           </div>
           <div className="transmit-hero-footer">
             <Copy variant="flicker" delay={0.85} animateOnScroll={false}>
-              <p className="mono sm">Hodowla Syberis</p>
+              <p className="mono sm">{KENNEL.location} · wizyty po umówieniu</p>
             </Copy>
             <Copy variant="flicker" delay={0.85} animateOnScroll={false}>
               <p className="mono sm">[ Dzwoń w godzinach 9–20 ]</p>

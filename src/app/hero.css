@@ -82,6 +82,11 @@
   z-index: 2;
 }
 
+.hero-footer a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+}
+
 @media (max-width: 999px) {
   .hero-header {
     gap: 0;

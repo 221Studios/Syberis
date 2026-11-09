@@ -23,7 +23,10 @@ function litterSlide(litter) {
 
   return {
     image: isCurrent ? litter.photo : mutedPhoto(litter.photo),
-    meta: `Urodzone ${formatDate(litter.born)}`,
+    meta:
+      isCurrent && litter.handoverFrom
+        ? `Odbiór od ${formatDate(litter.handoverFrom)}`
+        : litter.born && `Urodzone ${formatDate(litter.born)}`,
     kicker: isCurrent ? "Aktualny miot" : "Miot zakończony",
     title: litterTitle(litter.letter),
     href: `/mioty/${litterSlug(litter)}`,

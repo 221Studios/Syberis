@@ -5,10 +5,15 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import gsap from "gsap";
 import { useLenis } from "lenis/react";
-import { FiChevronUp, FiChevronDown, FiPhone } from "react-icons/fi";
+import {
+  FiChevronUp,
+  FiChevronDown,
+  FiMessageCircle,
+  FiPhone,
+} from "react-icons/fi";
 import { FaTiktok } from "react-icons/fa6";
 import { CONTACT } from "@/data/kennel";
-import { mailHref, telHref } from "@/lib/contact";
+import { mailHref, smsHref, telHref } from "@/lib/contact";
 
 import "./Menu.css";
 
@@ -25,6 +30,12 @@ const MENU_CONTACT_PRIMARY = [
     href: telHref(CONTACT.phonePrimary),
     label: CONTACT.phonePrimary,
     Icon: FiPhone,
+    external: false,
+  },
+  {
+    href: smsHref(CONTACT.phonePrimary),
+    label: "Napisz SMS",
+    Icon: FiMessageCircle,
     external: false,
   },
   {

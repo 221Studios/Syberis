@@ -75,9 +75,9 @@ const SERVICES = [
 const LOCATION_NOTES = [
   {
     label: "Odwiedziny",
-    value: "Po umówieniu zapraszamy poznać pieski na żywo",
+    value: "Termin i miejsce wizyty ustalamy telefonicznie lub przez SMS",
   },
-  { label: "Rezerwacje", value: "Telefonicznie lub mailowo" },
+  { label: "Rezerwacje", value: "Telefonicznie lub przez SMS" },
 ];
 
 function createCtaTick(degree) {
@@ -379,10 +379,10 @@ export default function CTA() {
               href={CONTACT.maps}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Znajdź nas w Google Maps — ${KENNEL.location}`}
+              aria-label="Zobacz Radom w Google Maps"
             >
               <Copy splitType="words">
-                <h6>Znajdź nas</h6>
+                <h6>{KENNEL.location}</h6>
               </Copy>
 
               <div className="cta-compass">
@@ -399,7 +399,7 @@ export default function CTA() {
                 </span>
               </div>
 
-              <p className="mono sm cta-map-cta">{KENNEL.location}</p>
+              <p className="mono sm cta-map-cta">Zobacz Radom na mapie</p>
             </a>
 
             <div className="cta-location-panel">

@@ -248,13 +248,16 @@ export default function LitterPuppies({
               src={
                 puppy.status === "sold" ? mutedPhoto(puppy.photo) : puppy.photo
               }
-              alt={puppy.name}
+              alt=""
               style={
                 puppy.photoPosition
                   ? { objectPosition: puppy.photoPosition }
                   : undefined
               }
             />
+            <span className="litter-puppies-avatar-label mono sm">
+              {puppy.name}
+            </span>
           </button>
         ))}
       </div>
@@ -289,7 +292,9 @@ export default function LitterPuppies({
             <p className="mono sm litter-puppies-detail-meta">
               {statusLabelForPuppy(active)} · {SEX_LABEL[active.sex]}
             </p>
-            <p className="litter-puppies-detail-copy">{active.description}</p>
+            {active.description && (
+              <p className="litter-puppies-detail-copy">{active.description}</p>
+            )}
             {active.traits?.length ? (
               <ul className="litter-puppies-traits">
                 {active.traits.map((trait) => (
@@ -300,7 +305,7 @@ export default function LitterPuppies({
           </>
         ) : (
           <p className="litter-puppies-detail-copy litter-puppies-detail-hint">
-            Najedź na zdjęcie, żeby zobaczyć imię i opis szczeniaka.
+            Wybierz szczeniaka, żeby zobaczyć jego imię i dostępność.
           </p>
         )}
       </div>

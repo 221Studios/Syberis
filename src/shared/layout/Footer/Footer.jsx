@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useLenis } from "lenis/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CONTACT, KENNEL } from "@/data/kennel";
-import { mailHref, telHref } from "@/lib/contact";
+import { mailHref, smsHref, telHref } from "@/lib/contact";
 
 import { FaInstagram, FaTiktok } from "react-icons/fa6";
 
@@ -43,6 +43,7 @@ const FOOTER_SOCIAL_LINKS = [
 
 const FOOTER_CONTACT_LINKS = [
   { label: CONTACT.phonePrimary, href: telHref(CONTACT.phonePrimary) },
+  { label: "Napisz SMS", href: smsHref(CONTACT.phonePrimary) },
   { label: CONTACT.email, href: mailHref(CONTACT.email) },
   { label: "OLX", href: CONTACT.olx },
 ];

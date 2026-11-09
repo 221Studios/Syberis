@@ -84,8 +84,8 @@ export default async function LitterPage({ params }) {
 
                   <p className="mono sm litter-hero-availability">
                     [ {availabilityLine}
-                    {litter.handoverFrom
-                      ? ` · wydania od ${formatDate(litter.handoverFrom)}`
+                    {isCurrent && litter.handoverFrom
+                      ? ` · wizyty i odbiór od ${formatDate(litter.handoverFrom)}`
                       : ""}{" "}
                     ]
                   </p>

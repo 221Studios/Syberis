@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Preloader, {
   isInitialLoad,
   INTRO_DURATION,
@@ -9,11 +10,12 @@ import About from "@/features/home/About/About";
 import FeaturedCards from "@/features/home/FeaturedCards/FeaturedCards";
 import CTA from "@/features/home/CTA/CTA";
 import Copy from "@/shared/ui/Copy/Copy";
-import { KENNEL } from "@/data/kennel";
+import { KENNEL, getCurrentLitter, litterSlug } from "@/data/kennel";
 
 import "./hero.css";
 
 export default function Home() {
+  const litter = getCurrentLitter();
   const heroDelay = isInitialLoad ? INTRO_DURATION : 0.5;
   const footerDelay = isInitialLoad ? INTRO_DURATION + 0.5 : 0.75;
 
@@ -42,7 +44,13 @@ export default function Home() {
           <div className="hero-footer">
             <Copy variant="flicker" delay={footerDelay} animateOnScroll={false}>
               <p className="mono sm">
-                Niedługo nowy miot. Zapraszamy do kontaktu.
+                {litter ? (
+                  <Link href={`/mioty/${litterSlug(litter)}`}>
+                    Zobacz aktualny miot {litter.letter} →
+                  </Link>
+                ) : (
+                  <Link href="/kontakt">Zapytaj o kolejny miot →</Link>
+                )}
               </p>
             </Copy>
             <Copy variant="flicker" delay={footerDelay} animateOnScroll={false}>

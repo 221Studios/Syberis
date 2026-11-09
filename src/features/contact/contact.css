@@ -37,6 +37,13 @@
   transform: translateX(-5%);
 }
 
+.transmit-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
 .transmit-hero-footer {
   display: flex;
   justify-content: space-between;

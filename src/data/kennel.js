@@ -8,7 +8,7 @@ export const KENNEL = {
   name: "Syberis",
   tagline: "Białe husky o niebieskich oczach",
   claim: "Hodowla domowa, poza FCI",
-  location: "Radom, Mazowieckie",
+  location: "Okolice Radomia",
   since: 2023,
 };
 
@@ -98,16 +98,16 @@ export const PARENTS = [
   {
     slug: "mia",
     name: "Mia",
-    role: "Matka miotów A i B",
+    role: "Matka miotów A, B i C",
     sex: "female",
     born: "2020-04-29",
     coat: WHITE_COAT,
     eyes: BLUE_EYES,
     photo: "/parents/mia.jpg",
     wide: "/parents/mia-wide.jpg",
-    tagline: "Matka miotów A i B",
+    tagline: "Matka miotów A, B i C",
     facts: [
-      { label: "Rola w hodowli", value: "Matka miotów A i B" },
+      { label: "Rola w hodowli", value: "Matka miotów A, B i C" },
       { label: "Waga", value: "ok. 26 kg" },
       { label: "Umaszczenie", value: "Białe, bez odmian" },
       { label: "Oczy", value: "Niebieskie" },
@@ -147,17 +147,73 @@ export const PARENTS = [
   },
 ];
 
+const PUPPY_PLACEHOLDER = "/litters/c/placeholder.svg";
+
 export const LITTERS = [
+  {
+    letter: "C",
+    status: "current",
+    sireSlug: "ozzie",
+    damSlug: "mia",
+    handoverFrom: "2027-01-10",
+    photo: PUPPY_PLACEHOLDER,
+    intro:
+      "W miocie Mii i Ozziego jest sześć szczeniąt. Trzy suczki są już zarezerwowane, a trzy pieski czekają na swoje domy. Zadzwoń lub napisz SMS, żeby umówić wizytę i poznać szczeniaki na żywo.",
+    puppies: [
+      {
+        slug: "cora",
+        name: "Cora",
+        sex: "female",
+        status: "reserved",
+        photo: PUPPY_PLACEHOLDER,
+      },
+      {
+        slug: "chia",
+        name: "Chia",
+        sex: "female",
+        status: "reserved",
+        photo: PUPPY_PLACEHOLDER,
+      },
+      {
+        slug: "celi",
+        name: "Celi",
+        sex: "female",
+        status: "reserved",
+        photo: PUPPY_PLACEHOLDER,
+      },
+      {
+        slug: "cosmo",
+        name: "Cosmo",
+        sex: "male",
+        status: "free",
+        photo: PUPPY_PLACEHOLDER,
+      },
+      {
+        slug: "cziko",
+        name: "Cziko",
+        sex: "male",
+        status: "free",
+        photo: PUPPY_PLACEHOLDER,
+      },
+      {
+        slug: "cezar",
+        name: "Cezar",
+        sex: "male",
+        status: "free",
+        photo: PUPPY_PLACEHOLDER,
+      },
+    ],
+  },
   {
     letter: "A",
     slug: "kaja-a",
-    status: "current",
+    status: "finished",
     sireSlug: "ozzie",
     damSlug: "kaja",
     born: "2026-07-15",
     photo: "/litters/kaja-a/cover.jpg",
     intro:
-      "Cztery białe szczenięta po Ozziem i Kai: trzy suczki i jeden piesek. Trzy są jeszcze wolne — rezerwacje przyjmujemy telefonicznie i mailowo. Pieski wyjadą do domów pomiędzy 2. a 4. miesiącem życia.",
+      "Cztery białe szczenięta po Ozziem i Kai: trzy suczki i jeden piesek. Wszystkie są już w swoich nowych domach.",
     grownGallery: [],
     puppies: [
       {
@@ -176,37 +232,34 @@ export const LITTERS = [
         slug: "aria",
         name: "Aria",
         sex: "female",
-        status: "free",
+        status: "sold",
         coat: WHITE_COAT,
         eyes: BLUE_EYES,
         photo: "/litters/kaja-a/aria.jpg",
-        traits: ["Suczka", "W hodowli"],
-        description:
-          "Aria jest jeszcze wolna. Rezerwacje przyjmujemy telefonicznie i mailowo.",
+        traits: ["W nowym domu"],
+        description: "Aria ma już nowy dom.",
       },
       {
         slug: "ayla",
         name: "Ayla",
         sex: "female",
-        status: "free",
+        status: "sold",
         coat: WHITE_COAT,
         eyes: BLUE_EYES,
         photo: "/litters/kaja-a/ayla.jpg",
-        traits: ["Suczka", "W hodowli"],
-        description:
-          "Ayla jest jeszcze wolna. Rezerwacje przyjmujemy telefonicznie i mailowo.",
+        traits: ["W nowym domu"],
+        description: "Ayla ma już nowy dom.",
       },
       {
         slug: "abi",
         name: "Abi",
         sex: "female",
-        status: "free",
+        status: "sold",
         coat: WHITE_COAT,
         eyes: BLUE_EYES,
         photo: "/litters/kaja-a/abi.jpg",
-        traits: ["Suczka", "W hodowli"],
-        description:
-          "Abi jest jeszcze wolna. Rezerwacje przyjmujemy telefonicznie i mailowo.",
+        traits: ["W nowym domu"],
+        description: "Abi ma już nowy dom.",
       },
     ],
   },

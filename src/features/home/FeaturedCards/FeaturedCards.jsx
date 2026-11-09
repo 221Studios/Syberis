@@ -8,19 +8,26 @@ import { useGSAP } from "@gsap/react";
 import Button from "@/shared/ui/Button/Button";
 import Copy from "@/shared/ui/Copy/Copy";
 
+import { getCurrentLitter, litterSlug, litterTitle } from "@/data/kennel";
+
 import "./FeaturedCards.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const FEATURED_CARD_START_Y = "115%";
 
+const currentLitter = getCurrentLitter();
 const FEATURED_CARDS_DATA = [
-  {
-    subtitle: "Aktualny miot",
-    title: "Miot A",
-    image: "/litters/kaja-a/cover.jpg",
-    href: "/mioty/kaja-a",
-  },
+  ...(currentLitter
+    ? [
+        {
+          subtitle: "Aktualny miot",
+          title: litterTitle(currentLitter.letter),
+          image: currentLitter.photo,
+          href: `/mioty/${litterSlug(currentLitter)}`,
+        },
+      ]
+    : []),
   {
     subtitle: "Nasze psy",
     title: "Rodzice",
@@ -39,7 +46,7 @@ const FEATURED_CARDS_DATA = [
   },
   {
     subtitle: "Poprzednie mioty",
-    title: "Miot A i B",
+    title: "Archiwum miotów",
     image: "/litters/b/cover-muted.jpg",
     href: "/mioty",
   },

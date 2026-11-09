@@ -42,7 +42,7 @@ export default function Home() {
           </div>
 
           <div className="hero-footer">
-            <Copy variant="flicker" delay={footerDelay} animateOnScroll={false}>
+            <Copy variant="slide" delay={footerDelay} animateOnScroll={false}>
               <p className="mono sm">
                 {litter ? (
                   <Link href={`/mioty/${litterSlug(litter)}`}>

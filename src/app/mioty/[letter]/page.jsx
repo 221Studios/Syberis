@@ -104,8 +104,8 @@ export default async function LitterPage({ params }) {
                             : undefined
                         }
                       />
-                      <div>
-                        <p className="mono sm">{sire.role}</p>
+                      <div className="litter-parent-caption">
+                        <p>{sire.role}</p>
                         <h6>{sire.name}</h6>
                         <span
                           className="litter-parent-arrow"
@@ -125,8 +125,8 @@ export default async function LitterPage({ params }) {
                             : undefined
                         }
                       />
-                      <div>
-                        <p className="mono sm">Matka</p>
+                      <div className="litter-parent-caption">
+                        <p>Matka</p>
                         <h6>{dam.name}</h6>
                         <span
                           className="litter-parent-arrow"

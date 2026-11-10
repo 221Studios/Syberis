@@ -32,9 +32,10 @@
   color: var(--base-500);
 }
 
-.featured-cards-header h5 {
+.featured-cards-header h2 {
   width: 80%;
   margin: 1.5rem 0 3rem 0;
+  font-size: clamp(3rem, 6vw, 6rem);
 }
 
 .featured-cards-nowrap {
@@ -121,14 +122,15 @@
   color: var(--base-300);
 }
 
-.featured-card-content h6.subheader {
+.featured-card-content .subheader {
   margin: 0;
+  font-family: "Palace", serif;
   font-size: clamp(1rem, 1.8vw, 1.65rem);
   line-height: 1.05;
   transform: none;
 }
 
-.featured-card-content h5 {
+.featured-card-content h3 {
   margin: 0;
   font-size: clamp(1.5rem, 4.2vw, 3.25rem);
   line-height: 1;
@@ -140,9 +142,10 @@
     width: 92%;
   }
 
-  .featured-cards-header h5 {
+  .featured-cards-header h2 {
     width: 100%;
     margin: 1rem 0 2rem;
+    font-size: clamp(2.35rem, 5.5vw, 4.25rem);
   }
 
   .featured-card-content {
@@ -150,12 +153,12 @@
     gap: 0.4rem;
   }
 
-  .featured-card-content h6.subheader {
+  .featured-card-content .subheader {
     font-size: clamp(1rem, 1.5vw, 1.45rem);
     transform: none;
   }
 
-  .featured-card-content h5 {
+  .featured-card-content h3 {
     font-size: clamp(1.5rem, 3.2vw, 2.5rem);
   }
 }
@@ -179,9 +182,10 @@
     padding: 4rem 0.75rem 2rem;
   }
 
-  .featured-cards-header h5 {
+  .featured-cards-header h2 {
     width: 100%;
     margin: 1rem 0 1.5rem;
+    font-size: clamp(1.9rem, 7.5vw, 2.85rem);
   }
 
   .featured-cards-container {
@@ -204,14 +208,14 @@
     gap: 0.4rem;
   }
 
-  .featured-card-content h6.subheader {
+  .featured-card-content .subheader {
     font-size: clamp(1.05rem, 3.2vw, 1.55rem);
     line-height: 1.05;
     margin: 0;
     transform: none;
   }
 
-  .featured-card-content h5 {
+  .featured-card-content h3 {
     font-size: clamp(1.85rem, 7vw, 3rem);
     line-height: 1;
     margin: 0;

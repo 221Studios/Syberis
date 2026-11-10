@@ -20,6 +20,11 @@
 
 .about-title {
   max-width: 900px;
+  font-size: clamp(3rem, 6vw, 6rem);
+}
+
+.about-lead {
+  font-size: clamp(2.5rem, 5vw, 5rem);
 }
 
 .about-services {
@@ -54,7 +59,7 @@
   max-width: 430px;
 }
 
-.about-services-copy h2 {
+.about-services-copy h3 {
   margin-bottom: 0.85rem;
   font-size: clamp(1.65rem, 3vw, 2.35rem);
   line-height: 1.08;
@@ -154,6 +159,14 @@
     padding: 1.5rem 0 5rem;
   }
 
+  .about-title {
+    font-size: clamp(2.35rem, 5.5vw, 4.25rem);
+  }
+
+  .about-lead {
+    font-size: clamp(2rem, 4.5vw, 3.75rem);
+  }
+
   .about-services {
     gap: 2rem;
   }
@@ -184,6 +197,11 @@
 
   .about-title {
     max-width: none;
+    font-size: clamp(1.9rem, 7.5vw, 2.85rem);
+  }
+
+  .about-lead {
+    font-size: clamp(1.7rem, 6.5vw, 2.5rem);
   }
 
   .about-services {

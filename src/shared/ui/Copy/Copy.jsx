@@ -55,6 +55,7 @@ export default function Copy({
               const split = SplitText.create(element, {
                 type: "lines",
                 linesClass: "copy-line",
+                aria: "none",
               });
 
               splits.push(split);
@@ -63,6 +64,7 @@ export default function Copy({
               const split = SplitText.create(element, {
                 type: "words",
                 wordsClass: "copy-word",
+                aria: "none",
               });
 
               splits.push(split);
@@ -72,6 +74,7 @@ export default function Copy({
                 type: "words,chars",
                 wordsClass: "copy-word",
                 charsClass: "copy-char",
+                aria: "none",
               });
 
               splits.push(split);
@@ -170,6 +173,7 @@ export default function Copy({
             const split = SplitText.create(element, {
               type: "chars",
               charsClass: "copy-char",
+              aria: "none",
             });
 
             splits.push(split);

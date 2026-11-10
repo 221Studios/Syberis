@@ -52,13 +52,13 @@
   text-decoration: none;
 }
 
-.cta-left h6,
+.cta-left h2,
 .cta-services-title {
   font-size: clamp(1.75rem, 3.5vw, 3.25rem);
   color: var(--base-100);
 }
 
-.cta-left h6,
+.cta-left h2,
 .cta-services-title {
   margin: 0;
   line-height: 1;
@@ -113,9 +113,9 @@
 }
 
 .cta-map-cta {
-  color: var(--base-300);
+  color: var(--base-100);
   text-transform: uppercase;
-  opacity: 0.9;
+  opacity: 1;
   transition:
     color 0.25s ease,
     opacity 0.25s ease;
@@ -150,7 +150,7 @@
 }
 
 .cta-location-row .mono {
-  color: var(--base-300);
+  color: var(--base-100);
   text-transform: uppercase;
 }
 
@@ -212,7 +212,7 @@
 }
 
 .cta-service-card__top .mono {
-  color: var(--base-300);
+  color: var(--base-100);
 }
 
 .cta-service-card > .md {
@@ -301,7 +301,7 @@
     padding: 1.25rem 0;
   }
 
-  .cta-left h6,
+  .cta-left h2,
   .cta-services-title {
     font-size: clamp(1.6rem, 6vw, 2.35rem);
   }

@@ -74,7 +74,11 @@ export default function Deck({ slides, counterPrefix = "NR", hint }) {
     deckSplitsRef.current = deckSlideEls.map((slide) => {
       const titleLines = slide.querySelectorAll(".deck-title, .subheader");
       return [...titleLines].map((line) =>
-        SplitText.create(line, { type: "words", wordsClass: "deck-word" }),
+        SplitText.create(line, {
+          type: "words",
+          wordsClass: "deck-word",
+          aria: "none",
+        }),
       );
     });
 
@@ -108,6 +112,7 @@ export default function Deck({ slides, counterPrefix = "NR", hint }) {
         SplitText.create(el, {
           type: "chars",
           charsClass: "deck-flicker-char",
+          aria: "none",
         }),
       );
 

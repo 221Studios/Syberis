@@ -48,10 +48,10 @@ export default function About({ litter }) {
             </Copy>
 
             <Copy splitType="words">
-              <h5 className="v2 about-title">
+              <h2 className="v2 about-title">
                 Domowa hodowla psów rasy Siberian Husky, prowadzona z ogromnej
                 miłości i fascynacji tymi pięknymi psami północy.
-              </h5>
+              </h2>
             </Copy>
           </div>
 
@@ -59,9 +59,9 @@ export default function About({ litter }) {
             <div className="about-services-left">
               <div className="about-services-left-header">
                 <Copy splitType="words">
-                  <h6 className="v2">
+                  <h3 className="v2 about-lead">
                     Nasze psy są pełnoprawnymi członkami rodziny.
-                  </h6>
+                  </h3>
                 </Copy>
               </div>
 
@@ -76,7 +76,7 @@ export default function About({ litter }) {
                 />
 
                 <section className="about-services-copy">
-                  <h2>Szczeniaki husky syberyjskiego</h2>
+                  <h3>Szczeniaki husky syberyjskiego</h3>
                   <p>
                     W domowej hodowli Syberis w okolicach Radomia wychowujemy
                     białe husky syberyjskie. Zobacz zdjęcia szczeniąt, sprawdź
@@ -101,7 +101,7 @@ export default function About({ litter }) {
 
             <div className="about-services-right">
               <Copy splitType="words">
-                <h6 className="v2">Rodzice</h6>
+                <h3 className="v2 about-lead">Rodzice</h3>
               </Copy>
 
               <div className="about-services-grid">

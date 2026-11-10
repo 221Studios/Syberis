@@ -103,7 +103,7 @@ function createCtaDegreeLabel(degree) {
   ctaLabel.setAttributeNS(null, "y", 45);
   ctaLabel.setAttributeNS(null, "font-size", "15px");
   ctaLabel.setAttributeNS(null, "font-family", "DMMono, Arial, sans-serif");
-  ctaLabel.setAttributeNS(null, "fill", "grey");
+  ctaLabel.setAttributeNS(null, "fill", "#f4f9ff");
   ctaLabel.setAttributeNS(null, "text-anchor", "middle");
   ctaLabel.setAttributeNS(null, "style", "letter-spacing:1.0");
   ctaLabel.setAttributeNS(
@@ -129,7 +129,7 @@ function createCtaCardinal(label, angle) {
     "font-family",
     "DMMono, Helvetica, Arial, sans-serif",
   );
-  ctaDir.setAttributeNS(null, "fill", "white");
+  ctaDir.setAttributeNS(null, "fill", "#f4f9ff");
   ctaDir.setAttributeNS(null, "text-anchor", "middle");
   ctaDir.setAttributeNS(null, "dominant-baseline", "central");
   ctaDir.appendChild(document.createTextNode(label));
@@ -382,7 +382,7 @@ export default function CTA() {
               aria-label="Zobacz Radom w Google Maps"
             >
               <Copy splitType="words">
-                <h6>{KENNEL.location}</h6>
+                <h2>{KENNEL.location}</h2>
               </Copy>
 
               <div className="cta-compass">
@@ -420,7 +420,7 @@ export default function CTA() {
 
           <div className="cta-right">
             <Copy splitType="words">
-              <h6 className="cta-services-title">Co zapewniamy</h6>
+              <h2 className="cta-services-title">Co zapewniamy</h2>
             </Copy>
 
             <div className="cta-services" ref={ctaServicesRef}>

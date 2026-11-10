@@ -184,7 +184,7 @@ export default function FeaturedCards({
             </Copy>
 
             <Copy splitType="words">
-              <h5 className="v2">
+              <h2 className="v2">
                 {title ?? (
                   <>
                     Poznaj mioty, rodziców{" "}
@@ -193,7 +193,7 @@ export default function FeaturedCards({
                     </span>
                   </>
                 )}
-              </h5>
+              </h2>
             </Copy>
 
             <Copy variant="slide" delay={0.5}>
@@ -225,8 +225,8 @@ export default function FeaturedCards({
                   />
                 </div>
                 <div className="featured-card-content">
-                  <h6 className="subheader">{card.subtitle}</h6>
-                  <h5>{card.title}</h5>
+                  <p className="subheader">{card.subtitle}</p>
+                  <h3>{card.title}</h3>
                 </div>
               </Link>
             ))}

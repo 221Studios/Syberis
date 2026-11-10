@@ -6,7 +6,6 @@ import Button from "@/shared/ui/Button/Button";
 import Copy from "@/shared/ui/Copy/Copy";
 import {
   LITTERS,
-  formatDate,
   getLitter,
   getParent,
   litterSlug,
@@ -85,8 +84,8 @@ export default async function LitterPage({ params }) {
 
                   <p className="mono sm litter-hero-availability">
                     [ {availabilityLine}
-                    {isCurrent && litter.handoverFrom
-                      ? ` · wizyty i odbiór od ${formatDate(litter.handoverFrom)}`
+                    {isCurrent && litter.handoverLabel
+                      ? ` · ${litter.handoverLabel}`
                       : ""}{" "}
                     ]
                   </p>
@@ -158,9 +157,9 @@ export default async function LitterPage({ params }) {
           </h5>
           {isCurrent && (
             <p className="litter-visit-note">
-              Zadzwoń lub napisz SMS i podaj imię szczeniaka, który Cię
-              zainteresował. Podczas rozmowy ustalimy termin i miejsce wizyty
-              oraz omówimy rezerwację i odbiór.
+              Zadzwoń lub napisz SMS i podaj imię szczeniaka. Umówimy wizytę,
+              omówimy rezerwację i ustalimy termin odbioru. Do domu zabierzesz
+              też książeczkę zdrowia i wyprawkę na start.
             </p>
           )}
           <div className="litter-split-cta-actions">

@@ -35,13 +35,13 @@ export default function SiberianHuskyPage() {
         <Link href="/rodzice">poznać rodziców szczeniąt</Link>.
       </p>
 
-      <h2>O co zapytać podczas wizyty?</h2>
+      <h2>Wizyta w hodowli i odbiór szczeniaka</h2>
       <p>
-        Zapytaj, jak wygląda dzień szczeniaka, jakie sytuacje już poznał i co
-        je. Ustal, jakie dokumenty dostaniesz przy odbiorze i jak przygotować
-        transport do domu. Jeśli rozważasz konkretnego psa,{" "}
+        Jeśli rozważasz konkretnego psa,{" "}
         <Link href="/mioty">sprawdź aktualne mioty</Link> i{" "}
-        <Link href="/kontakt">umów wizytę w hodowli</Link>.
+        <Link href="/kontakt">umów wizytę w hodowli</Link>. Zapytaj, jak wygląda
+        dzień szczeniaka i jaką karmę je. Przed odbiorem przygotuj bezpieczny
+        transport i spokojne miejsce do odpoczynku w domu.
       </p>
 
       <p>

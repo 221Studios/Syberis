@@ -155,10 +155,10 @@ export const LITTERS = [
     status: "current",
     sireSlug: "ozzie",
     damSlug: "mia",
-    handoverFrom: "2027-01-10",
+    handoverLabel: "Odbiór od połowy grudnia 2026",
     photo: PUPPY_PLACEHOLDER,
     intro:
-      "W miocie Mii i Ozziego jest sześć szczeniąt. Trzy suczki są już zarezerwowane, a trzy pieski czekają na swoje domy. Zadzwoń lub napisz SMS, żeby umówić wizytę i poznać szczeniaki na żywo.",
+      "Miot C to sześć białych szczeniąt husky syberyjskiego po Mii i Ozziem. Sprawdź zdjęcia i dostępność każdego szczeniaka. Jeśli chcesz poznać miot na żywo, umów wizytę w naszej hodowli w okolicach Radomia.",
     puppies: [
       {
         slug: "cora",

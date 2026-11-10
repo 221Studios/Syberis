@@ -49,6 +49,14 @@ html:has(.preloader:not(.preloader--revealing))
   visibility: hidden;
 }
 
+/* The preloader title stays at opacity 0 until its animation JS runs, and
+   Lighthouse then records that late text as LCP. The hero heading is already
+   in the first HTML and larger, so let it paint under the curtain. A child
+   can be visible while its section stays hidden. */
+html:has(.preloader:not(.preloader--revealing)) .hero h1 {
+  visibility: visible;
+}
+
 .preloader-logo,
 .preloader-title-wrap,
 .preloader-tagline {

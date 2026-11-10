@@ -26,8 +26,12 @@ export default function Home() {
       <section className="hero">
         <div className="hero-img">
           <img
-            src="/images/hero.jpg"
+            src="/images/hero.webp"
             alt="Białe szczenię husky o niebieskich oczach"
+            width={1600}
+            height={2844}
+            fetchPriority="high"
+            loading="eager"
           />
         </div>
 

@@ -29,9 +29,9 @@ export default function ScrollVideo({
       if (!canvas || !wrap) return;
 
       const context = canvas.getContext("2d");
-      const state = { frame: 0 };
+      let targetFrame = 0;
+      let lastRenderedImage;
       const images = [];
-      let loaded = 0;
       let triggerInstance = null;
 
       const frameUrl = (index) =>
@@ -54,13 +54,12 @@ export default function ScrollVideo({
         context.setTransform(dpr, 0, 0, dpr, 0, 0);
       };
 
-      const render = () => {
+      const render = (img) => {
+        if (!img?.complete || !img.naturalWidth) return;
+
         const w = wrap.clientWidth;
         const h = wrap.clientHeight;
         context.clearRect(0, 0, w, h);
-
-        const img = images[state.frame];
-        if (!img || !img.complete || img.naturalWidth === 0) return;
 
         const imageAspect = img.naturalWidth / img.naturalHeight;
         const canvasAspect = w / h;
@@ -83,11 +82,29 @@ export default function ScrollVideo({
         }
 
         context.drawImage(img, drawX, drawY, drawWidth, drawHeight);
+        lastRenderedImage = img;
+      };
+
+      const loadFrame = (index) => {
+        if (index < 0 || index >= frameCount || images[index]) return;
+
+        const image = new Image();
+        images[index] = image;
+        image.onload = () => {
+          if (index === targetFrame || !lastRenderedImage) render(image);
+        };
+        image.src = frameUrl(index);
+      };
+
+      const showFrame = (index) => {
+        targetFrame = index;
+        loadFrame(index);
+        render(images[index]);
+        loadFrame(index + 1);
+        loadFrame(index - 1);
       };
 
       const setupScroll = () => {
-        if (triggerInstance) triggerInstance.kill();
-
         // Progress = how far this element itself has travelled through the
         // viewport (enter at bottom → exit at top). When sticky keeps it
         // on screen longer, getBoundingClientRect still drives the scrub
@@ -101,32 +118,27 @@ export default function ScrollVideo({
             if (!isOnScreen()) return;
 
             const target = Math.round(self.progress * (frameCount - 1));
-            if (target !== state.frame) {
-              state.frame = target;
-              render();
-            }
+            if (target !== targetFrame) showFrame(target);
           },
         });
+        showFrame(Math.round(triggerInstance.progress * (frameCount - 1)));
       };
 
-      setCanvasSize();
-
-      for (let i = 0; i < frameCount; i++) {
-        const img = new Image();
-        img.onload = img.onerror = () => {
-          loaded += 1;
-          if (loaded === frameCount) {
-            render();
-            setupScroll();
-          }
-        };
-        img.src = frameUrl(i);
-        images.push(img);
-      }
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry.isIntersecting) return;
+          observer.disconnect();
+          setCanvasSize();
+          setupScroll();
+        },
+        { rootMargin: "300px 0px" },
+      );
+      observer.observe(wrap);
 
       const handleResize = () => {
+        if (!triggerInstance) return;
         setCanvasSize();
-        render();
+        render(lastRenderedImage);
         ScrollTrigger.refresh();
       };
 
@@ -134,6 +146,10 @@ export default function ScrollVideo({
 
       return () => {
         window.removeEventListener("resize", handleResize);
+        observer.disconnect();
+        images.forEach((image) => {
+          image.onload = null;
+        });
         triggerInstance?.kill();
       };
     },

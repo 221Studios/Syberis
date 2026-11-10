@@ -210,6 +210,7 @@ export default function FeaturedCards({
                 <div className="featured-card-img">
                   <img
                     src={card.image}
+                    loading="lazy"
                     alt={card.alt ?? card.title}
                     style={
                       card.imagePosition || card.imageScale

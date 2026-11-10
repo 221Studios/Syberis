@@ -176,24 +176,28 @@ export default function Showreel() {
   return (
     <section className="showreel" ref={showreelRef}>
       <div className="showreel-header" id="showreel-header-1">
-        <img src="/assets/showreel-header.svg" alt="" />
+        <img src="/assets/showreel-header.svg" alt="" loading="lazy" />
       </div>
 
       <div className="showreel-header" id="showreel-header-2">
-        <img src="/assets/showreel-header.svg" alt="" />
+        <img src="/assets/showreel-header.svg" alt="" loading="lazy" />
       </div>
 
       <div className="showreel-header" id="showreel-header-3">
-        <img src="/assets/showreel-header.svg" alt="" />
+        <img src="/assets/showreel-header.svg" alt="" loading="lazy" />
       </div>
 
       <div className="showreel-header" id="showreel-header-4">
-        <img src="/assets/showreel-header.svg" alt="" />
+        <img src="/assets/showreel-header.svg" alt="" loading="lazy" />
       </div>
 
       <div className="container">
         <div className="showreel-visual">
-          <img src="/images/showreel.jpg" alt="Trzy białe husky Syberis" />
+          <img
+            src="/images/showreel.jpg"
+            alt="Trzy białe husky Syberis"
+            loading="lazy"
+          />
 
           <div className="showreel-marquee-container">
             <div className="showreel-marquee">

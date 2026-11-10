@@ -127,6 +127,7 @@ export default function About({ litter }) {
                           <img
                             src={homePhoto}
                             alt={parent.name}
+                            loading="lazy"
                             style={homePhotoStyle}
                           />
                         </div>

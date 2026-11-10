@@ -23,8 +23,11 @@ export default function MusicToggle() {
     setIsPlaying(next);
 
     if (next) {
+      if (!audio.hasAttribute("src")) audio.src = "/music/bg.mp3";
       audio.volume = DEFAULT_VOLUME;
-      audio.play();
+      audio.play().catch(() => {
+        if (audio.paused) setIsPlaying(false);
+      });
     } else {
       audio.pause();
     }
@@ -32,7 +35,7 @@ export default function MusicToggle() {
 
   return (
     <>
-      <audio ref={audioRef} src="/music/bg.mp3" loop />
+      <audio ref={audioRef} loop />
       <div className="music-toggle-container">
         <button
           type="button"

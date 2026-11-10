@@ -151,7 +151,7 @@ p.mono.menu-close-word {
 }
 
 .menu-panel-top {
-  margin-bottom: 1.75rem;
+  margin-bottom: 2.25rem;
   flex-shrink: 0;
 }
 
@@ -281,7 +281,7 @@ p.mono.menu-close-word {
   }
 
   .menu-panel-top {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
   }
 
   .menu-link-main .menu-line {
@@ -326,7 +326,7 @@ p.mono.menu-close-word {
   }
 
   .menu-panel-top {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.75rem;
   }
 
   .menu-line::after {
@@ -371,7 +371,7 @@ p.mono.menu-close-word {
   }
 
   .menu-panel-top {
-    margin-bottom: clamp(0.45rem, calc(3.6svh - 0.35rem), 1.5rem);
+    margin-bottom: clamp(0.95rem, calc(3.6svh + 0.15rem), 2rem);
   }
 
   .menu-panel-nav {

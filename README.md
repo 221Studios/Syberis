@@ -83,14 +83,15 @@ Lokalne uruchomienie nie wymaga zmiennych środowiskowych.
 
 Po uruchomieniu aplikacji można przejść do głównych sekcji strony:
 
-| Ścieżka           | Zawartość                                         |
-| ----------------- | ------------------------------------------------- |
-| `/`               | Informacje o hodowli i wyróżnione treści          |
-| `/mioty`          | Aktualne i zakończone mioty                       |
-| `/mioty/[letter]` | Szczegóły miotu, szczenięta, rodzice i dostępność |
-| `/rodzice`        | Profile psów hodowlanych                          |
-| `/galeria`        | Interaktywna galeria zdjęć                        |
-| `/kontakt`        | Formy kontaktu i lokalizacja                      |
+| Ścieżka             | Zawartość                                         |
+| ------------------- | ------------------------------------------------- |
+| `/`                 | Informacje o hodowli i wyróżnione treści          |
+| `/mioty`            | Aktualne i zakończone mioty                       |
+| `/mioty/[letter]`   | Szczegóły miotu, szczenięta, rodzice i dostępność |
+| `/rodzice`          | Profile psów hodowlanych                          |
+| `/galeria`          | Interaktywna galeria zdjęć                        |
+| `/husky-syberyjski` | Poradnik o charakterze, ruchu i pielęgnacji husky |
+| `/kontakt`          | Formy kontaktu i lokalizacja                      |
 
 Przydatne polecenia:
 
@@ -111,6 +112,7 @@ Aplikacja korzysta z Next.js App Router. Moduły routingu odpowiadają za adresy
 ```mermaid
 flowchart TD
     Visitor[Odwiedzający] --> Routes[Next.js App Router]
+    Routes --> Guide["/husky-syberyjski · poradnik o rasie"]
     Routes --> Features[src/features/<br/>strona główna · mioty · rodzice · galeria · kontakt]
     Features --> Shared[src/shared/<br/>wspólny interfejs i układ]
     Features --> KennelData[src/data/kennel.js<br/>dane hodowli, psów i miotów]

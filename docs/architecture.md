@@ -7,6 +7,7 @@ flowchart TD
   Visitor[Visitor]
   Routes[Next.js App Router<br/>/, /mioty, /rodzice, /galeria, /kontakt]
   LitterRoute["/mioty/[letter]"]
+  BreedGuide["/husky-syberyjski"]
   Data[src/data/kennel.js<br/>kennel, parents, litters, puppies]
   Contact[src/lib/contact.js<br/>phone and email links]
   Features[Features<br/>home, litters, parents, gallery, contact]
@@ -18,6 +19,7 @@ flowchart TD
   Visitor --> Routes
   Routes --> Features
   Routes --> LitterRoute
+  Routes --> BreedGuide
   LitterRoute --> Data
   LitterRoute --> Features
   Features --> Data

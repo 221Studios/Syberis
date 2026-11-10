@@ -22,6 +22,7 @@ const MENU_PRIMARY_LINKS = [
   { href: "/mioty", label: "Mioty" },
   { href: "/rodzice", label: "Rodzice" },
   { href: "/galeria", label: "Galeria" },
+  { href: "/husky-syberyjski", label: "Husky syberyjski" },
   { href: "/kontakt", label: "Kontakt" },
 ];
 

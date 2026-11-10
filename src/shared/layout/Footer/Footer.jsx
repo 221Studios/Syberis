@@ -129,8 +129,8 @@ export default function Footer() {
         <div className="footer-content">
           <div className="footer-center">
             <div className="footer-brand">
-              <h1 className="subheader">Hodowla</h1>
-              <h1>{KENNEL.name}</h1>
+              <p className="subheader">Hodowla</p>
+              <p className="footer-brand-name">{KENNEL.name}</p>
             </div>
 
             <a

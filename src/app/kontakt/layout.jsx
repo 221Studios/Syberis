@@ -1,7 +1,8 @@
 export const metadata = {
+  alternates: { canonical: "/kontakt" },
   title: "Kontakt | Syberis",
   description:
-    "Zapytaj o szczeniaka białego husky — telefon, e-mail i ogłoszenie OLX hodowli Syberis.",
+    "Zadzwoń lub napisz SMS do hodowli Syberis i umów wizytę w okolicach Radomia. Kontakt w sprawie szczeniąt husky syberyjskiego.",
 };
 
 export default function ContactLayout({ children }) {

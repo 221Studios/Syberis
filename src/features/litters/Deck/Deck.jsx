@@ -35,7 +35,7 @@ function preloadImages(sources) {
 function DeckTitle({ href, title }) {
   const [hovered, setHovered] = useState(false);
 
-  if (!href) return <h1>{title}</h1>;
+  if (!href) return <p className="deck-title">{title}</p>;
 
   return (
     <Link
@@ -44,7 +44,7 @@ function DeckTitle({ href, title }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <h1>{title}</h1>
+      <p className="deck-title">{title}</p>
       <span className="deck-title-underline" />
     </Link>
   );
@@ -72,9 +72,9 @@ export default function Deck({ slides, counterPrefix = "NR", hint, action }) {
     const deckTotal = deckSlideEls.length;
 
     deckSplitsRef.current = deckSlideEls.map((slide) => {
-      const deckH1s = slide.querySelectorAll(".deck-slide-title-block h1");
-      return [...deckH1s].map((h1) =>
-        SplitText.create(h1, { type: "words", wordsClass: "deck-word" }),
+      const titleLines = slide.querySelectorAll(".deck-title, .subheader");
+      return [...titleLines].map((line) =>
+        SplitText.create(line, { type: "words", wordsClass: "deck-word" }),
       );
     });
 
@@ -317,6 +317,7 @@ export default function Deck({ slides, counterPrefix = "NR", hint, action }) {
       }
 
       deckObserverRef.current = Observer.create({
+        target: deckSlidesEl,
         type: "wheel,touch",
         onDown: () => deckNavigate(-1),
         onUp: () => deckNavigate(1),
@@ -376,7 +377,7 @@ export default function Deck({ slides, counterPrefix = "NR", hint, action }) {
                 ) : null}
               </div>
               <div className="deck-slide-title-block">
-                <h1 className="subheader">{slide.kicker}</h1>
+                <p className="subheader">{slide.kicker}</p>
                 <DeckTitle href={slide.href} title={slide.title} />
                 {slide.description && (
                   <p className="lg deck-slide-description">

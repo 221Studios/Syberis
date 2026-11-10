@@ -50,6 +50,7 @@
 }
 
 .litter-hero-main .subheader {
+  font-family: "Palace";
   width: 100%;
   margin: 0;
   font-size: clamp(1.35rem, 2.6vw, 2.35rem);
@@ -199,6 +200,10 @@
   max-width: 14ch;
   font-size: clamp(2rem, 3.5vw, 3.25rem);
   line-height: 1.05;
+}
+
+.litter-visit-note {
+  max-width: 35ch;
 }
 
 .litter-split-cta-actions {

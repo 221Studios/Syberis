@@ -1,5 +1,6 @@
 export const metadata = {
-  title: "Rodzice | Syberis",
+  alternates: { canonical: "/rodzice" },
+  title: "Rodzice szczeniąt – białe husky | Syberis",
   description:
     "Ozzie, Kaja, Mia i Cynamon — białe husky, od których pochodzą nasze szczeniaki.",
 };

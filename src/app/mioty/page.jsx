@@ -1,18 +1,22 @@
+import Link from "next/link";
 import Deck from "@/features/litters/Deck/Deck";
 import {
   LITTERS,
   countByStatus,
   formatDate,
+  getCurrentLitter,
   getParent,
   litterSlug,
   litterTitle,
   mutedPhoto,
 } from "@/data/kennel";
+import "../seo-content.css";
 
 export const metadata = {
-  title: "Mioty | Syberis",
+  alternates: { canonical: "/mioty" },
+  title: "Szczeniaki husky – aktualne mioty | Syberis",
   description:
-    "Mioty białych husky w hodowli Syberis — oznaczane osobno dla każdej suczki.",
+    "Szczeniaki husky syberyjskiego z hodowli Syberis w okolicach Radomia. Zobacz zdjęcia, poznaj rodziców i sprawdź dostępność.",
 };
 
 function litterSlide(litter) {
@@ -39,11 +43,40 @@ function litterSlide(litter) {
 }
 
 export default function LittersPage() {
+  const current = getCurrentLitter();
+
   return (
-    <Deck
-      slides={LITTERS.map(litterSlide)}
-      counterPrefix="MIOT"
-      hint="Przesuń palcem, aby zmienić miot"
-    />
+    <main>
+      <Deck
+        slides={LITTERS.map(litterSlide)}
+        counterPrefix="MIOT"
+        hint="Przesuń palcem, aby zmienić miot"
+        action={{ href: "#o-miotach", label: "O miotach" }}
+      />
+      <section className="seo-content" id="o-miotach">
+        <h1>Szczeniaki husky syberyjskiego</h1>
+        <p>
+          W domowej hodowli Syberis w okolicach Radomia wychowujemy białe husky
+          syberyjskie. Na stronie każdego miotu znajdziesz zdjęcia szczeniąt i
+          informacje o ich rodzicach. Status przy każdym szczeniaku pokazuje
+          jego dostępność.
+        </p>
+        <p>
+          {current ? (
+            <Link href={`/mioty/${litterSlug(current)}`}>
+              Zobacz aktualny miot {current.letter}
+            </Link>
+          ) : (
+            <Link href="/kontakt">Zapytaj o kolejny miot</Link>
+          )}
+          {" · "}
+          <Link href="/rodzice">Poznaj rodziców</Link>
+          {" · "}
+          <Link href="/kontakt">Umów wizytę</Link>
+          {" · "}
+          <Link href="/husky-syberyjski">Poznaj rasę</Link>
+        </p>
+      </section>
+    </main>
   );
 }

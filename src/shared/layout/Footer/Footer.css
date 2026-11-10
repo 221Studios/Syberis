@@ -72,15 +72,18 @@
 
 .footer-brand .subheader {
   margin: 0;
+  font-family: "Palace";
   font-size: clamp(1.5rem, 3vw, 2.75rem);
   line-height: 1.05;
   transform: translateX(-5%);
 }
 
-.footer-brand h1:not(.subheader) {
+.footer-brand-name {
   margin: 0;
+  font-family: "Palace";
   font-size: clamp(3.5rem, 10vw, 8rem);
   line-height: 1;
+  text-transform: uppercase;
   transform: translateY(10%);
 }
 
@@ -94,7 +97,7 @@
     font-size: clamp(1.25rem, 4.5vw, 2rem);
   }
 
-  .footer-brand h1:not(.subheader) {
+  .footer-brand-name {
     font-size: clamp(2.75rem, 14vw, 4.5rem);
     transform: translateY(2%);
   }

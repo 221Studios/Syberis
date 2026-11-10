@@ -72,7 +72,9 @@
   overflow: hidden;
 }
 
-.litter-puppies-name h1 {
+.litter-puppies-name .litter-puppies-title {
+  font-family: "Palace";
+  text-transform: uppercase;
   white-space: nowrap;
   text-align: center;
   font-size: clamp(4.5rem, 9vw, 9rem);
@@ -80,13 +82,13 @@
   color: var(--base-100);
 }
 
-.litter-puppies-name h1 .letter {
+.litter-puppies-name .litter-puppies-title .letter {
   display: inline-block;
   transform: translateY(170%);
   will-change: transform;
 }
 
-.litter-puppies-name--default h1 .letter {
+.litter-puppies-name--default .litter-puppies-title .letter {
   transform: translateY(5%);
 }
 
@@ -162,7 +164,7 @@
     height: var(--avatar-hover);
   }
 
-  .litter-puppies-name h1 {
+  .litter-puppies-name .litter-puppies-title {
     font-size: clamp(3.15rem, 6.2vw, 5.4rem);
     line-height: 1.08;
     transform: translateY(0.3em);
@@ -250,11 +252,11 @@
     display: none;
   }
 
-  .litter-puppies-name--default h1 {
+  .litter-puppies-name--default .litter-puppies-title {
     font-size: 2.85rem;
   }
 
-  .litter-puppies-name--default h1 .letter {
+  .litter-puppies-name--default .litter-puppies-title .letter {
     transform: translateY(5%) !important;
   }
 

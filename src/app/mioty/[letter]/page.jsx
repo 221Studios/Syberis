@@ -25,9 +25,12 @@ export async function generateMetadata({ params }) {
   const { letter } = await params;
   const litter = getLitter(letter);
   if (!litter) return { title: "Nie znaleziono miotu | Syberis" };
+  const sire = getParent(litter.sireSlug);
+  const dam = getParent(litter.damSlug);
 
   return {
-    title: `${litterTitle(litter.letter)} | Syberis`,
+    alternates: { canonical: `/mioty/${litterSlug(litter)}` },
+    title: `${litterTitle(litter.letter)} białych husky – ${dam.name} i ${sire.name} | Syberis`,
     description: litter.intro,
   };
 }
@@ -68,9 +71,7 @@ export default async function LitterPage({ params }) {
               <div className="litter-hero-main">
                 <div className="title-stack litter-hero-titles">
                   <Copy animateOnScroll={false} delay={0.5}>
-                    <h1 className="subheader">
-                      {LITTER_STATUS[litter.status]}
-                    </h1>
+                    <p className="subheader">{LITTER_STATUS[litter.status]}</p>
                   </Copy>
                   <Copy animateOnScroll={false} delay={0.5}>
                     <h1>{litterTitle(litter.letter)}</h1>
@@ -155,6 +156,13 @@ export default async function LitterPage({ params }) {
               ? "Zainteresowany którymś ze szczeniąt?"
               : "Szukasz aktualnego miotu?"}
           </h5>
+          {isCurrent && (
+            <p className="litter-visit-note">
+              Zadzwoń lub napisz SMS i podaj imię szczeniaka, który Cię
+              zainteresował. Podczas rozmowy ustalimy termin i miejsce wizyty
+              oraz omówimy rezerwację i odbiór.
+            </p>
+          )}
           <div className="litter-split-cta-actions">
             {isCurrent ? (
               <>
@@ -164,7 +172,7 @@ export default async function LitterPage({ params }) {
                 </Button>
               </>
             ) : (
-              <Button href="/mioty">Wszystkie mioty</Button>
+              <Button href="/mioty">Zobacz aktualne mioty</Button>
             )}
           </div>
         </aside>

@@ -67,10 +67,16 @@
   pointer-events: auto;
 }
 
-.deck-slide-content h1 {
+.deck-title,
+.deck-slide-content .subheader {
+  font-family: "Palace";
+}
+
+.deck-title {
   margin: 0;
   font-size: clamp(3.25rem, 7vw, 7rem);
   line-height: 1;
+  text-transform: uppercase;
 }
 
 .deck-slide-content .subheader {
@@ -306,7 +312,7 @@
 }
 
 @media (min-width: 1000px) and (max-width: 1399px) {
-  .deck-slide-content h1 {
+  .deck-title {
     font-size: clamp(3.75rem, 6.5vw, 6rem);
   }
 
@@ -337,7 +343,7 @@
     padding: 10.5rem 1.25rem 7.5rem;
   }
 
-  .deck-slide-content h1 {
+  .deck-title {
     font-size: clamp(2.75rem, 12vw, 4.5rem);
   }
 

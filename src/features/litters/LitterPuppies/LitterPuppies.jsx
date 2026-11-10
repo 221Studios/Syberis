@@ -11,13 +11,13 @@ const NAME_HIDE_OFFSET = "170%";
 const NAME_SHOW_OFFSET = "5%";
 
 const SplitChars = ({ text, headingRef }) => (
-  <h1 ref={headingRef}>
+  <p className="litter-puppies-title" ref={headingRef}>
     {text.split("").map((char, index) => (
       <span className="letter" key={`${char}-${index}`}>
         {char === " " ? "\u00A0" : char}
       </span>
     ))}
-  </h1>
+  </p>
 );
 
 function statusLabelForPuppy(puppy) {

@@ -284,8 +284,8 @@ export default function Preloader() {
           />
 
           {/* The gold title layer grows over its dimmed base. */}
-          <div className="preloader-title-wrap" aria-label={KENNEL.name}>
-            <h2 className="preloader-title preloader-title-base" aria-hidden>
+          <div className="preloader-title-wrap">
+            <h2 className="preloader-title preloader-title-base">
               {KENNEL.name}
             </h2>
             <h2 className="preloader-title preloader-title-fill" aria-hidden>

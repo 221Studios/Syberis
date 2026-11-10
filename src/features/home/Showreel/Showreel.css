@@ -17,7 +17,8 @@
 
 .showreel-header {
   position: absolute;
-  bottom: 0;
+  top: 50%;
+  bottom: auto;
   left: 0;
   right: 0;
   display: flex;
@@ -25,26 +26,35 @@
   align-items: center;
   max-width: 2000px;
   margin: 0 auto;
-  padding: 0.75rem 1.5rem;
-  background-color: var(--base-200);
+  padding: 0 1.5rem;
+  background-color: transparent;
   will-change: transform;
   z-index: 1;
 }
 
+.showreel-header img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2057 / 502;
+  object-fit: contain;
+  flex: none;
+}
+
 #showreel-header-1 {
-  transform: translateY(-52.5%);
+  transform: translateY(calc(-50% - 1.35rem));
 }
 
 #showreel-header-2 {
-  transform: translateY(-45%);
+  transform: translateY(calc(-50% - 0.45rem));
 }
 
 #showreel-header-3 {
-  transform: translateY(-30%);
+  transform: translateY(calc(-50% + 0.45rem));
 }
 
 #showreel-header-4 {
-  transform: translateY(0%);
+  transform: translateY(calc(-50% + 1.35rem));
 }
 
 #showreel-header-1.end-state,
@@ -149,25 +159,7 @@
   }
 
   .showreel-header {
-    /* Lift the fold into the photo’s vertical band (was stuck under the image). */
-    bottom: 28%;
-    padding: 0.65rem 0.85rem;
-  }
-
-  #showreel-header-1 {
-    transform: translateY(-95%);
-  }
-
-  #showreel-header-2 {
-    transform: translateY(-70%);
-  }
-
-  #showreel-header-3 {
-    transform: translateY(-40%);
-  }
-
-  #showreel-header-4 {
-    transform: translateY(0%);
+    padding: 0 0.85rem;
   }
 
   .showreel-marquee {

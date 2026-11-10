@@ -33,9 +33,18 @@ export default function Showreel() {
       let showreelMarqueeFlip;
       let showreelTrigger;
       let showreelMarqueeTween;
+      let setupToken = 0;
+
+      function killShowreelPins() {
+        ScrollTrigger.getAll().forEach((trigger) => {
+          if (trigger.pin === section) trigger.kill();
+        });
+      }
 
       function cleanup() {
         showreelTrigger?.kill();
+        showreelTrigger = null;
+        killShowreelPins();
         showreelHeaderFlip?.kill();
         showreelVisualFlip?.kill();
         showreelMarqueeFlip?.kill();
@@ -43,6 +52,7 @@ export default function Showreel() {
       }
 
       async function setup() {
+        const token = ++setupToken;
         cleanup();
 
         headers.forEach((h) => h.classList.remove("end-state"));
@@ -67,6 +77,10 @@ export default function Showreel() {
             return img.decode().catch(() => {});
           }),
         );
+        await new Promise((resolve) => {
+          requestAnimationFrame(() => requestAnimationFrame(resolve));
+        });
+        if (token !== setupToken) return;
 
         marqueeContainer.style.width = `${marqueeContainer.offsetWidth}px`;
 
@@ -123,6 +137,9 @@ export default function Showreel() {
           });
         }
 
+        killShowreelPins();
+        if (token !== setupToken) return;
+
         showreelTrigger = ScrollTrigger.create({
           trigger: section,
           start: "top top",
@@ -143,6 +160,12 @@ export default function Showreel() {
           },
         });
 
+        if (token !== setupToken) {
+          showreelTrigger.kill();
+          showreelTrigger = null;
+          return;
+        }
+
         // Showreel pin is created after async SVG decode — one refresh so later
         // pins (FeaturedCards) recalculate start and don't overlay CTA early.
         ScrollTrigger.refresh();
@@ -161,6 +184,7 @@ export default function Showreel() {
       window.addEventListener("resize", handleShowreelResize);
 
       return () => {
+        setupToken += 1;
         cleanup();
         clearTimeout(showreelResizeTimer);
         window.removeEventListener("resize", handleShowreelResize);
@@ -173,19 +197,19 @@ export default function Showreel() {
   return (
     <section className="showreel" ref={showreelRef}>
       <div className="showreel-header" id="showreel-header-1">
-        <img src="/assets/showreel-header.svg" alt="" loading="lazy" />
+        <img src="/assets/showreel-header.svg" alt="" />
       </div>
 
       <div className="showreel-header" id="showreel-header-2">
-        <img src="/assets/showreel-header.svg" alt="" loading="lazy" />
+        <img src="/assets/showreel-header.svg" alt="" />
       </div>
 
       <div className="showreel-header" id="showreel-header-3">
-        <img src="/assets/showreel-header.svg" alt="" loading="lazy" />
+        <img src="/assets/showreel-header.svg" alt="" />
       </div>
 
       <div className="showreel-header" id="showreel-header-4">
-        <img src="/assets/showreel-header.svg" alt="" loading="lazy" />
+        <img src="/assets/showreel-header.svg" alt="" />
       </div>
 
       <div className="container">

@@ -7,13 +7,13 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Copy from "@/shared/ui/Copy/Copy";
 import ScrollVideo from "../ScrollVideo/ScrollVideo";
-import { PARENTS } from "@/data/kennel";
+import { PARENTS, litterSlug } from "@/data/kennel";
 
 import "./About.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function About() {
+export default function About({ litter }) {
   const aboutRef = useRef(null);
 
   useGSAP(
@@ -73,10 +73,27 @@ export default function About() {
                   className="about-services-image"
                 />
 
-                <p className="about-services-copy">
-                  Dlatego od pierwszych chwil życia szczenięta są otoczone naszą
-                  miłością, uwagą i stałą opieką.
-                </p>
+                <section className="about-services-copy">
+                  <h2>Szczeniaki husky syberyjskiego</h2>
+                  <p>
+                    W domowej hodowli Syberis w okolicach Radomia wychowujemy
+                    białe husky syberyjskie. Na stronie każdego miotu znajdziesz
+                    zdjęcia szczeniąt i informacje o ich rodzicach. Status przy
+                    każdym szczeniaku pokazuje jego dostępność.
+                  </p>
+                  <div className="about-services-links">
+                    {litter ? (
+                      <Link href={`/mioty/${litterSlug(litter)}`}>
+                        Zobacz aktualny miot {litter.letter}
+                      </Link>
+                    ) : (
+                      <Link href="/kontakt">Zapytaj o kolejny miot</Link>
+                    )}
+                    <Link href="/rodzice">Poznaj rodziców</Link>
+                    <Link href="/kontakt">Umów wizytę</Link>
+                    <Link href="/husky-syberyjski">Poznaj rasę</Link>
+                  </div>
+                </section>
               </div>
             </div>
 

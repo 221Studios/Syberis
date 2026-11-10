@@ -1,16 +1,13 @@
-import Link from "next/link";
 import Deck from "@/features/litters/Deck/Deck";
 import {
   LITTERS,
   countByStatus,
   formatDate,
-  getCurrentLitter,
   getParent,
   litterSlug,
   litterTitle,
   mutedPhoto,
 } from "@/data/kennel";
-import "../seo-content.css";
 
 export const metadata = {
   alternates: { canonical: "/mioty" },
@@ -43,40 +40,13 @@ function litterSlide(litter) {
 }
 
 export default function LittersPage() {
-  const current = getCurrentLitter();
-
   return (
-    <main>
+    <main aria-label="Mioty">
       <Deck
         slides={LITTERS.map(litterSlide)}
         counterPrefix="MIOT"
         hint="Przesuń palcem, aby zmienić miot"
-        action={{ href: "#o-miotach", label: "O miotach" }}
       />
-      <section className="seo-content" id="o-miotach">
-        <h1>Szczeniaki husky syberyjskiego</h1>
-        <p>
-          W domowej hodowli Syberis w okolicach Radomia wychowujemy białe husky
-          syberyjskie. Na stronie każdego miotu znajdziesz zdjęcia szczeniąt i
-          informacje o ich rodzicach. Status przy każdym szczeniaku pokazuje
-          jego dostępność.
-        </p>
-        <p>
-          {current ? (
-            <Link href={`/mioty/${litterSlug(current)}`}>
-              Zobacz aktualny miot {current.letter}
-            </Link>
-          ) : (
-            <Link href="/kontakt">Zapytaj o kolejny miot</Link>
-          )}
-          {" · "}
-          <Link href="/rodzice">Poznaj rodziców</Link>
-          {" · "}
-          <Link href="/kontakt">Umów wizytę</Link>
-          {" · "}
-          <Link href="/husky-syberyjski">Poznaj rasę</Link>
-        </p>
-      </section>
     </main>
   );
 }

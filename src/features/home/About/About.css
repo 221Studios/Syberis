@@ -38,7 +38,7 @@
   flex-shrink: 0;
   gap: 3rem;
   width: min(400px, 40%);
-  height: 100svh;
+  min-height: 100svh;
   padding: 3rem 0;
 }
 
@@ -53,6 +53,25 @@
 
 .about-services-copy {
   max-width: 430px;
+}
+
+.about-services-copy h2 {
+  margin-bottom: 0.85rem;
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
+  line-height: 1.08;
+}
+
+.about-services-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  margin-top: 0.85rem;
+  font: 1.2rem "Bellefair";
+}
+
+.about-services-links a {
+  color: inherit;
+  text-underline-offset: 0.2em;
 }
 
 .about-services-right {
@@ -178,7 +197,7 @@
     position: static;
     gap: 2rem;
     width: 100%;
-    height: max-content;
+    min-height: 0;
     padding: 0;
   }
 

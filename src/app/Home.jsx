@@ -62,7 +62,7 @@ export default function Home() {
         </div>
       </section>
 
-      <About />
+      <About litter={litter} />
 
       <Showreel />
 

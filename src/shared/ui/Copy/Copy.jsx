@@ -32,54 +32,69 @@ export default function Copy({
       }
 
       const splits = [];
+      const triggers = [];
+
+      if (animateOnScroll) {
+        for (const element of elements) {
+          element.setAttribute("data-copy-pending", "");
+        }
+      }
+
+      function clearPending() {
+        for (const element of elements) {
+          element.removeAttribute("data-copy-pending");
+        }
+      }
 
       if (variant === "rotate") {
-        const allTargets = [];
-
-        elements.forEach((element) => {
-          if (splitType === "lines") {
-            const split = SplitText.create(element, {
-              type: "lines",
-              linesClass: "copy-line",
-            });
-
-            splits.push(split);
-            allTargets.push(...split.lines);
-          } else if (splitType === "words") {
-            const split = SplitText.create(element, {
-              type: "words",
-              wordsClass: "copy-word",
-            });
-
-            splits.push(split);
-            allTargets.push(...split.words);
-          } else {
-            const split = SplitText.create(element, {
-              type: "words,chars",
-              wordsClass: "copy-word",
-              charsClass: "copy-char",
-            });
-
-            splits.push(split);
-
-            split.words.forEach((word) => {
-              allTargets.push(...word.querySelectorAll(".copy-char"));
-            });
-          }
-        });
-
-        gsap.set(elements, {
-          perspective: 700,
-          transformStyle: "preserve-3d",
-        });
-
-        gsap.set(allTargets, {
-          opacity: 0,
-          rotationX: -90,
-          transformOrigin: "50% 50% -50px",
-        });
-
         function playRotateReveal() {
+          const allTargets = [];
+
+          elements.forEach((element) => {
+            if (splitType === "lines") {
+              const split = SplitText.create(element, {
+                type: "lines",
+                linesClass: "copy-line",
+              });
+
+              splits.push(split);
+              allTargets.push(...split.lines);
+            } else if (splitType === "words") {
+              const split = SplitText.create(element, {
+                type: "words",
+                wordsClass: "copy-word",
+              });
+
+              splits.push(split);
+              allTargets.push(...split.words);
+            } else {
+              const split = SplitText.create(element, {
+                type: "words,chars",
+                wordsClass: "copy-word",
+                charsClass: "copy-char",
+              });
+
+              splits.push(split);
+
+              split.words.forEach((word) => {
+                allTargets.push(...word.querySelectorAll(".copy-char"));
+              });
+            }
+          });
+
+          gsap.set(elements, {
+            perspective: 700,
+            transformStyle: "preserve-3d",
+          });
+
+          gsap.set(allTargets, {
+            opacity: 0,
+            rotationX: -90,
+            transformOrigin: "50% 50% -50px",
+          });
+
+          clearPending();
+
           const tl = gsap.timeline();
 
           if (splitType === "lines") {
@@ -134,83 +149,94 @@ export default function Copy({
         }
 
         if (animateOnScroll) {
-          ScrollTrigger.create({
-            trigger: containerRef.current,
-            start: "top 90%",
-            once: true,
-            onEnter: () => playRotateReveal(),
-          });
+          triggers.push(
+            ScrollTrigger.create({
+              trigger: containerRef.current,
+              start: "top 90%",
+              once: true,
+              onEnter: () => playRotateReveal(),
+            }),
+          );
         } else {
           playRotateReveal();
         }
       }
 
       if (variant === "flicker") {
-        const allChars = [];
+        function playFlicker() {
+          const allChars = [];
 
-        elements.forEach((element) => {
-          const split = SplitText.create(element, {
-            type: "chars",
-            charsClass: "copy-char",
+          elements.forEach((element) => {
+            const split = SplitText.create(element, {
+              type: "chars",
+              charsClass: "copy-char",
+            });
+
+            splits.push(split);
+            allChars.push(...split.chars);
           });
 
-          splits.push(split);
-          allChars.push(...split.chars);
-        });
+          gsap.set(allChars, { opacity: 0 });
+          clearPending();
 
-        gsap.set(allChars, { opacity: 0 });
-
-        const flickerAnimation = gsap.to(allChars, {
-          delay: delay,
-          duration: 0.05,
-          opacity: 1,
-          ease: "power2.inOut",
-          stagger: {
-            amount: 0.5,
-            each: 0.1,
-            from: "random",
-          },
-          paused: animateOnScroll,
-        });
+          gsap.to(allChars, {
+            delay: delay,
+            duration: 0.05,
+            opacity: 1,
+            ease: "power2.inOut",
+            stagger: {
+              amount: 0.5,
+              each: 0.1,
+              from: "random",
+            },
+          });
+        }
 
         if (animateOnScroll) {
-          ScrollTrigger.create({
-            trigger: containerRef.current,
-            start: "top 85%",
-            once: true,
-            onEnter: () => flickerAnimation.play(),
-          });
+          triggers.push(
+            ScrollTrigger.create({
+              trigger: containerRef.current,
+              start: "top 85%",
+              once: true,
+              onEnter: () => playFlicker(),
+            }),
+          );
         } else {
-          flickerAnimation.play();
+          playFlicker();
         }
       }
 
       if (variant === "slide") {
-        gsap.set(elements, { y: 50, opacity: 0 });
+        function playSlide() {
+          gsap.set(elements, { y: 50, opacity: 0 });
+          clearPending();
 
-        const slideAnimation = gsap.to(elements, {
-          delay: delay,
-          y: 0,
-          opacity: 1,
-          duration: 0.75,
-          ease: "power3.out",
-          stagger: 0.1,
-          paused: animateOnScroll,
-        });
+          gsap.to(elements, {
+            delay: delay,
+            y: 0,
+            opacity: 1,
+            duration: 0.75,
+            ease: "power3.out",
+            stagger: 0.1,
+          });
+        }
 
         if (animateOnScroll) {
-          ScrollTrigger.create({
-            trigger: containerRef.current,
-            start: "top 90%",
-            once: true,
-            onEnter: () => slideAnimation.play(),
-          });
+          triggers.push(
+            ScrollTrigger.create({
+              trigger: containerRef.current,
+              start: "top 90%",
+              once: true,
+              onEnter: () => playSlide(),
+            }),
+          );
         } else {
-          slideAnimation.play();
+          playSlide();
         }
       }
 
       return () => {
+        triggers.forEach((trigger) => trigger.kill());
         splits.forEach((split) => split.revert());
       };
     },

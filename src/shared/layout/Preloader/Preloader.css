@@ -59,6 +59,10 @@
 .preloader-strokes-fill path {
   stroke-linecap: round;
   stroke-linejoin: round;
+  /* pathLength="1" makes a dash of 1 the whole stroke, so the intro
+     does not call getTotalLength() and force layout. */
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
 }
 
 .preloader-strokes-base path {

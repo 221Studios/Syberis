@@ -25,6 +25,12 @@
   backface-visibility: hidden;
 }
 
+/* Scroll-triggered copy stays invisible until it is split. Hiding it in CSS
+   avoids a geometry read on load. */
+[data-copy-pending] {
+  opacity: 0;
+}
+
 @media (max-width: 999px) {
   .copy-word {
     padding: 0.05em 0.08em;

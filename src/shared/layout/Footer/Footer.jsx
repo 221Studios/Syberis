@@ -4,7 +4,6 @@ import { useEffect, useId, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLenis } from "lenis/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CONTACT, KENNEL } from "@/data/kennel";
 import { mailHref, smsHref, telHref } from "@/lib/contact";
 
@@ -86,18 +85,13 @@ export default function Footer() {
       detach = () => window.removeEventListener("scroll", apply);
     }
 
-    // Route / layout changes leave ScrollTrigger (and page height) stale — refresh
-    // so other sections stay correct, then re-apply the arc offset.
-    const refreshTimer = window.setTimeout(() => {
-      ScrollTrigger.refresh();
-      apply();
-    }, 80);
+    const applyTimer = window.setTimeout(apply, 80);
 
     window.addEventListener("resize", apply);
 
     return () => {
       detach();
-      window.clearTimeout(refreshTimer);
+      window.clearTimeout(applyTimer);
       window.removeEventListener("resize", apply);
     };
   }, [lenis, pathname]);

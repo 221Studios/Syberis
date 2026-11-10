@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ReactLenis, useLenis } from "lenis/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -53,6 +53,7 @@ const LENIS_DESKTOP = {
 function LenisScrollSync() {
   const pathname = usePathname();
   const lenis = useLenis();
+  const skipFirstRefresh = useRef(true);
 
   useEffect(() => {
     if (!lenis) return;
@@ -62,19 +63,16 @@ function LenisScrollSync() {
   }, [lenis]);
 
   useEffect(() => {
+    // The first load is refreshed by ScrollTrigger itself, and the homepage
+    // pins refresh again once they exist. Another pass here only repeats
+    // those geometry reads. Later navigations still need one refresh.
+    if (skipFirstRefresh.current) {
+      skipFirstRefresh.current = false;
+      return;
+    }
     const timer = window.setTimeout(() => ScrollTrigger.refresh(), 120);
     return () => window.clearTimeout(timer);
   }, [pathname]);
-
-  useEffect(() => {
-    const onLoad = () => ScrollTrigger.refresh();
-    if (document.readyState === "complete") {
-      const t = window.setTimeout(onLoad, 100);
-      return () => window.clearTimeout(t);
-    }
-    window.addEventListener("load", onLoad);
-    return () => window.removeEventListener("load", onLoad);
-  }, []);
 
   return null;
 }

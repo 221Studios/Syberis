@@ -57,15 +57,6 @@ export const INTRO_DURATION =
   BOTH_OUT +
   BLOCKS_OUT;
 
-function prepareStrokes(paths) {
-  paths.forEach((path) => {
-    const length = path.getTotalLength();
-    path.style.strokeDasharray = `${length}`;
-    path.style.strokeDashoffset = `${length}`;
-    path.dataset.length = String(length);
-  });
-}
-
 export default function Preloader() {
   const wrapperRef = useRef(null);
   const [showPreloader, setShowPreloader] = useState(isInitialLoad);
@@ -140,9 +131,6 @@ export default function Preloader() {
       gsap.set(cells, { scale: 1.05, transformOrigin: "50% 50%" });
       gsap.set(brandParts, { yPercent: 40, opacity: 0 });
       gsap.set(titleFill, { width: "0%" });
-
-      prepareStrokes(basePaths);
-      prepareStrokes(fillPaths);
       gsap.set(fillPaths, { opacity: 0 });
       gsap.set(svgEl, { visibility: "visible" });
 
@@ -265,12 +253,24 @@ export default function Preloader() {
         >
           <g className="preloader-strokes-base">
             {HUSKY_PATHS.map((d, i) => (
-              <path key={`base-${i}`} d={d} fill="none" />
+              <path
+                key={`base-${i}`}
+                d={d}
+                fill="none"
+                pathLength="1"
+                data-length="1"
+              />
             ))}
           </g>
           <g className="preloader-strokes-fill">
             {HUSKY_PATHS.map((d, i) => (
-              <path key={`fill-${i}`} d={d} fill="none" />
+              <path
+                key={`fill-${i}`}
+                d={d}
+                fill="none"
+                pathLength="1"
+                data-length="1"
+              />
             ))}
           </g>
         </svg>

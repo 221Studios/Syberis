@@ -68,8 +68,6 @@ export default function Showreel() {
           }),
         );
 
-        void section.offsetHeight;
-
         marqueeContainer.style.width = `${marqueeContainer.offsetWidth}px`;
 
         const showreelHeaderState = Flip.getState(headers);
@@ -145,10 +143,9 @@ export default function Showreel() {
           },
         });
 
-        // Showreel pin is created after async SVG decode — refresh so later
+        // Showreel pin is created after async SVG decode — one refresh so later
         // pins (FeaturedCards) recalculate start and don't overlay CTA early.
         ScrollTrigger.refresh();
-        requestAnimationFrame(() => ScrollTrigger.refresh());
       }
 
       setup();

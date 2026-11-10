@@ -44,6 +44,10 @@
   gap: 0.5rem;
 }
 
+.transmit-hero-actions .button {
+  --button-hover-bg: var(--base-200);
+}
+
 .transmit-hero-footer {
   display: flex;
   justify-content: space-between;

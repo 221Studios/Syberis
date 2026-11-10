@@ -6,7 +6,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Copy from "@/shared/ui/Copy/Copy";
-import ScrollVideo from "../ScrollVideo/ScrollVideo";
 import { PARENTS, litterSlug } from "@/data/kennel";
 
 import "./About.css";
@@ -67,10 +66,13 @@ export default function About({ litter }) {
               </div>
 
               <div className="about-services-left-copy">
-                <ScrollVideo
-                  framesPath="/media/bieg-frames"
-                  frameCount={100}
+                <img
+                  src="/litters/a/cover.jpg"
+                  alt="Trzy białe szczenięta husky leżące na trawie"
                   className="about-services-image"
+                  width={1400}
+                  height={787}
+                  loading="lazy"
                 />
 
                 <section className="about-services-copy">

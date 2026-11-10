@@ -7,7 +7,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 import Menu from "./shared/layout/Menu/Menu";
 import Footer from "./shared/layout/Footer/Footer";
-import MusicToggle from "./shared/layout/MusicToggle/MusicToggle";
 import TransitionProvider from "./providers/TransitionProvider";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -104,7 +103,6 @@ export default function ClientLayout({ children }) {
         <LenisScrollSync />
         <div className="page">
           <Menu />
-          <MusicToggle />
           <div className="page-wrapper">
             {children}
             {showFooter && <Footer />}

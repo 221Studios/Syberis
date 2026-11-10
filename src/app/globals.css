@@ -43,7 +43,6 @@ html:has(.preloader:not(.preloader--revealing)) body {
 }
 
 html:has(.preloader:not(.preloader--revealing)) .menu-container,
-html:has(.preloader:not(.preloader--revealing)) .music-toggle-container,
 html:has(.preloader:not(.preloader--revealing))
   .page-wrapper
   > *:not(.preloader) {

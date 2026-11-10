@@ -13,7 +13,7 @@ flowchart TD
   Features[Features<br/>home, litters, parents, gallery, contact]
   Shared[Shared UI and layout<br/>Button, Copy, Menu, Footer]
   Motion[Interaction modules<br/>GSAP, Lenis, Three.js]
-  Assets[public/<br/>photos, fonts, audio]
+  Assets[public/<br/>photos and fonts]
   Output[Next.js standalone output]
 
   Visitor --> Routes
@@ -35,10 +35,10 @@ flowchart TD
 - **`src/app/`** maps URLs to route entry points, creates route metadata, and resolves unknown litter slugs with a not-found response. Complex interactive views are delegated to `src/features/`.
 - **`src/features/`** groups page behavior by product area: `home`, `litters`, `parents`, `gallery`, and `contact`. Feature-specific styles live beside the code that uses them.
 - **`src/shared/ui/`** holds small interface modules used across features, such as `Button` and `Copy`.
-- **`src/shared/layout/`** holds site-wide modules such as `Menu`, `Footer`, `Preloader`, and `MusicToggle`.
+- **`src/shared/layout/`** holds site-wide modules such as `Menu`, `Footer`, and `Preloader`.
 - **`src/data/kennel.js`** is the content seam for kennel identity, contact details, parent profiles, litter and puppy records, and small lookup/formatting helpers. Route modules consume these exports rather than duplicating records.
 - **`src/lib/contact.js`** turns contact values into `tel:` and `mailto:` links.
-- **`public/`** holds the images, fonts, and audio referenced by the site.
+- **`public/`** holds the images and fonts referenced by the site.
 
 ## Rendering and deployment
 

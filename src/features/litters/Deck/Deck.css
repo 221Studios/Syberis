@@ -282,24 +282,6 @@
   transform: scale(1.25);
 }
 
-/* Clears the fixed music toggle sitting in the top-right corner. */
-.deck-action {
-  position: absolute;
-  top: 2.25rem;
-  right: 7rem;
-  padding: 0.65rem 1.15rem;
-  border-radius: 2rem;
-  text-decoration: none;
-  color: var(--base-500);
-  background-color: var(--base-300);
-  transition: background-color 300ms ease;
-  z-index: 6;
-}
-
-.deck-action:hover {
-  background-color: var(--base-100);
-}
-
 .deck-hint {
   position: absolute;
   bottom: 1.75rem;
@@ -324,12 +306,6 @@
   .deck-slide-description {
     max-width: 40ch;
     font-size: 1.2rem;
-  }
-
-  .deck-action {
-    top: 2rem;
-    right: 6.5rem;
-    padding: 0.55rem 1rem;
   }
 }
 
@@ -382,13 +358,6 @@
 
   .deck-switch {
     bottom: 3.25rem;
-  }
-
-  /* Drops below the music toggle so it clears the menu rail on the left. */
-  .deck-action {
-    top: 7rem;
-    right: 1.25rem;
-    padding: 0.55rem 0.95rem;
   }
 
   .deck-hint {

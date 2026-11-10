@@ -50,7 +50,7 @@ function DeckTitle({ href, title }) {
   );
 }
 
-export default function Deck({ slides, counterPrefix = "NR", hint, action }) {
+export default function Deck({ slides, counterPrefix = "NR", hint }) {
   const deckSlidesRef = useRef(null);
   const deckCurrentRef = useRef(0);
   const deckAnimatingRef = useRef(false);
@@ -398,12 +398,6 @@ export default function Deck({ slides, counterPrefix = "NR", hint, action }) {
         <div className="deck-deco"></div>
         <div className="deck-deco"></div>
       </div>
-
-      {action && (
-        <Link href={action.href} className="deck-action">
-          <p className="mono sm">{action.label}</p>
-        </Link>
-      )}
 
       {slides.length > 1 && (
         <>

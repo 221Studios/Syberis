@@ -121,7 +121,7 @@ flowchart TD
     Browser --> GSAP
     Browser --> Lenis
     Browser --> ThreeJS[Three.js — galeria 3D]
-    Features --> Assets[public/<br/>zdjęcia, fonty, audio]
+    Features --> Assets[public/<br/>zdjęcia i fonty]
     Routes --> Standalone[Wersja Next.js standalone]
     Standalone --> Docker[Wdrożenie w Dockerze]
 ```

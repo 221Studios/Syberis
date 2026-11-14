@@ -1,3 +1,4 @@
+import Script from "next/script";
 import ClientLayout from "@/client-layout";
 import { SITE_URL } from "@/data/site.mjs";
 
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <ClientLayout>{children}</ClientLayout>
+        <Script src="/cms-public.js" strategy="beforeInteractive" />
       </body>
     </html>
   );

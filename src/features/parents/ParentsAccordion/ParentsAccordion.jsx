@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef } from "react";
 import gsap from "gsap";
-import { SEX_LABEL, formatDate } from "@/data/kennel";
+import { SEX_LABEL, formatDate, litterCountLabel } from "@/data/kennel";
 
 import Copy from "@/shared/ui/Copy/Copy";
 
@@ -186,7 +186,7 @@ export default function ParentsAccordion({ parents }) {
                 className="parents-accordion-panel"
                 role="button"
                 tabIndex={0}
-                aria-label={`${parent.name}, ${parent.role}`}
+                aria-label={`${parent.name}, ${litterCountLabel(parent.slug)}`}
                 aria-expanded={index === DEFAULT_ACTIVE}
                 onMouseEnter={() => setActive(index)}
                 onFocus={() => setActive(index)}
@@ -223,7 +223,9 @@ export default function ParentsAccordion({ parents }) {
 
                   <div className="parents-accordion-content">
                     <p className="parents-accordion-title">{parent.name}</p>
-                    <p className="parents-accordion-role mono">{parent.role}</p>
+                    <p className="parents-accordion-role mono">
+                      {litterCountLabel(parent.slug)}
+                    </p>
                   </div>
 
                   <div

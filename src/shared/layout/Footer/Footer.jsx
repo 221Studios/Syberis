@@ -18,12 +18,14 @@ const FOOTER_ARC_PATH =
   "M 0,280 C 300,280 450,40 700,40 C 950,40 1100,280 1400,280";
 
 const FOOTER_NAV_LEFT = [
+  { label: "Hodowla", href: "/hodowla-husky" },
   { label: "Mioty", href: "/mioty" },
   { label: "Rodzice", href: "/rodzice" },
 ];
 
 const FOOTER_NAV_RIGHT = [
   { label: "Galeria", href: "/galeria" },
+  { label: "Husky syberyjski", href: "/husky-syberyjski" },
   { label: "Kontakt", href: "/kontakt" },
 ];
 

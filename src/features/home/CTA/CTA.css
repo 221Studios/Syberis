@@ -161,6 +161,12 @@
   line-height: 1.25;
 }
 
+@media (max-width: 999px) {
+  .cta-desktop-break {
+    display: none;
+  }
+}
+
 .cta-location-panel .button {
   align-self: flex-start;
   margin-top: 0.7rem;

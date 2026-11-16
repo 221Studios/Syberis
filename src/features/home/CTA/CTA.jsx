@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { Fragment, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -75,7 +75,7 @@ const SERVICES = [
 const LOCATION_NOTES = [
   {
     label: "Odwiedziny",
-    value: "Termin i miejsce wizyty ustalamy telefonicznie lub przez SMS",
+    value: ["W dogodnej dla Państwa godzinie,", "wystarczy zadzwonić"],
   },
   { label: "Rezerwacje", value: "Telefonicznie lub przez SMS" },
 ];
@@ -193,10 +193,11 @@ export default function CTA() {
         }
 
         ctaTrigger = ScrollTrigger.create({
-          trigger: ctaRef.current,
-          start: "top 75%",
-          end: "bottom 25%",
+          trigger: svg,
+          start: "top 90%",
+          end: "bottom 30%",
           scrub: true,
+          refreshPriority: -1,
           onUpdate: (self) => {
             const ctaRotation = self.progress * 180;
             ctaPointerRef.current.setAttributeNS(
@@ -406,7 +407,20 @@ export default function CTA() {
               {LOCATION_NOTES.map((note) => (
                 <div className="cta-location-row" key={note.label}>
                   <p className="mono sm">{note.label}</p>
-                  <p>{note.value}</p>
+                  <p>
+                    {Array.isArray(note.value)
+                      ? note.value.map((line, i) => (
+                          <Fragment key={line}>
+                            {i > 0 && (
+                              <>
+                                <br className="cta-desktop-break" />{" "}
+                              </>
+                            )}
+                            {line}
+                          </Fragment>
+                        ))
+                      : note.value}
+                  </p>
                 </div>
               ))}
 

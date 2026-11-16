@@ -12,6 +12,7 @@ gsap.registerPlugin(useGSAP);
 
 export let isInitialLoad = true;
 
+const PATH_LENGTH = 1000;
 const BLOCK_SIZE_DESKTOP = 120;
 const BLOCK_SIZE_MOBILE = 80;
 const MOBILE_BREAKPOINT = 1000;
@@ -89,7 +90,7 @@ export default function Preloader() {
       ];
       const brand = root.querySelector(".preloader-brand");
       const titleWrap = root.querySelector(".preloader-title-wrap");
-      const titleFill = root.querySelector(".preloader-title-fill");
+      const title = root.querySelector(".preloader-title");
       const logo = root.querySelector(".preloader-logo");
       const tagline = root.querySelector(".preloader-tagline");
       if (
@@ -99,7 +100,7 @@ export default function Preloader() {
         !fillPaths.length ||
         !brand ||
         !titleWrap ||
-        !titleFill
+        !title
       )
         return;
 
@@ -130,7 +131,7 @@ export default function Preloader() {
 
       gsap.set(cells, { scale: 1.05, transformOrigin: "50% 50%" });
       gsap.set(brandParts, { yPercent: 40, opacity: 0 });
-      gsap.set(titleFill, { width: "0%" });
+      gsap.set(title, { backgroundPosition: "100% 0%" });
       gsap.set(fillPaths, { opacity: 0 });
       gsap.set(svgEl, { visibility: "visible" });
 
@@ -175,9 +176,9 @@ export default function Preloader() {
           `+=${GAP_AFTER_BASE}`,
         )
         .to(
-          titleFill,
+          title,
           {
-            width: "100%",
+            backgroundPosition: "0% 0%",
             duration: FILL_IN,
             ease: "power2.inOut",
           },
@@ -257,8 +258,8 @@ export default function Preloader() {
                 key={`base-${i}`}
                 d={d}
                 fill="none"
-                pathLength="1"
-                data-length="1"
+                pathLength={PATH_LENGTH}
+                data-length={PATH_LENGTH}
               />
             ))}
           </g>
@@ -268,8 +269,8 @@ export default function Preloader() {
                 key={`fill-${i}`}
                 d={d}
                 fill="none"
-                pathLength="1"
-                data-length="1"
+                pathLength={PATH_LENGTH}
+                data-length={PATH_LENGTH}
               />
             ))}
           </g>
@@ -283,14 +284,8 @@ export default function Preloader() {
             aria-hidden
           />
 
-          {/* The gold title layer grows over its dimmed base. */}
           <div className="preloader-title-wrap">
-            <h2 className="preloader-title preloader-title-base">
-              {KENNEL.name}
-            </h2>
-            <h2 className="preloader-title preloader-title-fill" aria-hidden>
-              {KENNEL.name}
-            </h2>
+            <h2 className="preloader-title">{KENNEL.name}</h2>
           </div>
 
           <p className="preloader-tagline mono sm">

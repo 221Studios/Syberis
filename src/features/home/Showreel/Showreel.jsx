@@ -208,10 +208,6 @@ export default function Showreel() {
         <img src="/assets/showreel-header.svg" alt="" />
       </div>
 
-      <div className="showreel-header" id="showreel-header-4">
-        <img src="/assets/showreel-header.svg" alt="" />
-      </div>
-
       <div className="container">
         <div className="showreel-visual">
           <img

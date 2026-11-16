@@ -76,7 +76,7 @@ export default function About({ litter }) {
                 />
 
                 <section className="about-services-copy">
-                  <h3>Szczeniaki husky syberyjskiego</h3>
+                  <h3>Szczeniaki Siberian Husky</h3>
                   <p>
                     W domowej hodowli Syberis w okolicach Radomia wychowujemy
                     białe husky syberyjskie. Zobacz zdjęcia szczeniąt, sprawdź

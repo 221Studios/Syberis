@@ -7,9 +7,9 @@
 export const KENNEL = {
   name: "Syberis",
   tagline: "Białe husky o niebieskich oczach",
-  claim: "Hodowla domowa, poza FCI",
   location: "Okolice Radomia",
   since: 2023,
+  puppyPrice: 4000,
 };
 
 export const CONTACT = {
@@ -71,7 +71,7 @@ export const PARENTS = [
   {
     slug: "kaja",
     name: "Kaja",
-    role: "Matka miotu A",
+    role: "Matka",
     sex: "female",
     born: "2023-05-22",
     coat: WHITE_COAT,
@@ -81,9 +81,9 @@ export const PARENTS = [
     photoPosition: "52% 76%",
     photoScale: 1.35,
     wide: "/parents/kaja-wide.jpg",
-    tagline: "Matka miotu A",
+    tagline: "Matka",
     facts: [
-      { label: "Rola w hodowli", value: "Matka miotu A" },
+      { label: "Rola w hodowli", value: "Matka" },
       { label: "Waga", value: "ok. 27 kg" },
       { label: "Umaszczenie", value: "Białe, bez odmian" },
       { label: "Oczy", value: "Brązowe" },
@@ -98,16 +98,16 @@ export const PARENTS = [
   {
     slug: "mia",
     name: "Mia",
-    role: "Matka miotów A, B i C",
+    role: "Matka",
     sex: "female",
     born: "2020-04-29",
     coat: WHITE_COAT,
     eyes: BLUE_EYES,
     photo: "/parents/mia.jpg",
     wide: "/parents/mia-wide.jpg",
-    tagline: "Matka miotów A, B i C",
+    tagline: "Matka",
     facts: [
-      { label: "Rola w hodowli", value: "Matka miotów A, B i C" },
+      { label: "Rola w hodowli", value: "Matka" },
       { label: "Waga", value: "ok. 26 kg" },
       { label: "Umaszczenie", value: "Białe, bez odmian" },
       { label: "Oczy", value: "Niebieskie" },
@@ -134,7 +134,7 @@ export const PARENTS = [
     tagline: "Najmłodszy w stadzie",
     facts: [
       { label: "Rola w hodowli", value: "Jeszcze bez miotu" },
-      { label: "Waga", value: "ok. 24 kg" },
+      { label: "Waga", value: "ok. 28 kg" },
       { label: "Umaszczenie", value: "Biało-cynamonowe" },
       { label: "Oczy", value: "Niebieskie" },
     ],
@@ -158,7 +158,7 @@ export const LITTERS = [
     handoverLabel: "Odbiór od połowy grudnia 2026",
     photo: PUPPY_PLACEHOLDER,
     intro:
-      "Miot C to sześć białych szczeniąt husky syberyjskiego po Mii i Ozziem. Sprawdź zdjęcia i dostępność każdego szczeniaka. Jeśli chcesz poznać miot na żywo, umów wizytę w naszej hodowli w okolicach Radomia.",
+      "Miot C to siedem białych szczeniąt husky syberyjskiego po Mii i Ozzim. Sprawdź zdjęcia i dostępność każdego szczeniaka. Jeśli chcesz poznać miot na żywo, umów wizytę w naszej hodowli w okolicach Radomia.",
     puppies: [
       {
         slug: "cora",
@@ -177,6 +177,13 @@ export const LITTERS = [
       {
         slug: "celi",
         name: "Celi",
+        sex: "female",
+        status: "reserved",
+        photo: PUPPY_PLACEHOLDER,
+      },
+      {
+        slug: "ciri",
+        name: "Ciri",
         sex: "female",
         status: "reserved",
         photo: PUPPY_PLACEHOLDER,
@@ -213,7 +220,7 @@ export const LITTERS = [
     born: "2026-07-15",
     photo: "/litters/kaja-a/cover.jpg",
     intro:
-      "Cztery białe szczenięta po Ozziem i Kai: trzy suczki i jeden piesek. Wszystkie są już w swoich nowych domach.",
+      "Cztery białe szczenięta po Ozzim i Kai: trzy suczki i jeden piesek. Wszystkie są już w swoich nowych domach.",
     grownGallery: [],
     puppies: [
       {
@@ -272,7 +279,7 @@ export const LITTERS = [
     born: "2024-09-05",
     photo: "/litters/b/cover.jpg",
     intro:
-      "Miot B po Ozziem i Mii. Wszystkie pieski są już w swoich domach — zostawiamy je tutaj na pamiątkę i pokazujemy, jak urosły.",
+      "Miot B po Ozzim i Mii. Wszystkie pieski są już w swoich domach — zostawiamy je tutaj na pamiątkę i pokazujemy, jak urosły.",
     grownGallery: ["/litters/b/grown-1.jpg", "/litters/b/grown-2.jpg"],
     puppies: [
       {
@@ -347,7 +354,7 @@ export const LITTERS = [
     born: "2023-04-18",
     photo: "/litters/a/cover.jpg",
     intro:
-      "Nasz pierwszy miot. Cztery pieski po Ozziem i Mii, wszystkie od dawna w swoich rodzinach.",
+      "Nasz pierwszy miot. Cztery pieski po Ozzim i Mii, wszystkie od dawna w swoich rodzinach.",
     grownGallery: ["/litters/a/grown-1.jpg", "/litters/a/grown-2.jpg"],
     puppies: [
       {
@@ -426,6 +433,11 @@ export function littersOfParent(slug) {
   return LITTERS.filter(
     (litter) => litter.sireSlug === slug || litter.damSlug === slug,
   );
+}
+
+export function litterCountLabel(slug) {
+  const count = littersOfParent(slug).length;
+  return count ? `Mioty: ${count}` : "Jeszcze bez miotu";
 }
 
 export function countByStatus(puppies, status) {

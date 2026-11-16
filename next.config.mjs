@@ -23,6 +23,14 @@ const nextConfig = {
     // Wklejenie ich w HTML zdejmuje te żądania ze ścieżki krytycznej.
     inlineCss: true,
   },
+  async headers() {
+    return [
+      {
+        source: "/fonts/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
+      },
+    ];
+  },
   async redirects() {
     return [
       {

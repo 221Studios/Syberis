@@ -5,12 +5,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import gsap from "gsap";
 import { useLenis } from "lenis/react";
-import {
-  FiChevronUp,
-  FiChevronDown,
-  FiMessageCircle,
-  FiPhone,
-} from "react-icons/fi";
+import { FiMessageCircle, FiPhone } from "react-icons/fi";
 import { FaTiktok } from "react-icons/fa6";
 import { CONTACT } from "@/data/kennel";
 import { mailHref, smsHref, telHref } from "@/lib/contact";
@@ -19,6 +14,7 @@ import "./Menu.css";
 
 const MENU_PRIMARY_LINKS = [
   { href: "/", label: "Start" },
+  { href: "/hodowla-husky", label: "Hodowla" },
   { href: "/mioty", label: "Mioty" },
   { href: "/rodzice", label: "Rodzice" },
   { href: "/galeria", label: "Galeria" },
@@ -103,7 +99,6 @@ function MenuLineLink({
 
 export default function Menu() {
   const [openPath, setOpenPath] = useState(null);
-  const [railExpanded, setRailExpanded] = useState(false);
   const toggleWordRef = useRef(null);
   const closeWordRef = useRef(null);
   const lenis = useLenis();
@@ -160,52 +155,25 @@ export default function Menu() {
         tabIndex={isOpen ? 0 : -1}
       />
 
-      <div
-        className={`menu${railExpanded ? " menu--rail-expanded" : " menu--rail-collapsed"}${isOpen ? " menu--open" : ""}`}
-      >
+      <div className={`menu${isOpen ? " menu--open" : ""}`}>
         <div className="menu-rail">
-          {railExpanded ? (
-            <Link
-              href="/"
-              className="menu-box menu-logo"
-              onClick={() => handleLinkClick("/")}
-            >
-              <img src="/logo.png" alt="Syberis — strona główna" />
-            </Link>
-          ) : null}
-
-          <div className="menu-rail-controls">
-            <button
-              type="button"
-              className="menu-box menu-toggle"
-              onClick={() => setOpenPath(isOpen ? null : pathname)}
-              aria-expanded={isOpen}
-              aria-controls="main-menu-panel"
-            >
-              <span className="menu-toggle-mask">
-                <p className="mono sm menu-toggle-word" ref={toggleWordRef}>
-                  Menu
-                </p>
-                <p className="mono sm menu-close-word" ref={closeWordRef}>
-                  Close
-                </p>
-              </span>
-            </button>
-
-            <button
-              type="button"
-              className="menu-box menu-rail-arrow"
-              onClick={() => setRailExpanded((prev) => !prev)}
-              aria-label={railExpanded ? "Zwiń pasek logo" : "Rozwiń logo"}
-              aria-expanded={railExpanded}
-            >
-              {railExpanded ? (
-                <FiChevronUp aria-hidden="true" />
-              ) : (
-                <FiChevronDown aria-hidden="true" />
-              )}
-            </button>
-          </div>
+          <button
+            type="button"
+            className="menu-box menu-toggle"
+            onClick={() => setOpenPath(isOpen ? null : pathname)}
+            aria-expanded={isOpen}
+            aria-controls="main-menu-panel"
+          >
+            <img className="menu-toggle-logo" src="/logo.png" alt="" />
+            <span className="menu-toggle-mask">
+              <p className="mono sm menu-toggle-word" ref={toggleWordRef}>
+                Menu
+              </p>
+              <p className="mono sm menu-close-word" ref={closeWordRef}>
+                Close
+              </p>
+            </span>
+          </button>
         </div>
 
         <aside

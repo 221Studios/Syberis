@@ -139,6 +139,13 @@
   padding: 1.35rem 1.5rem 1.75rem;
   text-align: center;
   pointer-events: none;
+  transition: padding 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Same duration and curve as the panel's GSAP flex-grow tween (0.6s, power3.out). */
+.parents-accordion-title,
+.parents-accordion-role {
+  transition: font-size 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .parents-accordion-content {
@@ -319,6 +326,23 @@
 
 .parents-accordion--stacked .parents-accordion-title {
   font-size: clamp(2.4rem, 11vw, 4.5rem);
+}
+
+.parents-accordion--stacked
+  :is(
+    .parents-accordion-inner,
+    .parents-accordion-title,
+    .parents-accordion-role
+  ) {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parents-accordion-inner,
+  .parents-accordion-title,
+  .parents-accordion-role {
+    transition: none;
+  }
 }
 
 .parents-accordion--stacked .parents-accordion-role {

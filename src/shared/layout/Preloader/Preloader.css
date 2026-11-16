@@ -63,10 +63,10 @@ html:has(.preloader:not(.preloader--revealing)) .preloader {
 .preloader-strokes-fill path {
   stroke-linecap: round;
   stroke-linejoin: round;
-  /* pathLength="1" makes a dash of 1 the whole stroke, so the intro
-     does not call getTotalLength() and force layout. */
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
+  /* Must match PATH_LENGTH in Preloader.jsx. GSAP rounds px values to whole
+     numbers, so a short normalized length would draw in visible steps. */
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
 }
 
 .preloader-strokes-base path {
@@ -102,7 +102,6 @@ html:has(.preloader:not(.preloader--revealing)) .preloader {
   transform: translateY(40%);
 }
 
-/* The gold title layer sits above the dim title and reveals from left to right. */
 .preloader-title-wrap {
   position: relative;
   z-index: 2;
@@ -120,21 +119,18 @@ html:has(.preloader:not(.preloader--revealing)) .preloader {
   letter-spacing: -0.01em;
   white-space: nowrap;
   text-align: center;
-}
-
-/* Keep the base title dim where the edges of both title layers meet. */
-.preloader-title-base {
-  color: #39536f;
-}
-
-.preloader-title-fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0%;
-  color: var(--base-100);
-  clip-path: inset(-0.25em 0 -0.25em 0);
-  will-change: width;
+  /* One text layer: the light half of the gradient slides in from the left,
+     so a separate fill copy cannot drift off the dim glyphs. */
+  color: transparent;
+  background-image: linear-gradient(
+    90deg,
+    var(--base-100) 0 50%,
+    #39536f 50% 100%
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0%;
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .preloader-tagline {

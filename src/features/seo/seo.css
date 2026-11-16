@@ -1,0 +1,509 @@
+.seo-page {
+  min-height: 100svh;
+  background-color: var(--base-200);
+  color: var(--base-500);
+}
+
+.seo-band {
+  width: min(100% - 2.5rem, 72rem);
+  margin-inline: auto;
+  padding-block: 2rem 1rem;
+}
+
+.seo-intro {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  align-items: flex-start;
+  gap: 3rem;
+  padding-block: 1rem 3rem;
+}
+
+.seo-intro .mono {
+  color: var(--base-400);
+}
+
+.seo-lead {
+  max-width: 28ch;
+  font-size: clamp(2.25rem, 5vw, 4.25rem);
+  line-height: 0.95;
+}
+
+.seo-shell {
+  width: min(100% - 2.5rem, 40rem);
+  margin-inline: auto;
+  padding-block: 1rem 4rem;
+  scroll-margin-top: 5rem;
+  text-align: left;
+}
+
+.seo-shell p,
+.seo-shell ul,
+.seo-shell ol,
+.seo-panel p,
+.seo-panel ul,
+.seo-panel ol,
+.seo-split p,
+.seo-story p,
+.seo-parents-copy p {
+  font-family: "Bellefair";
+  font-size: 1.3rem;
+  line-height: 1.5;
+  letter-spacing: -2%;
+}
+
+@media (max-width: 999px) {
+  .seo-shell p,
+  .seo-shell ul,
+  .seo-shell ol,
+  .seo-panel p,
+  .seo-panel ul,
+  .seo-panel ol,
+  .seo-split p,
+  .seo-story p,
+  .seo-parents-copy p {
+    font-size: 1.25rem;
+  }
+}
+
+.seo-shell h2,
+.seo-shell h3,
+.seo-panel h2,
+.seo-panel h3,
+.seo-split h2,
+.seo-split h5,
+.seo-story h3 {
+  line-height: 1.15;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.seo-shell h2,
+.seo-panel h2 {
+  font-size: clamp(1.6rem, 4vw, 2.25rem);
+  margin-block: 3.25rem 0.75rem;
+}
+
+.seo-shell h3,
+.seo-panel h3,
+.seo-story h3 {
+  font-size: clamp(1.5rem, 3vw, 1.85rem);
+  margin-block: 2rem 0.4rem;
+}
+
+.seo-shell > :first-child,
+.seo-panel > :first-child {
+  margin-top: 0;
+}
+
+.seo-shell p + p,
+.seo-shell p + ul,
+.seo-shell p + ol,
+.seo-shell ul + p,
+.seo-shell ol + p,
+.seo-panel p + p,
+.seo-panel p + ul,
+.seo-panel ul + p {
+  margin-top: 1.25rem;
+}
+
+.seo-shell ul,
+.seo-shell ol,
+.seo-panel ul,
+.seo-panel ol {
+  padding-left: 1.5rem;
+}
+
+.seo-shell ul,
+.seo-panel ul {
+  list-style: disc;
+}
+
+.seo-shell ol,
+.seo-panel ol {
+  list-style: decimal;
+}
+
+.seo-shell li,
+.seo-panel li {
+  padding-left: 0.25rem;
+}
+
+.seo-shell li + li,
+.seo-panel li + li {
+  margin-top: 0.6rem;
+}
+
+/* Bellefair ships only weight 400; synthetic bold breaks on overlapping contours. */
+.seo-page strong {
+  font-weight: 400;
+  font-synthesis: none;
+  -webkit-text-stroke: 0.035em currentColor;
+}
+
+.seo-page a:not(.button) {
+  color: var(--base-400);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.seo-page a:not(.button):hover {
+  text-decoration-thickness: 2px;
+}
+
+.seo-page a:not(.button):focus-visible {
+  outline: 2px solid var(--base-400);
+  outline-offset: 3px;
+}
+
+.seo-panel {
+  margin-block: 3.25rem;
+  padding: clamp(1.25rem, 4vw, 2.25rem);
+  border-radius: 0.75rem;
+}
+
+.seo-panel > :last-child {
+  margin-bottom: 0;
+}
+
+.seo-panel h2 {
+  margin-top: 0;
+}
+
+.seo-panel--light {
+  background-color: var(--base-100);
+}
+
+.seo-panel--dark {
+  background-color: var(--base-500);
+  color: var(--base-100);
+}
+
+.seo-panel--dark strong,
+.seo-panel--dark li::marker {
+  color: var(--base-300);
+}
+
+.seo-panel--dark a:not(.button) {
+  color: var(--base-100);
+}
+
+.seo-panel--gold {
+  background-color: var(--base-300);
+  color: var(--base-500);
+}
+
+.seo-panel--gold a:not(.button) {
+  color: var(--base-500);
+}
+
+.seo-panel--gold .button {
+  --button-hover-bg: var(--base-500);
+  --button-hover-fg: var(--base-100);
+}
+
+.seo-label {
+  margin-bottom: 1rem;
+  color: var(--base-400);
+}
+
+.seo-services {
+  display: flex;
+  gap: 3rem;
+  width: min(100% - 2.5rem, 72rem);
+  margin: 2rem auto 0;
+  padding-block: 2rem 4rem;
+}
+
+.seo-services-aside {
+  position: sticky;
+  top: 5.5rem;
+  align-self: flex-start;
+  flex-shrink: 0;
+  width: min(22rem, 38%);
+}
+
+.seo-services-aside h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+  line-height: 1.1;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.seo-parents-copy {
+  max-width: 24rem;
+}
+
+.seo-parents-copy p + p {
+  margin-top: 1rem;
+}
+
+.seo-services-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.seo-parent-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.seo-parent-card {
+  position: relative;
+  display: grid;
+  align-content: space-between;
+  gap: 1rem;
+  aspect-ratio: 5 / 7;
+  padding: 1rem;
+  border-radius: 0.375rem;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--base-100);
+}
+
+.seo-parent-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.seo-parent-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(16, 47, 79, 0.8) 0%,
+    rgba(16, 47, 79, 0.15) 45%,
+    rgba(16, 47, 79, 0.25) 100%
+  );
+}
+
+.seo-parent-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.seo-parent-card .mono {
+  color: var(--base-100);
+}
+
+.seo-parent-name {
+  margin: 0;
+  color: var(--base-300);
+  font-size: 1.4rem;
+}
+
+.seo-story-list {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.seo-story {
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--base-100);
+}
+
+.seo-story .mono {
+  margin-bottom: 0.5rem;
+  color: var(--base-400);
+}
+
+.seo-story h3 {
+  margin: 0 0 0.5rem;
+}
+
+.seo-story p {
+  margin: 0;
+}
+
+.seo-story p + p,
+.seo-story p + ul,
+.seo-story ul + p {
+  margin-top: 1rem;
+}
+
+.seo-story ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  list-style: disc;
+}
+
+.seo-story li + li {
+  margin-top: 0.5rem;
+}
+
+.seo-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(16rem, 0.8fr);
+  width: 100%;
+  min-height: 50svh;
+  background-color: var(--base-500);
+  color: var(--base-100);
+}
+
+.seo-split-main {
+  padding: clamp(2rem, 5vw, 4rem);
+  border-right: 1px solid color-mix(in srgb, var(--base-300) 18%, transparent);
+}
+
+.seo-split-main h2 {
+  margin: 0 0 1.5rem;
+  max-width: 18ch;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--base-300);
+}
+
+.seo-split-aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.seo-split-aside h5 {
+  margin: 0;
+  max-width: 14ch;
+  font-family: "Bellefair";
+  font-size: clamp(1.85rem, 3vw, 2.75rem);
+  line-height: 1.05;
+  letter-spacing: -6%;
+  text-transform: none;
+}
+
+.seo-split-aside p {
+  margin: 0;
+  max-width: 32ch;
+  color: color-mix(in srgb, var(--base-100) 88%, transparent);
+}
+
+.seo-split .button {
+  --button-bg: var(--base-100);
+  --button-fg: var(--base-500);
+  --button-hover-bg: var(--base-300);
+  --button-hover-fg: var(--base-500);
+}
+
+.seo-split .button__label,
+.seo-split .button__icon,
+.seo-split .button p {
+  color: var(--button-fg);
+}
+
+.seo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-block: 1.25rem;
+}
+
+.seo-actions--stack {
+  flex-direction: column;
+  align-items: flex-start;
+  margin-block: 0;
+}
+
+.seo-actions .button p.mono {
+  font-family: "DMMono";
+  font-size: 0.8rem;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+.seo-sources {
+  width: min(100% - 2.5rem, 40rem);
+  margin: 0 auto;
+  padding-block: 1.5rem 2.5rem;
+  text-align: center;
+}
+
+.seo-faq {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.seo-faq section h3 {
+  margin-top: 0;
+}
+
+@media (min-width: 1000px) and (max-width: 1399px) {
+  .seo-intro {
+    grid-template-columns: 140px 1fr;
+    gap: 2rem;
+  }
+
+  .seo-lead {
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+  }
+
+  .seo-services {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 999px) {
+  .seo-intro {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding-block: 0.5rem 2rem;
+  }
+
+  .seo-lead {
+    max-width: none;
+    font-size: clamp(1.85rem, 7vw, 2.75rem);
+  }
+
+  .seo-services {
+    flex-direction: column;
+    gap: 2rem;
+    padding-block: 1rem 3rem;
+  }
+
+  .seo-services-aside {
+    position: static;
+    width: 100%;
+  }
+
+  .seo-parent-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .seo-split {
+    grid-template-columns: 1fr;
+  }
+
+  .seo-split-main {
+    border-right: none;
+    border-bottom: 1px solid
+      color-mix(in srgb, var(--base-300) 18%, transparent);
+  }
+
+  .seo-actions--stack {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .seo-parent-card {
+    aspect-ratio: 3 / 4;
+  }
+
+  .seo-parent-name {
+    font-size: 1.1rem;
+  }
+}

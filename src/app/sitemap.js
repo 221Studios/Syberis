@@ -4,6 +4,7 @@ import { SITE_URL } from "@/data/site.mjs";
 export default function sitemap() {
   const paths = [
     "/",
+    "/hodowla-husky",
     "/mioty",
     "/rodzice",
     "/galeria",

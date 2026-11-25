@@ -192,7 +192,12 @@ export default function Footer() {
             <p className="mono sm">Syberis</p>
           </Link>
           <p className="mono sm footer-bottom-year">&copy; 2026</p>
-          <p className="mono sm footer-bottom-credit">by 221Studios</p>
+          <a
+            className="mono sm footer-bottom-credit"
+            href="https://221studio.pl/"
+          >
+            by 221Studios
+          </a>
         </div>
       </div>
 

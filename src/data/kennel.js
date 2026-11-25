@@ -13,12 +13,12 @@ export const KENNEL = {
 };
 
 export const CONTACT = {
-  phonePrimary: "512 974 084",
+  phonePrimary: "780 642 582",
   email: "hodowlasyberis@gmail.com",
   olx: "https://www.olx.pl/oferty/uzytkownik/18Del/",
   instagram: null,
   tiktok: "https://www.tiktok.com/@hodowla.syberis.w",
-  maps: "https://www.google.com/maps/search/?api=1&query=Radom%2C%20Mazowieckie",
+  maps: "https://maps.app.goo.gl/QHMJDYebuCH7dwAr8",
 };
 
 const WHITE_COAT = "Białe";

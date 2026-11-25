@@ -380,10 +380,10 @@ export default function CTA() {
               href={CONTACT.maps}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Zobacz Radom w Google Maps"
+              aria-label="Zobacz lokalizację hodowli w Google Maps"
             >
               <Copy splitType="words">
-                <h2>{KENNEL.location}</h2>
+                <h2>Lokalizacja</h2>
               </Copy>
 
               <div className="cta-compass">
@@ -400,7 +400,7 @@ export default function CTA() {
                 </span>
               </div>
 
-              <p className="mono sm cta-map-cta">Zobacz Radom na mapie</p>
+              <p className="mono sm cta-map-cta">Hodowla na mapie</p>
             </a>
 
             <div className="cta-location-panel">

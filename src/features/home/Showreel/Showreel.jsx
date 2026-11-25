@@ -94,7 +94,7 @@ export default function Showreel() {
         showreelHeaderFlip = Flip.from(showreelHeaderState, {
           duration: 1,
           ease: "none",
-          absolute: true,
+          absolute: false,
           paused: true,
         });
 

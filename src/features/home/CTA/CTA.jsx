@@ -260,6 +260,8 @@ export default function CTA() {
 
       return {
         el,
+        centerX: 0,
+        centerY: 0,
         restX: 0,
         restY: 0,
         restR: 0,
@@ -271,6 +273,18 @@ export default function CTA() {
         vr: 0,
       };
     });
+
+    function measureCardCenters() {
+      // Read all card geometry together, then reuse it during pointer frames.
+      // Measuring each card on every GSAP tick forces layout after transforms.
+      cardPhysics.forEach((card) => {
+        const rect = card.el.getBoundingClientRect();
+        card.centerX = rect.left + rect.width / 2 + window.scrollX;
+        card.centerY = rect.top + rect.height / 2 + window.scrollY;
+      });
+    }
+
+    measureCardCenters();
 
     function handlePointerMove(e) {
       if (!hasCursor) {
@@ -300,9 +314,8 @@ export default function CTA() {
       const speed = Math.sqrt(cursor.vx ** 2 + cursor.vy ** 2);
       if (speed < 0.5) return { fx: 0, fy: 0 };
 
-      const rect = card.el.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2 - card.x;
-      const cy = rect.top + rect.height / 2 - card.y;
+      const cx = card.centerX - window.scrollX - card.x;
+      const cy = card.centerY - window.scrollY - card.y;
       const dist = Math.sqrt((cursor.x - cx) ** 2 + (cursor.y - cy) ** 2);
 
       if (dist > PROXIMITY_RADIUS) return { fx: 0, fy: 0 };
@@ -360,11 +373,13 @@ export default function CTA() {
 
     window.addEventListener("pointermove", handlePointerMove);
     window.addEventListener("pointerleave", handlePointerLeave);
+    window.addEventListener("resize", measureCardCenters);
     gsap.ticker.add(tickCards);
 
     return () => {
       window.removeEventListener("pointermove", handlePointerMove);
       window.removeEventListener("pointerleave", handlePointerLeave);
+      window.removeEventListener("resize", measureCardCenters);
       gsap.ticker.remove(tickCards);
       cards.forEach((card) => gsap.set(card, { clearProps: "transform" }));
     };

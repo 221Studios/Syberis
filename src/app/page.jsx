@@ -1,3 +1,4 @@
+import { preload } from "react-dom";
 import Home from "./Home";
 
 export const metadata = {
@@ -8,5 +9,7 @@ export const metadata = {
 };
 
 export default function HomePage() {
+  preload("/logo-white.png", { as: "image", fetchPriority: "high" });
+
   return <Home />;
 }

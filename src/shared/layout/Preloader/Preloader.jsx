@@ -282,6 +282,8 @@ export default function Preloader() {
             src="/logo-white.png"
             alt=""
             aria-hidden
+            fetchPriority="high"
+            loading="eager"
           />
 
           <div className="preloader-title-wrap">

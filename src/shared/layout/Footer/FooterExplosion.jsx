@@ -189,6 +189,7 @@ export default function FooterExplosion({ footerRef, lenis }) {
       const particles = elements.map(
         (element) => new Particle(element, EXPLOSION_CONFIG),
       );
+      const fallDistance = container.offsetHeight / 2;
 
       let animationId;
       const animate = () => {
@@ -196,7 +197,7 @@ export default function FooterExplosion({ footerRef, lenis }) {
         animationId = requestAnimationFrame(animate);
 
         if (
-          particles.every((particle) => particle.y > container.offsetHeight / 2)
+          particles.every((particle) => particle.y > fallDistance)
         ) {
           cancelAnimationFrame(animationId);
           setExploded(false);

@@ -11,7 +11,6 @@ import "./Showreel.css";
 gsap.registerPlugin(ScrollTrigger, Flip);
 
 const SHOWREEL_SCROLL_DISTANCE = 1.15;
-const SHOWREEL_MOBILE_SCROLL_DISTANCE = 0.9;
 
 export default function Showreel() {
   const showreelRef = useRef(null);
@@ -34,6 +33,7 @@ export default function Showreel() {
       let showreelTrigger;
       let showreelMarqueeTween;
       let setupToken = 0;
+      const desktopLayout = window.matchMedia("(min-width: 1000px)");
 
       function killShowreelPins() {
         ScrollTrigger.getAll().forEach((trigger) => {
@@ -62,11 +62,12 @@ export default function Showreel() {
           clearProps: "all",
         });
         if (marqueeTrack) gsap.set(marqueeTrack, { clearProps: "all" });
+        marqueeContainer.style.width = "";
 
-        visual.classList.toggle(
-          "showreel-visual--compact",
-          window.innerWidth < 1000,
-        );
+        // Mobile browsers resize the layout viewport while their address bars
+        // expand and collapse. Keep the mobile section static so scrolling
+        // never tears down and recreates a pinned animation mid-gesture.
+        if (!desktopLayout.matches) return;
 
         // Measure Flip only after header SVGs have a real layout size.
         await Promise.all(
@@ -144,12 +145,7 @@ export default function Showreel() {
           trigger: section,
           start: "top top",
           end: () =>
-            `+=${
-              window.innerHeight *
-              (window.innerWidth < 1000
-                ? SHOWREEL_MOBILE_SCROLL_DISTANCE
-                : SHOWREEL_SCROLL_DISTANCE)
-            }`,
+            `+=${window.innerHeight * SHOWREEL_SCROLL_DISTANCE}`,
           pin: true,
           pinSpacing: true,
           invalidateOnRefresh: true,
@@ -173,21 +169,13 @@ export default function Showreel() {
 
       setup();
 
-      let showreelResizeTimer;
-      const handleShowreelResize = () => {
-        clearTimeout(showreelResizeTimer);
-        showreelResizeTimer = setTimeout(() => {
-          setup();
-        }, 250);
-      };
-
-      window.addEventListener("resize", handleShowreelResize);
+      const handleLayoutChange = () => setup();
+      desktopLayout.addEventListener("change", handleLayoutChange);
 
       return () => {
         setupToken += 1;
         cleanup();
-        clearTimeout(showreelResizeTimer);
-        window.removeEventListener("resize", handleShowreelResize);
+        desktopLayout.removeEventListener("change", handleLayoutChange);
         marqueeContainer.style.width = "";
       };
     },

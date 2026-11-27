@@ -87,11 +87,6 @@
   position: absolute;
 }
 
-.showreel-visual--compact {
-  /* Keep side gutters wide enough for the folding SYBERIS word. */
-  width: 56%;
-}
-
 .showreel-visual.end-state {
   display: flex;
   align-items: center;
@@ -159,9 +154,38 @@
 }
 
 @media (max-width: 999px) {
+  .showreel {
+    height: 100svh;
+    min-height: 32rem;
+  }
+
+  .showreel > .container {
+    position: absolute;
+    inset: 0;
+  }
+
+  .showreel-header {
+    z-index: 4;
+  }
+
+  #showreel-header-1,
+  #showreel-header-3 {
+    display: none;
+  }
+
+  #showreel-header-2 {
+    top: 12%;
+    transform: none;
+    padding-inline: 0.85rem;
+  }
+
   .showreel-visual {
-    width: 56%;
-    height: min(58vh, 420px);
+    position: absolute;
+    top: 25%;
+    left: 6%;
+    width: 88%;
+    height: 66%;
+    border-radius: 0.75rem;
   }
 
   .showreel {
@@ -174,9 +198,22 @@
 
   .showreel-marquee-track {
     gap: 2rem;
+    animation: showreel-marquee-scroll 18s linear infinite;
   }
 
   .showreel-marquee-track p {
     font-size: 0.95rem;
+  }
+}
+
+@keyframes showreel-marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showreel-marquee-track {
+    animation-play-state: paused;
   }
 }
